@@ -485,3 +485,28 @@
 .add-custom-button:hover {
     background: #bdd0ff;
 }
+.load-more-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    margin: 18px auto 0;
+
+    border: 0;
+    background: transparent;
+
+    color: #888;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.load-more-button:hover {
+    color: #d9f99d;
+}
+
+.load-more-button span {
+    font-size: 17px;
+}

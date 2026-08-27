@@ -14,6 +14,8 @@ export function ExercisesPage() {
 
     const [search, setSearch] = useState('')
 
+    const [visibleCount, setVisibleCount] = useState(6)
+
     const bodyParts = useMemo(() => {
         if (!data) {
             return []
@@ -72,6 +74,10 @@ export function ExercisesPage() {
         })
     }, [data, selectedBodyPartId, search])
 
+    const visibleExercises = filteredExercises.slice(0, visibleCount)
+
+    const hasMore = visibleCount < filteredExercises.length
+
     if (isLoading) {
         return <p>Loading exercises...</p>
     }
@@ -110,13 +116,26 @@ export function ExercisesPage() {
 
                 <main className="exercise-results">
                     <div className="exercise-grid">
-                        {filteredExercises.map((exercise) => (
+                        {visibleExercises.map((exercise) => (
                             <ExerciseCard
                                 key={exercise.id}
                                 exercise={exercise}
                             />
                         ))}
                     </div>
+
+                    {hasMore && (
+                        <button
+                            type="button"
+                            className="load-more-button"
+                            onClick={() =>
+                                setVisibleCount((count) => count + 6)
+                            }
+                        >
+                            Load More Entries
+                            <span>⌄</span>
+                        </button>
+                    )}
 
                     {filteredExercises.length === 0 && (
                         <div className="empty-exercises">
