@@ -38,7 +38,7 @@ public class ExerciseService {
     }
 
     public List<ExerciseListResponse> getAllExercises() {
-        return exerciseRepository.findAll()
+        return exerciseRepository.findAllWithListDetails()
                 .stream()
                 .map(exerciseMapper::toListResponse)
                 .toList();
