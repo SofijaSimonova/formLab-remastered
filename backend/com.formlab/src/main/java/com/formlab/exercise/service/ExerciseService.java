@@ -3,6 +3,7 @@ package com.formlab.exercise.service;
 import com.formlab.common.exception.ResourceNotFoundException;
 import com.formlab.exercise.dto.CreateExerciseRequest;
 import com.formlab.exercise.dto.ExerciseListResponse;
+import com.formlab.exercise.dto.ExercisePageResponse;
 import com.formlab.exercise.dto.ExerciseResponse;
 import com.formlab.exercise.dto.UpdateExerciseRequest;
 import com.formlab.exercise.entity.Exercise;
@@ -12,10 +13,18 @@ import com.formlab.exercise.mapper.ExerciseMapper;
 import com.formlab.exercise.repository.ExerciseFocusVariationRepository;
 import com.formlab.exercise.repository.ExerciseRepository;
 import com.formlab.exercise.repository.MovementPatternRepository;
+import com.formlab.exercise.specification.ExerciseSpecification;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class ExerciseService {
@@ -37,11 +46,56 @@ public class ExerciseService {
         this.variationRepository = variationRepository;
     }
 
-    public List<ExerciseListResponse> getAllExercises() {
-        return exerciseRepository.findAllWithListDetails()
+    public ExercisePageResponse getAllExercises(
+            Pageable pageable,
+            String search,
+            UUID bodyPartId
+    ) {
+        var specification = Specification
+                .where(ExerciseSpecification.search(search))
+                .and(ExerciseSpecification.hasBodyPart(bodyPartId));
+
+        Page<Exercise> page =
+                exerciseRepository.findAll(specification, pageable);
+
+        List<UUID> ids = page.getContent()
                 .stream()
+                .map(Exercise::getId)
+                .toList();
+
+        if (ids.isEmpty()) {
+            return new ExercisePageResponse(
+                    List.of(),
+                    page.getNumber(),
+                    page.getSize(),
+                    page.getTotalElements(),
+                    page.getTotalPages(),
+                    page.isLast()
+            );
+        }
+
+        List<Exercise> exercises =
+                exerciseRepository.findAllWithListDetailsByIds(ids);
+
+        Map<UUID, Exercise> exercisesById = exercises.stream()
+                .collect(Collectors.toMap(
+                        Exercise::getId,
+                        Function.identity()
+                ));
+
+        List<ExerciseListResponse> content = ids.stream()
+                .map(exercisesById::get)
                 .map(exerciseMapper::toListResponse)
                 .toList();
+
+        return new ExercisePageResponse(
+                content,
+                page.getNumber(),
+                page.getSize(),
+                page.getTotalElements(),
+                page.getTotalPages(),
+                page.isLast()
+        );
     }
 
     public ExerciseResponse getExerciseById(UUID id) {

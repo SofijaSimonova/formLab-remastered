@@ -1,380 +1,196 @@
-.exercise-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
+/* =========================================================
+   EXERCISES PAGE
+   ========================================================= */
+
+.exercises-page {
     width: 100%;
+    min-width: 0;
 }
 
-/* CARD */
-
-.exercise-card {
-    overflow: hidden;
-
-    border: 1px solid #2a2a2a;
-    border-radius: 8px;
-
-    background: #151515;
-}
-
-/* IMAGE */
-
-.exercise-card-image {
-    position: relative;
-
-    height: 150px;
-
-    background: #202020;
-}
-
-/* TAGS / BADGES */
-
-.exercise-card-badges {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-
+.exercises-page-header {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 6px;
-
-    max-width: 70%;
-}
-
-.exercise-card-badge {
-    display: inline-flex;
     align-items: center;
-
-    padding: 5px 8px;
-
-    border-radius: 6px;
-
-    background: rgba(20, 20, 20, 0.9);
-    color: #d9f99d;
-
-    font-size: 11px;
-    font-weight: 600;
-    line-height: 1;
-
-    white-space: nowrap;
-}
-
-/* CONTENT */
-
-.exercise-card-content {
-    padding: 14px;
-}
-
-/* HEADER */
-
-.exercise-card-header {
-    display: flex;
-    align-items: flex-start;
     justify-content: space-between;
 
-    gap: 12px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-.exercise-card-header h3 {
+.exercises-page-header > div:first-child {
+    min-width: 0;
+}
+
+.exercises-page-header h1 {
     margin: 0;
 
     color: #f5f5f5;
 
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 1.3;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-.exercise-card-header button {
-    flex-shrink: 0;
-
-    padding: 0;
-
-    border: 0;
-
-    background: transparent;
-    color: #888;
-
-    font-size: 20px;
-    line-height: 1;
-
-    cursor: pointer;
-}
-
-.exercise-card-header button:hover {
-    color: #fff;
-}
-
-/* DESCRIPTION */
-
-.exercise-card-content p {
-    margin: 8px 0 14px;
+.exercises-page-header p {
+    margin: 6px 0 0;
 
     color: #8d8d8d;
 
     font-size: 13px;
-    line-height: 1.5;
-
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-
-    overflow: hidden;
+    line-height: 1.4;
 }
 
-/* BODY PARTS */
 
-.exercise-card-body-parts {
+/* =========================================================
+   PAGE HEADER ACTIONS
+   ========================================================= */
+
+.exercises-page-header-actions {
     display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.exercise-card-body-parts span {
-    display: inline-flex;
     align-items: center;
 
-    padding: 5px 8px;
+    gap: 6px;
 
+    flex-shrink: 0;
+}
+
+.exercise-search {
+    display: flex;
+    align-items: center;
+
+    width: 210px;
+    height: 30px;
+    padding: 0 9px;
+
+    border: 1px solid #303030;
     border-radius: 5px;
-
-    background: #252525;
-    color: #a5a5a5;
-
-    font-size: 11px;
-    font-weight: 500;
-    line-height: 1;
-}
-
-/* PAGE */
-
-.exercises-page {
-    width: 100%;
-}
-
-.exercises-page > h1 {
-    margin: 0 0 20px;
-
-    color: #f5f5f5;
-
-    font-size: 32px;
-}
-
-/* MAIN LAYOUT */
-
-.exercises-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 16px;
-
-    align-items: start;
-
-    width: 100%;
-}
-/* BODY EXPLORER */
-
-.body-explorer {
-    width: 100%;
-    height: 800px;
-    min-height: 800px;
-
-    overflow: hidden;
-
-    border: 1px solid #2a2a2a;
-    border-radius: 8px;
 
     background: #111;
 
-    align-self: start;
+    gap: 7px;
 }
 
-.body-explorer-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.exercise-search > span {
+    color: #777;
 
-    padding: 10px;
-
-    border-bottom: 1px solid #2a2a2a;
-
-    color: #999;
-
-    font-size: 11px;
-    font-weight: 700;
+    font-size: 12px;
 }
 
-.body-explorer-view-toggle {
-    display: flex;
-    gap: 4px;
-}
-
-.body-explorer-view-toggle button {
-    padding: 5px 8px;
-
-    border: 1px solid #333;
-    border-radius: 4px;
-
-    background: #1b1b1b;
-    color: #888;
-
-    font-size: 10px;
-
-    cursor: pointer;
-}
-
-.body-explorer-view-toggle button.active {
-    background: #292929;
-    color: #fff;
-}
-
-/* BODY MODEL */
-
-.body-explorer-model {
-    position: relative;
-
-    width: 100%;
-    height: calc(800px - 42px);
-
-    overflow: hidden;
-}
-
-
-.body-explorer-placeholder {
-    position: relative;
-
+.exercise-search input {
     width: 100%;
     height: 100%;
-}
 
-.body-explorer-placeholder > span {
-    font-size: 11px;
-    letter-spacing: 1px;
-}
-
-/* BODY PART POINTS */
-
-.body-part-point {
-    position: absolute;
-
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    padding: 0;
 
     border: 0;
+    outline: 0;
 
     background: transparent;
-    color: #888;
+    color: #ddd;
+
+    font-size: 11px;
+}
+
+.exercise-search input::placeholder {
+    color: #666;
+}
+
+.add-custom-button {
+    height: 30px;
+    padding: 0 13px;
+
+    border: 1px solid #8da9e8;
+    border-radius: 5px;
+
+    background: #a9c2ff;
+    color: #17233b;
 
     font-size: 10px;
+    font-weight: 700;
 
     cursor: pointer;
 }
 
-.body-part-point span {
-    width: 9px;
-    height: 9px;
-
-    border-radius: 50%;
-
-    background: #777;
+.add-custom-button:hover {
+    background: #bdd0ff;
 }
 
-.body-part-point:hover {
-    color: #fff;
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+/*
+ * Left  = 40%
+ * Right = 60%
+ *
+ * 2fr / 3fr keeps the 40/60 ratio while also accounting
+ * for the gap between the two columns.
+ */
+
+.exercises-layout {
+    display: grid;
+
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+
+    gap: 16px;
+
+    width: 100%;
+
+    /*
+     * Fits the available browser window.
+     * The page header remains outside this area.
+     */
+    height: calc(100vh - 175px);
+    min-height: 0;
+
+    align-items: stretch;
 }
 
-.body-part-point:hover span,
-.body-part-point.selected span {
-    background: #d9f99d;
-    box-shadow: 0 0 8px rgba(217, 249, 157, 0.7);
-}
 
-.body-part-point.selected {
-    color: #d9f99d;
-}
-
-/* TEMPORARY BODY PART POSITIONS */
-
-.body-part-point:nth-child(2) {
-    top: 28%;
-    left: 40%;
-}
-
-.body-part-point:nth-child(3) {
-    top: 35%;
-    left: 60%;
-}
-
-.body-part-point:nth-child(4) {
-    top: 45%;
-    left: 35%;
-}
-
-.body-part-point:nth-child(5) {
-    top: 48%;
-    left: 60%;
-}
-
-.body-part-point:nth-child(6) {
-    top: 60%;
-    left: 42%;
-}
-
-/* EXERCISE RESULTS */
-
-.exercise-results {
-    min-width: 0;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 1000px) {
-    .exercises-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .exercise-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 650px) {
-    .exercise-grid {
-        grid-template-columns: 1fr;
-    }
-}
-/* EXERCISE TOOLBAR */
+/* =========================================================
+   EXERCISE TOOLBAR
+   ========================================================= */
 
 .exercise-toolbar {
     display: flex;
     align-items: center;
+
     width: 100%;
     min-height: 42px;
+
     margin-bottom: 8px;
     padding: 5px 8px;
+
+    box-sizing: border-box;
 
     border: 1px solid #292929;
     border-radius: 6px;
 
     background: #151515;
+
     gap: 6px;
 }
 
 .targeting-label {
     display: flex;
     align-items: center;
+
     height: 30px;
     padding: 0 8px;
 
     border-right: 1px solid #292929;
 
     color: #8c8c8c;
+
     font-size: 11px;
+    font-weight: 500;
+
     gap: 6px;
 }
 
 .targeting-label strong {
     color: #aaa;
+
     font-weight: 600;
 }
 
@@ -391,9 +207,14 @@
 }
 
 .clear-filter-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     padding: 0 4px;
 
     border: 0;
+
     background: transparent;
     color: #777;
 
@@ -429,75 +250,428 @@
     flex: 1;
 }
 
-.exercise-search {
-    display: flex;
-    align-items: center;
 
-    width: 210px;
-    height: 30px;
-    padding: 0 9px;
+/* =========================================================
+   BODY EXPLORER
+   ========================================================= */
 
-    border: 1px solid #303030;
-    border-radius: 5px;
+.body-explorer {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
 
     background: #111;
 
-    gap: 7px;
+    align-self: stretch;
 }
 
-.exercise-search > span {
-    color: #777;
-}
+.body-explorer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-.exercise-search input {
     width: 100%;
-    padding: 0;
+    height: 42px;
 
-    border: 0;
-    outline: 0;
+    box-sizing: border-box;
 
-    background: transparent;
-    color: #ddd;
+    padding: 0 10px;
+
+    border-bottom: 1px solid #2a2a2a;
+
+    color: #999;
 
     font-size: 11px;
+    font-weight: 700;
 }
 
-.exercise-search input::placeholder {
-    color: #666;
+.body-explorer-view-toggle {
+    display: flex;
+
+    gap: 4px;
 }
 
-.add-custom-button {
-    height: 30px;
-    padding: 0 13px;
+.body-explorer-view-toggle button {
+    padding: 5px 8px;
 
-    border: 1px solid #8da9e8;
-    border-radius: 5px;
+    border: 1px solid #333;
+    border-radius: 4px;
 
-    background: #a9c2ff;
-    color: #17233b;
+    background: #1b1b1b;
+    color: #888;
 
     font-size: 10px;
-    font-weight: 700;
 
     cursor: pointer;
 }
 
-.add-custom-button:hover {
-    background: #bdd0ff;
+.body-explorer-view-toggle button:hover {
+    background: #242424;
+    color: #ddd;
 }
+
+.body-explorer-view-toggle button.active {
+    background: #292929;
+    color: #fff;
+}
+
+
+/* =========================================================
+   BODY MODEL
+   ========================================================= */
+
+.body-explorer-model {
+    position: relative;
+
+    width: 100%;
+    height: calc(100% - 42px);
+
+    overflow: hidden;
+}
+
+.body-explorer-placeholder {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+}
+
+.body-explorer-placeholder > span {
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   BODY PART POINTS
+   ========================================================= */
+
+.body-part-point {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+    color: #888;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+.body-part-point span {
+    width: 9px;
+    height: 9px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #777;
+}
+
+.body-part-point:hover {
+    color: #fff;
+}
+
+.body-part-point:hover span,
+.body-part-point.selected span {
+    background: #d9f99d;
+
+    box-shadow: 0 0 8px rgba(217, 249, 157, 0.7);
+}
+
+.body-part-point.selected {
+    color: #d9f99d;
+}
+
+
+/* =========================================================
+   TEMPORARY BODY PART POSITIONS
+   ========================================================= */
+
+.body-part-point:nth-child(2) {
+    top: 28%;
+    left: 40%;
+}
+
+.body-part-point:nth-child(3) {
+    top: 35%;
+    left: 60%;
+}
+
+.body-part-point:nth-child(4) {
+    top: 45%;
+    left: 35%;
+}
+
+.body-part-point:nth-child(5) {
+    top: 48%;
+    left: 60%;
+}
+
+.body-part-point:nth-child(6) {
+    top: 60%;
+    left: 42%;
+}
+
+
+/* =========================================================
+   EXERCISE RESULTS
+   ========================================================= */
+
+/*
+ * IMPORTANT:
+ * Only this side scrolls.
+ *
+ * Body Explorer stays fixed because it does not have
+ * overflow-y scrolling.
+ */
+
+.exercise-results {
+    min-width: 0;
+    min-height: 0;
+
+    height: 100%;
+
+    box-sizing: border-box;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding-right: 8px;
+    padding-bottom: 20px;
+
+    /*
+     * Prevents the scrollbar from making the cards
+     * look clipped.
+     */
+    scrollbar-gutter: stable;
+}
+
+
+/* =========================================================
+   EXERCISE GRID
+   ========================================================= */
+
+.exercise-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   EXERCISE CARD
+   ========================================================= */
+
+.exercise-card {
+    min-width: 0;
+
+    overflow: hidden;
+
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+
+    background: #151515;
+}
+
+
+/* =========================================================
+   CARD IMAGE
+   ========================================================= */
+
+.exercise-card-image {
+    position: relative;
+
+    width: 100%;
+    height: 150px;
+
+    overflow: hidden;
+
+    background: #202020;
+}
+
+
+/* =========================================================
+   CARD BADGES
+   ========================================================= */
+
+.exercise-card-badges {
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+
+    max-width: 70%;
+
+    gap: 6px;
+}
+
+.exercise-card-badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 8px;
+
+    border-radius: 6px;
+
+    background: rgba(20, 20, 20, 0.9);
+    color: #d9f99d;
+
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.exercise-card-content {
+    padding: 14px;
+}
+
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+
+.exercise-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 12px;
+}
+
+.exercise-card-header h3 {
+    min-width: 0;
+
+    margin: 0;
+
+    color: #f5f5f5;
+
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.exercise-card-header button {
+    flex-shrink: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+    color: #888;
+
+    font-size: 20px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.exercise-card-header button:hover {
+    color: #fff;
+}
+
+
+/* =========================================================
+   CARD DESCRIPTION
+   ========================================================= */
+
+.exercise-card-content p {
+    margin: 8px 0 14px;
+
+    color: #8d8d8d;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CARD BODY PARTS
+   ========================================================= */
+
+.exercise-card-body-parts {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 6px;
+}
+
+.exercise-card-body-parts span {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 8px;
+
+    border-radius: 5px;
+
+    background: #252525;
+    color: #a5a5a5;
+
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+
+/* =========================================================
+   LOAD MORE
+   ========================================================= */
+
 .load-more-button {
     display: flex;
     align-items: center;
     justify-content: center;
+
     gap: 6px;
 
     margin: 18px auto 0;
 
-    border: 0;
-    background: transparent;
+    padding: 0;
 
+    border: 0;
+
+    background: transparent;
     color: #888;
-    font-size: 15px;
+
+    font-size: 13px;
     font-weight: 600;
 
     cursor: pointer;
@@ -507,6 +681,125 @@
     color: #d9f99d;
 }
 
+.load-more-button:disabled {
+    opacity: 0.6;
+
+    cursor: default;
+}
+
 .load-more-button span {
-    font-size: 17px;
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-exercises {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 120px;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+    .exercise-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1000px) {
+    .exercises-layout {
+        grid-template-columns: 1fr;
+
+        height: auto;
+    }
+
+    .body-explorer {
+        height: 500px;
+        min-height: 500px;
+    }
+
+    .body-explorer-model {
+        height: calc(500px - 42px);
+    }
+
+    .exercise-results {
+        height: auto;
+        overflow-y: visible;
+    }
+}
+
+@media (max-width: 650px) {
+    .exercises-page-header {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .exercises-page-header-actions {
+        width: 100%;
+    }
+
+    .exercise-search {
+        flex: 1;
+        width: auto;
+    }
+
+    .exercise-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .exercise-toolbar {
+        flex-wrap: wrap;
+    }
+}
+/* =========================================================
+   CUSTOM SCROLLBAR - EXERCISE CARDS
+   ========================================================= */
+
+.exercise-results {
+    scrollbar-width: thin;
+    scrollbar-color: #3a3a3a transparent;
+}
+
+/* Chrome / Edge / Safari */
+.exercise-results::-webkit-scrollbar {
+    width: 8px;
+}
+
+.exercise-results::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.exercise-results::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border-radius: 10px;
+
+    border: 2px solid transparent;
+    background-clip: padding-box;
+
+    transition: background 0.2s ease;
+}
+
+.exercise-results::-webkit-scrollbar-thumb:hover {
+    background: #d9f99d;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.exercise-results::-webkit-scrollbar-corner {
+    background: transparent;
 }

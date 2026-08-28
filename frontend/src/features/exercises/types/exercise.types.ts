@@ -31,3 +31,18 @@ export interface ExerciseFocusVariationResponse {
     description: string
     animationReference: string
 }
+export interface ExercisePageResponse {
+    content: ExerciseListResponse[]
+    page: number
+    size: number
+    totalElements: number
+    totalPages: number
+    last: boolean
+}
+export interface ExerciseAlternativeResponse {
+    id: string,
+    exerciseId: string,
+    alternativeExerciseId: string,
+    alternativeExerciseName: string,
+    reason: string
+}

@@ -1,13 +1,9 @@
 interface ExerciseToolbarProps {
-    search: string
-    onSearchChange: (value: string) => void
     selectedBodyPartName: string | null
     onClearBodyPart: () => void
 }
 
 export function ExerciseToolbar({
-                                    search,
-                                    onSearchChange,
                                     selectedBodyPartName,
                                     onClearBodyPart,
                                 }: ExerciseToolbarProps) {
@@ -45,28 +41,6 @@ export function ExerciseToolbar({
                 className="filter-button"
             >
                 Movement
-            </button>
-
-            <div className="exercise-toolbar-spacer" />
-
-            <div className="exercise-search">
-                <span>⌕</span>
-
-                <input
-                    type="text"
-                    placeholder="Search exercises..."
-                    value={search}
-                    onChange={(event) =>
-                        onSearchChange(event.target.value)
-                    }
-                />
-            </div>
-
-            <button
-                type="button"
-                className="add-custom-button"
-            >
-                Add Custom
             </button>
         </div>
     )

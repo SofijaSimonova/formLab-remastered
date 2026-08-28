@@ -1,14 +1,14 @@
 package com.formlab.exercise.controller;
 
 import com.formlab.exercise.dto.CreateExerciseRequest;
-import com.formlab.exercise.dto.ExerciseListResponse;
+import com.formlab.exercise.dto.ExercisePageResponse;
 import com.formlab.exercise.dto.ExerciseResponse;
 import com.formlab.exercise.dto.UpdateExerciseRequest;
 import com.formlab.exercise.service.ExerciseService;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -23,8 +23,8 @@ public class ExerciseController {
     }
 
     @GetMapping
-    public List<ExerciseListResponse> getAllExercises() {
-        return exerciseService.getAllExercises();
+    public ExercisePageResponse getAllExercises(Pageable pageable, @RequestParam(required = false) String search, @RequestParam(required = false) UUID bodyPartId) {
+        return exerciseService.getAllExercises(pageable, search, bodyPartId);
     }
 
     @GetMapping("/{id}")

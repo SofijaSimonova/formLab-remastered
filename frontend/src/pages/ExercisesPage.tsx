@@ -1,39 +1,43 @@
 import { useMemo, useState } from 'react'
 
+import { useDebounce } from '../hooks/useDebounce'
 import { useExercises } from '../features/exercises/hooks/useExercises'
+import { useBodyParts } from '../features/exercises/hooks/useBodyParts'
 import { BodyExplorer } from '../features/exercises/components/BodyExplorer'
 import { ExerciseCard } from '../features/exercises/components/ExerciseCard'
 import { ExerciseToolbar } from '../features/exercises/components/ExerciseToolbar'
 import '../features/exercises/exercises.css'
 
 export function ExercisesPage() {
-    const { data, isLoading, isError } = useExercises()
-
     const [selectedBodyPartId, setSelectedBodyPartId] =
         useState<string | null>(null)
 
     const [search, setSearch] = useState('')
 
-    const [visibleCount, setVisibleCount] = useState(6)
+    const debouncedSearch = useDebounce(search, 400)
 
-    const bodyParts = useMemo(() => {
-        if (!data) {
-            return []
-        }
+    const {
+        data,
+        isLoading,
+        isError,
+        isFetching,
+        fetchNextPage,
+        hasNextPage,
+        isFetchingNextPage,
+    } = useExercises(
+        debouncedSearch,
+        selectedBodyPartId ?? undefined,
+    )
 
-        const uniqueBodyParts = new Map<
-            string,
-            (typeof data)[number]['bodyParts'][number]
-        >()
+    const {
+        data: bodyParts = [],
+        isLoading: isLoadingBodyParts,
+    } = useBodyParts()
 
-        data.forEach((exercise) => {
-            exercise.bodyParts.forEach((bodyPart) => {
-                uniqueBodyParts.set(bodyPart.id, bodyPart)
-            })
-        })
-
-        return Array.from(uniqueBodyParts.values())
-    }, [data])
+    const exercises = useMemo(
+        () => data?.pages.flatMap((page) => page.content) ?? [],
+        [data],
+    )
 
     const selectedBodyPartName = useMemo(() => {
         if (!selectedBodyPartId) {
@@ -47,101 +51,115 @@ export function ExercisesPage() {
         )
     }, [bodyParts, selectedBodyPartId])
 
-    const filteredExercises = useMemo(() => {
-        if (!data) {
-            return []
-        }
-
-        const normalizedSearch = search.trim().toLowerCase()
-
-        return data.filter((exercise) => {
-            const matchesBodyPart =
-                !selectedBodyPartId ||
-                exercise.bodyParts.some(
-                    (bodyPart) => bodyPart.id === selectedBodyPartId,
-                )
-
-            const matchesSearch =
-                !normalizedSearch ||
-                exercise.name
-                    .toLowerCase()
-                    .includes(normalizedSearch) ||
-                exercise.description
-                    .toLowerCase()
-                    .includes(normalizedSearch)
-
-            return matchesBodyPart && matchesSearch
-        })
-    }, [data, selectedBodyPartId, search])
-
-    const visibleExercises = filteredExercises.slice(0, visibleCount)
-
-    const hasMore = visibleCount < filteredExercises.length
-
-    if (isLoading) {
-        return <p>Loading exercises...</p>
-    }
-
-    if (isError) {
-        return <p>Failed to load exercises.</p>
-    }
+    const totalExercises =
+        data?.pages?.[0]?.totalElements ?? 0
 
     return (
         <div className="exercises-page">
+
+            {/* PAGE HEADER */}
             <div className="exercises-page-header">
                 <div>
                     <h1>Exercises</h1>
 
                     <p>
-                        Library • {data?.length ?? 0} entries
+                        Library • {totalExercises} entries
                     </p>
+                </div>
+
+                <div className="exercises-page-header-actions">
+                    <div className="exercise-search">
+                        <span>⌕</span>
+
+                        <input
+                            type="text"
+                            placeholder="Search exercises..."
+                            value={search}
+                            onChange={(event) =>
+                                setSearch(event.target.value)
+                            }
+                        />
+                    </div>
+
+                    <button
+                        type="button"
+                        className="add-custom-button"
+                    >
+                        Add Custom
+                    </button>
                 </div>
             </div>
 
-            <ExerciseToolbar
-                search={search}
-                onSearchChange={setSearch}
-                selectedBodyPartName={selectedBodyPartName}
-                onClearBodyPart={() =>
-                    setSelectedBodyPartId(null)
-                }
-            />
-
+            {/* MAIN CONTENT */}
             <div className="exercises-layout">
+
+                {/* BODY EXPLORER - NEVER DISAPPEARS */}
                 <BodyExplorer
                     bodyParts={bodyParts}
                     selectedBodyPartId={selectedBodyPartId}
                     onSelectBodyPart={setSelectedBodyPartId}
                 />
 
+                {/* EXERCISE RESULTS */}
                 <main className="exercise-results">
-                    <div className="exercise-grid">
-                        {visibleExercises.map((exercise) => (
-                            <ExerciseCard
-                                key={exercise.id}
-                                exercise={exercise}
-                            />
-                        ))}
-                    </div>
 
-                    {hasMore && (
-                        <button
-                            type="button"
-                            className="load-more-button"
-                            onClick={() =>
-                                setVisibleCount((count) => count + 6)
-                            }
-                        >
-                            Load More Entries
-                            <span>⌄</span>
-                        </button>
-                    )}
+                    <ExerciseToolbar
+                        selectedBodyPartName={selectedBodyPartName}
+                        onClearBodyPart={() =>
+                            setSelectedBodyPartId(null)
+                        }
+                    />
 
-                    {filteredExercises.length === 0 && (
-                        <div className="empty-exercises">
-                            No exercises found.
+                    {/* ONLY THIS PART LOADS */}
+                    {isLoading || isLoadingBodyParts ? (
+                        <div className="exercise-results-loader">
+                            <div className="exercise-loader-spinner" />
+                            <span>Loading exercises...</span>
                         </div>
+                    ) : isError ? (
+                        <div className="empty-exercises">
+                            Failed to load exercises.
+                        </div>
+                    ) : (
+                        <>
+                            <div
+                                className={`exercise-grid ${
+                                    isFetching
+                                        ? 'exercise-grid-loading'
+                                        : ''
+                                }`}
+                            >
+                                {exercises.map((exercise) => (
+                                    <ExerciseCard
+                                        key={exercise.id}
+                                        exercise={exercise}
+                                    />
+                                ))}
+                            </div>
+
+                            {hasNextPage && (
+                                <button
+                                    type="button"
+                                    className="load-more-button"
+                                    onClick={() => fetchNextPage()}
+                                    disabled={isFetchingNextPage}
+                                >
+                                    {isFetchingNextPage
+                                        ? 'Loading...'
+                                        : 'Load More Entries'}
+
+                                    <span>⌄</span>
+                                </button>
+                            )}
+
+                            {exercises.length === 0 && (
+                                <div className="empty-exercises">
+                                    No exercises found.
+                                </div>
+                            )}
+                        </>
                     )}
+
                 </main>
             </div>
         </div>
