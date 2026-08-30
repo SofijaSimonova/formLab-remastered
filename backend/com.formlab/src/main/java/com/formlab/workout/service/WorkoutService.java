@@ -1,6 +1,5 @@
 package com.formlab.workout.service;
 
-import com.formlab.common.exception.BadRequestException;
 import com.formlab.common.exception.ResourceNotFoundException;
 import com.formlab.user.entity.AppUser;
 import com.formlab.user.repository.AppUserRepository;
@@ -43,20 +42,11 @@ public class WorkoutService {
                 .toList();
     }
 
-    public WorkoutResponse getWorkoutById(
-            UUID userId,
-            UUID workoutId
-    ) {
+    public WorkoutResponse getWorkoutById(UUID workoutId) {
         Workout workout = workoutRepository.findById(workoutId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Workout not found")
                 );
-
-        if (!workout.getUser().getId().equals(userId)) {
-            throw new BadRequestException(
-                    "Workout does not belong to this user"
-            );
-        }
 
         return workoutMapper.toResponse(workout);
     }
@@ -71,6 +61,7 @@ public class WorkoutService {
                 );
 
         Workout workout = new Workout();
+
         workout.setUser(user);
         workout.setName(request.name());
         workout.setDescription(request.description());
@@ -81,7 +72,6 @@ public class WorkoutService {
     }
 
     public WorkoutResponse updateWorkout(
-            UUID userId,
             UUID workoutId,
             UpdateWorkoutRequest request
     ) {
@@ -89,12 +79,6 @@ public class WorkoutService {
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Workout not found")
                 );
-
-        if (!workout.getUser().getId().equals(userId)) {
-            throw new BadRequestException(
-                    "Workout does not belong to this user"
-            );
-        }
 
         workout.setName(request.name());
         workout.setDescription(request.description());
@@ -104,20 +88,11 @@ public class WorkoutService {
         );
     }
 
-    public void deleteWorkout(
-            UUID userId,
-            UUID workoutId
-    ) {
+    public void deleteWorkout(UUID workoutId) {
         Workout workout = workoutRepository.findById(workoutId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Workout not found")
                 );
-
-        if (!workout.getUser().getId().equals(userId)) {
-            throw new BadRequestException(
-                    "Workout does not belong to this user"
-            );
-        }
 
         workoutRepository.delete(workout);
     }

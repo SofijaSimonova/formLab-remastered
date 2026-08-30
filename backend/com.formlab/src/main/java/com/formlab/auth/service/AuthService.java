@@ -1,0 +1,91 @@
+package com.formlab.auth.service;
+
+import com.formlab.auth.dto.LoginRequest;
+import com.formlab.auth.dto.LoginResponse;
+import com.formlab.auth.dto.RegisterRequest;
+import com.formlab.auth.entity.UserCredential;
+import com.formlab.auth.repository.UserCredentialRepository;
+import com.formlab.auth.security.AuthenticatedUser;
+import com.formlab.common.exception.BadRequestException;
+import com.formlab.user.dto.AppUserResponse;
+import com.formlab.user.entity.AppUser;
+import com.formlab.user.mapper.AppUserMapper;
+import com.formlab.user.repository.AppUserRepository;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import java.util.UUID;
+
+@Service
+public class AuthService {
+
+    private final AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
+    private final AppUserRepository appUserRepository;
+    private final UserCredentialRepository userCredentialRepository;
+    private final AppUserMapper appUserMapper;
+    private final PasswordEncoder passwordEncoder;
+
+    public AuthService(
+            AuthenticationManager authenticationManager,
+            JwtService jwtService, AppUserRepository appUserRepository, UserCredentialRepository userCredentialRepository, AppUserMapper appUserMapper, PasswordEncoder passwordEncoder
+    ) {
+        this.authenticationManager = authenticationManager;
+        this.jwtService = jwtService;
+        this.appUserRepository = appUserRepository;
+        this.userCredentialRepository = userCredentialRepository;
+        this.appUserMapper = appUserMapper;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    public LoginResponse login(LoginRequest request) {
+
+        Authentication authentication =
+                authenticationManager.authenticate(
+                        new UsernamePasswordAuthenticationToken(
+                                request.email(),
+                                request.password()
+                        )
+                );
+
+        AuthenticatedUser user =
+                (AuthenticatedUser) authentication.getPrincipal();
+
+        String token = jwtService.generateToken(
+                user.getUserId(),
+                user.getUsername()
+        );
+
+        return new LoginResponse(token);
+    }
+
+    public AppUserResponse register(RegisterRequest request) {
+
+        if (appUserRepository.existsByEmail(request.email())) {
+            throw new BadRequestException("Email is already registered");
+        }
+
+        AppUser user = new AppUser();
+
+        user.setId(UUID.randomUUID());
+        user.setEmail(request.email());
+        user.setFirstName(request.firstName());
+        user.setLastName(request.lastName());
+
+        AppUser savedUser = appUserRepository.save(user);
+
+        UserCredential credential = new UserCredential();
+
+        credential.setUser(savedUser);
+        credential.setPasswordHash(
+                passwordEncoder.encode(request.password())
+        );
+
+        userCredentialRepository.save(credential);
+
+        return appUserMapper.toResponse(savedUser);
+    }
+}

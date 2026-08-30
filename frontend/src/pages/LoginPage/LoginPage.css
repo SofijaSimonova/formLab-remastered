@@ -1,0 +1,403 @@
+.login-page {
+    min-height: 100vh;
+    background: #0a0a0b;
+    color: #e5e2e3;
+    font-family: Inter, sans-serif;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+.login-header {
+    height: 64px;
+    padding: 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #262629;
+    background: rgba(10, 10, 11, 0.88);
+    backdrop-filter: blur(12px);
+}
+
+.login-logo {
+    color: #e5e2e3;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.login-back {
+    color: #8c909f;
+    text-decoration: none;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+
+    transition: color 0.2s ease;
+}
+
+.login-back:hover {
+    color: #adc6ff;
+}
+
+/* =========================
+   MAIN
+   ========================= */
+
+.login-main {
+    min-height: calc(100vh - 64px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 48px 24px;
+
+    box-sizing: border-box;
+}
+
+/* The entire login content is centered */
+.login-container {
+    width: 100%;
+    max-width: 440px;
+
+    margin: 0 auto;
+}
+
+/* =========================
+   HEADING
+   ========================= */
+
+.login-heading {
+    width: 100%;
+    margin: 0 0 32px;
+
+    text-align: center;
+}
+
+.login-eyebrow {
+    display: block;
+    margin: 0 0 16px;
+
+    color: #8c909f;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+
+    text-align: center;
+}
+
+.login-eyebrow span {
+    color: #adc6ff;
+}
+
+.login-heading h1 {
+    margin: 0 0 8px;
+
+    color: #e5e2e3;
+
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+
+    text-align: center;
+}
+
+.login-heading p {
+    margin: 0 auto;
+
+    max-width: 360px;
+
+    color: #8c909f;
+
+    font-size: 16px;
+    line-height: 24px;
+
+    text-align: center;
+}
+
+/* =========================
+   FORM
+   ========================= */
+
+.login-form {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 24px;
+
+    background: #161618;
+    border: 1px solid #262629;
+    border-radius: 16px;
+}
+
+.form-field {
+    margin-bottom: 20px;
+}
+
+.form-field-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #e5e2e3;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.form-field-header label {
+    margin-bottom: 0;
+}
+
+.form-field-header a {
+    color: #8c909f;
+    text-decoration: none;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+
+    transition: color 0.2s ease;
+}
+
+.form-field-header a:hover {
+    color: #adc6ff;
+}
+
+/* =========================
+   INPUTS
+   ========================= */
+
+.form-field input {
+    width: 100%;
+    box-sizing: border-box;
+
+    height: 48px;
+    padding: 0 14px;
+
+    color: #e5e2e3;
+    background: #0a0a0b;
+
+    border: 1px solid #424754;
+    border-radius: 8px;
+
+    outline: none;
+
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+
+    transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+}
+
+.form-field input::placeholder {
+    color: #60636e;
+}
+
+.form-field input:focus {
+    border-color: #adc6ff;
+
+    box-shadow:
+            0 0 0 2px rgba(173, 198, 255, 0.1);
+}
+
+/* =========================
+   ERROR
+   ========================= */
+
+.login-error {
+    margin-bottom: 16px;
+    padding: 12px;
+
+    color: #ffb4ab;
+    background: #2a1112;
+
+    border: 1px solid #5f2527;
+    border-radius: 8px;
+
+    font-size: 13px;
+    line-height: 20px;
+}
+
+/* =========================
+   SUBMIT BUTTON
+   ========================= */
+
+.login-submit {
+    width: 100%;
+    height: 48px;
+
+    border: 0;
+    border-radius: 8px;
+
+    color: #ffffff;
+    background: #3b82f6;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+
+    cursor: pointer;
+
+    transition:
+            background 0.2s ease,
+            transform 0.1s ease;
+}
+
+.login-submit:hover:not(:disabled) {
+    background: #4d8eff;
+}
+
+.login-submit:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.login-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* =========================
+   DIVIDER
+   ========================= */
+
+.login-divider {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+
+    margin: 28px 0 20px;
+}
+
+.login-divider span:not(:nth-child(2)) {
+    height: 1px;
+    background: #262629;
+}
+
+.login-divider span:nth-child(2) {
+    color: #60636e;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+}
+
+/* =========================
+   REGISTER
+   ========================= */
+
+.login-register {
+    margin: 0;
+
+    color: #8c909f;
+
+    font-size: 14px;
+    text-align: center;
+}
+
+.login-register a {
+    color: #adc6ff;
+    text-decoration: none;
+}
+
+.login-register a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   STATUS
+   ========================= */
+
+.login-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    margin-top: 32px;
+
+    color: #60636e;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+
+    text-align: center;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    background: #4edea3;
+
+    box-shadow: 0 0 8px rgba(78, 222, 163, 0.35);
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 600px) {
+    .login-header {
+        padding: 0 16px;
+    }
+
+    .login-main {
+        min-height: calc(100vh - 64px);
+        padding: 32px 16px;
+    }
+
+    .login-container {
+        max-width: 440px;
+    }
+
+    .login-heading {
+        margin-bottom: 28px;
+        text-align: center;
+    }
+
+    .login-eyebrow {
+        text-align: center;
+    }
+
+    .login-heading h1 {
+        font-size: 28px;
+        line-height: 36px;
+        text-align: center;
+    }
+
+    .login-heading p {
+        font-size: 15px;
+        line-height: 22px;
+        text-align: center;
+    }
+
+    .login-form {
+        padding: 20px;
+    }
+}

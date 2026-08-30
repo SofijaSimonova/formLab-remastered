@@ -15,4 +15,9 @@ public interface WorkoutExerciseRepository
             UUID workoutId,
             Integer exerciseOrder
     );
+
+    boolean existsByIdAndWorkoutUserId(
+            UUID workoutExerciseId,
+            UUID userId
+    );
 }

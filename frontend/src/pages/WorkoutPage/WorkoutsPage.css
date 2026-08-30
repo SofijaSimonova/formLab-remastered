@@ -1,0 +1,309 @@
+.workouts-page {
+    min-height: 100%;
+    background: #0a0a0b;
+    color: #e5e2e3;
+    font-family: Inter, sans-serif;
+}
+
+.workouts-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 32px;
+    box-sizing: border-box;
+}
+
+.workouts-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+
+    margin-bottom: 40px;
+}
+
+.workouts-eyebrow {
+    display: block;
+    margin-bottom: 12px;
+
+    color: #8c909f;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+.workouts-heading h1 {
+    margin: 0 0 8px;
+
+    color: #e5e2e3;
+
+    font-size: 36px;
+    line-height: 44px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+
+.workouts-heading p {
+    margin: 0;
+
+    color: #8c909f;
+
+    font-size: 15px;
+    line-height: 24px;
+}
+
+.workouts-create-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+    padding: 0 18px;
+
+    color: #ffffff;
+    background: #3b82f6;
+
+    border: 0;
+    border-radius: 8px;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+
+    cursor: pointer;
+
+    transition:
+            background 0.2s ease,
+            transform 0.1s ease;
+}
+
+.workouts-create-button:hover {
+    background: #4d8eff;
+}
+
+.workouts-create-button:active {
+    transform: translateY(1px);
+}
+
+.workouts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.workout-card {
+    min-height: 220px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    color: inherit;
+    background: #161618;
+
+    border: 1px solid #262629;
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    transition:
+            border-color 0.2s ease,
+            background 0.2s ease,
+            transform 0.2s ease;
+}
+
+.workout-card:hover {
+    background: #19191c;
+    border-color: #424754;
+    transform: translateY(-2px);
+}
+
+.workout-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.workout-card-label {
+    color: #8c909f;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+.workout-card-arrow {
+    color: #adc6ff;
+
+    font-size: 18px;
+
+    transition: transform 0.2s ease;
+}
+
+.workout-card:hover .workout-card-arrow {
+    transform: translateX(3px);
+}
+
+.workout-card-content {
+    flex: 1;
+
+    padding-top: 32px;
+}
+
+.workout-card-content h2 {
+    margin: 0 0 10px;
+
+    color: #e5e2e3;
+
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+}
+
+.workout-card-content p {
+    margin: 0;
+
+    color: #8c909f;
+
+    font-size: 13px;
+    line-height: 20px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.workout-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 16px;
+
+    border-top: 1px solid #262629;
+
+    color: #60636e;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.02em;
+}
+
+.workout-card-footer span:last-child {
+    color: #adc6ff;
+}
+
+.workouts-state {
+    padding: 48px 24px;
+
+    color: #8c909f;
+    background: #161618;
+
+    border: 1px solid #262629;
+    border-radius: 12px;
+
+    text-align: center;
+}
+
+.workouts-state-error {
+    color: #ffb4ab;
+}
+
+.workouts-state-error p {
+    margin: 0 0 16px;
+}
+
+.workouts-state-error button {
+    height: 40px;
+    padding: 0 16px;
+
+    color: #e5e2e3;
+    background: transparent;
+
+    border: 1px solid #424754;
+    border-radius: 8px;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+.workouts-empty {
+    padding: 72px 24px;
+
+    background: #161618;
+    border: 1px solid #262629;
+    border-radius: 12px;
+
+    text-align: center;
+}
+
+.workouts-empty-eyebrow {
+    display: block;
+    margin-bottom: 12px;
+
+    color: #60636e;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+}
+
+.workouts-empty h2 {
+    margin: 0 0 8px;
+
+    color: #e5e2e3;
+
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+}
+
+.workouts-empty p {
+    max-width: 440px;
+    margin: 0 auto 24px;
+
+    color: #8c909f;
+
+    font-size: 14px;
+    line-height: 22px;
+}
+
+@media (max-width: 900px) {
+    .workouts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .workouts-container {
+        padding: 32px 16px;
+    }
+
+    .workouts-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .workouts-heading h1 {
+        font-size: 30px;
+        line-height: 38px;
+    }
+
+    .workouts-create-button {
+        width: 100%;
+    }
+
+    .workouts-grid {
+        grid-template-columns: 1fr;
+    }
+}

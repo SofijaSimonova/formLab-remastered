@@ -5,6 +5,7 @@ import com.formlab.workout.dto.WorkoutExerciseResponse;
 import com.formlab.workout.service.WorkoutExerciseService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class WorkoutExerciseController {
     }
 
     @GetMapping
+//    @PreAuthorize("@authorizationService.canAccessWorkout(#workoutId, authentication)")
     public List<WorkoutExerciseResponse> getWorkoutExercises(
             @PathVariable UUID workoutId
     ) {
@@ -31,15 +33,20 @@ public class WorkoutExerciseController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("@authorizationService.canAccessWorkout(#workoutId, authentication)")
     public WorkoutExerciseResponse addExercise(
             @PathVariable UUID workoutId,
             @Valid @RequestBody AddWorkoutExerciseRequest request
     ) {
-        return workoutExerciseService.addExercise(workoutId, request);
+        return workoutExerciseService.addExercise(
+                workoutId,
+                request
+        );
     }
 
     @DeleteMapping("/{workoutExerciseId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("@authorizationService.canAccessWorkoutExercise(#workoutExerciseId, authentication)")
     public void removeExercise(
             @PathVariable UUID workoutId,
             @PathVariable UUID workoutExerciseId

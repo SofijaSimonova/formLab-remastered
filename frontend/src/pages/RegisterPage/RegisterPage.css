@@ -1,0 +1,313 @@
+.register-page {
+    min-height: 100vh;
+    background: #0a0a0b;
+    color: #e5e2e3;
+    font-family: Inter, sans-serif;
+}
+
+.register-header {
+    height: 64px;
+    padding: 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #262629;
+    background: rgba(10, 10, 11, 0.88);
+    backdrop-filter: blur(12px);
+}
+
+.register-logo {
+    color: #e5e2e3;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.register-back {
+    color: #8c909f;
+    text-decoration: none;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+
+    transition: color 0.2s ease;
+}
+
+.register-back:hover {
+    color: #adc6ff;
+}
+
+.register-main {
+    min-height: calc(100vh - 64px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 48px 24px;
+}
+
+.register-container {
+    width: 100%;
+    max-width: 440px;
+}
+
+.register-heading {
+    margin-bottom: 32px;
+}
+
+.register-eyebrow {
+    display: block;
+    margin-bottom: 16px;
+
+    color: #8c909f;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+.register-eyebrow span {
+    color: #adc6ff;
+}
+
+.register-heading h1 {
+    margin: 0 0 8px;
+
+    color: #e5e2e3;
+
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.register-heading p {
+    margin: 0;
+
+    color: #8c909f;
+
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.register-form {
+    padding: 24px;
+
+    background: #161618;
+    border: 1px solid #262629;
+    border-radius: 16px;
+}
+
+.register-name-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-field {
+    margin-bottom: 20px;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #e5e2e3;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.form-field input {
+    width: 100%;
+    box-sizing: border-box;
+
+    height: 48px;
+    padding: 0 14px;
+
+    color: #e5e2e3;
+    background: #0a0a0b;
+
+    border: 1px solid #424754;
+    border-radius: 8px;
+
+    outline: none;
+
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+
+    transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+}
+
+.form-field input::placeholder {
+    color: #60636e;
+}
+
+.form-field input:focus {
+    border-color: #adc6ff;
+    box-shadow: 0 0 0 2px rgba(173, 198, 255, 0.1);
+}
+
+.register-field-error {
+    display: block;
+    margin-top: 6px;
+
+    color: #ffb4ab;
+
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.register-error {
+    margin-bottom: 16px;
+    padding: 12px;
+
+    color: #ffb4ab;
+    background: #2a1112;
+
+    border: 1px solid #5f2527;
+    border-radius: 8px;
+
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.register-submit {
+    width: 100%;
+    height: 48px;
+
+    border: 0;
+    border-radius: 8px;
+
+    color: #ffffff;
+    background: #3b82f6;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+
+    cursor: pointer;
+
+    transition:
+            background 0.2s ease,
+            transform 0.1s ease;
+}
+
+.register-submit:hover:not(:disabled) {
+    background: #4d8eff;
+}
+
+.register-submit:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.register-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.register-divider {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+
+    margin: 28px 0 20px;
+}
+
+.register-divider span:not(:nth-child(2)) {
+    height: 1px;
+    background: #262629;
+}
+
+.register-divider span:nth-child(2) {
+    color: #60636e;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+}
+
+.register-login {
+    margin: 0;
+
+    color: #8c909f;
+    text-align: center;
+
+    font-size: 14px;
+}
+
+.register-login a {
+    color: #adc6ff;
+    text-decoration: none;
+}
+
+.register-login a:hover {
+    text-decoration: underline;
+}
+
+.register-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    margin-top: 32px;
+
+    color: #60636e;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+    background: #4edea3;
+
+    box-shadow: 0 0 8px rgba(78, 222, 163, 0.35);
+}
+
+@media (max-width: 600px) {
+    .register-header {
+        padding: 0 16px;
+    }
+
+    .register-main {
+        padding: 32px 16px;
+    }
+
+    .register-heading {
+        margin-bottom: 32px;
+        text-align: center;
+    }
+
+    .register-heading h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .register-form {
+        padding: 20px;
+    }
+
+    .register-name-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}

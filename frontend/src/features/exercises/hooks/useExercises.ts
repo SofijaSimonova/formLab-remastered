@@ -27,5 +27,6 @@ export function useExercises(
 
             return lastPage.page + 1
         },
+
     })
 }

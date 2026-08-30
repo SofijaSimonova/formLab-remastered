@@ -119,14 +119,6 @@
    MAIN LAYOUT
    ========================================================= */
 
-/*
- * Left  = 40%
- * Right = 60%
- *
- * 2fr / 3fr keeps the 40/60 ratio while also accounting
- * for the gap between the two columns.
- */
-
 .exercises-layout {
     display: grid;
 
@@ -136,10 +128,6 @@
 
     width: 100%;
 
-    /*
-     * Fits the available browser window.
-     * The page header remains outside this area.
-     */
     height: calc(100vh - 175px);
     min-height: 0;
 
@@ -434,14 +422,6 @@
    EXERCISE RESULTS
    ========================================================= */
 
-/*
- * IMPORTANT:
- * Only this side scrolls.
- *
- * Body Explorer stays fixed because it does not have
- * overflow-y scrolling.
- */
-
 .exercise-results {
     min-width: 0;
     min-height: 0;
@@ -456,10 +436,6 @@
     padding-right: 8px;
     padding-bottom: 20px;
 
-    /*
-     * Prevents the scrollbar from making the cards
-     * look clipped.
-     */
     scrollbar-gutter: stable;
 }
 
@@ -766,6 +742,8 @@
         flex-wrap: wrap;
     }
 }
+
+
 /* =========================================================
    CUSTOM SCROLLBAR - EXERCISE CARDS
    ========================================================= */
@@ -775,7 +753,6 @@
     scrollbar-color: #3a3a3a transparent;
 }
 
-/* Chrome / Edge / Safari */
 .exercise-results::-webkit-scrollbar {
     width: 8px;
 }
@@ -796,10 +773,39 @@
 
 .exercise-results::-webkit-scrollbar-thumb:hover {
     background: #d9f99d;
+
     border: 2px solid transparent;
     background-clip: padding-box;
 }
 
 .exercise-results::-webkit-scrollbar-corner {
     background: transparent;
+}
+
+.exercises-page,
+.exercises-layout,
+.body-explorer,
+.body-explorer-model,
+.exercise-results {
+    position: relative;
+}
+
+.body-explorer {
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.body-explorer-model {
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.exercise-results {
+    isolation: isolate;
+    z-index: 1;
+}
+
+.exercise-card {
+    position: relative;
+    z-index: 1;
 }

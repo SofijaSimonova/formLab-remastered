@@ -36,7 +36,9 @@ public class WorkoutExerciseService {
         this.workoutExerciseMapper = workoutExerciseMapper;
     }
 
-    public List<WorkoutExerciseResponse> getWorkoutExercises(UUID workoutId) {
+    public List<WorkoutExerciseResponse> getWorkoutExercises(
+            UUID workoutId
+    ) {
         if (!workoutRepository.existsById(workoutId)) {
             throw new ResourceNotFoundException("Workout not found");
         }
@@ -54,19 +56,24 @@ public class WorkoutExerciseService {
     ) {
         Workout workout = workoutRepository.findById(workoutId)
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("Workout not found")
+                        new ResourceNotFoundException(
+                                "Workout not found"
+                        )
                 );
 
         Exercise exercise = exerciseRepository.findById(request.exerciseId())
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("Exercise not found")
+                        new ResourceNotFoundException(
+                                "Exercise not found"
+                        )
                 );
 
-        boolean orderExists = workoutExerciseRepository
-                .existsByWorkoutIdAndExerciseOrder(
-                        workoutId,
-                        request.exerciseOrder()
-                );
+        boolean orderExists =
+                workoutExerciseRepository
+                        .existsByWorkoutIdAndExerciseOrder(
+                                workoutId,
+                                request.exerciseOrder()
+                        );
 
         if (orderExists) {
             throw new BadRequestException(
@@ -91,15 +98,18 @@ public class WorkoutExerciseService {
             UUID workoutId,
             UUID workoutExerciseId
     ) {
-        WorkoutExercise workoutExercise = workoutExerciseRepository
-                .findById(workoutExerciseId)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException(
-                                "Workout exercise not found"
-                        )
-                );
+        WorkoutExercise workoutExercise =
+                workoutExerciseRepository.findById(workoutExerciseId)
+                        .orElseThrow(() ->
+                                new ResourceNotFoundException(
+                                        "Workout exercise not found"
+                                )
+                        );
 
-        if (!workoutExercise.getWorkout().getId().equals(workoutId)) {
+        if (!workoutExercise.getWorkout()
+                .getId()
+                .equals(workoutId)) {
+
             throw new BadRequestException(
                     "Exercise does not belong to this workout"
             );

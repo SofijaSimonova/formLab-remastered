@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { useExercise } from '../features/exercises/hooks/useExercise'
-import { useExerciseAlternatives } from '../features/exercises/hooks/useExerciseAlternatives'
+import { useExercise } from '../../features/exercises/hooks/useExercise'
+import { useExerciseAlternatives } from '../../features/exercises/hooks/useExerciseAlternatives'
 
-import '../features/exercises/ExerciseDetailPage.css'
+import './ExerciseDetailPage.css'
+import {ErrorState} from "../../components/ErrorState";
+import '../../components/shared.css'
+import {LoadingState} from "../../components/LoadingState";
 
 export function ExerciseDetailPage() {
     const { id } = useParams<{ id: string }>()
@@ -25,11 +28,20 @@ export function ExerciseDetailPage() {
     } = useExerciseAlternatives(id ?? '')
 
     if (isLoading) {
-        return <p>Loading exercise...</p>
+        return (
+            <LoadingState message="Loading exercise..." />
+        )
     }
 
     if (isError || !exercise) {
-        return <p>Failed to load exercise.</p>
+        return (
+            <ErrorState
+                title="Exercise not found"
+                message="We couldn't load this exercise. It may no longer exist or something went wrong."
+                onBack={() => navigate('/exercises')}
+                backLabel="← Back to Exercises"
+            />
+        )
     }
 
     const selectedVariation =

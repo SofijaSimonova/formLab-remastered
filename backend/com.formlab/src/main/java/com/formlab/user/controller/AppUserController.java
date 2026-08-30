@@ -4,6 +4,7 @@ import com.formlab.user.dto.AppUserResponse;
 import com.formlab.user.dto.UpdateAppUserRequest;
 import com.formlab.user.service.AppUserService;
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -19,11 +20,15 @@ public class AppUserController {
     }
 
     @GetMapping("/{id}")
-    public AppUserResponse getUserById(@PathVariable UUID id) {
+    @PreAuthorize("@authorizationService.isCurrentUser(#id, authentication)")
+    public AppUserResponse getUserById(
+            @PathVariable UUID id
+    ) {
         return appUserService.getUserById(id);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("@authorizationService.isCurrentUser(#id, authentication)")
     public AppUserResponse updateUser(
             @PathVariable UUID id,
             @Valid @RequestBody UpdateAppUserRequest request

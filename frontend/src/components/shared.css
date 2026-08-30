@@ -1,0 +1,96 @@
+/* =========================================================
+   SHARED LOADING STATE
+   ========================================================= */
+
+.loading-state {
+    min-height: 400px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+.loading-spinner {
+    width: 28px;
+    height: 28px;
+
+    border: 3px solid #2a2a2a;
+    border-top-color: #d9f99d;
+
+    border-radius: 50%;
+
+    animation: loading-spinner-spin 0.8s linear infinite;
+}
+
+@keyframes loading-spinner-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   SHARED ERROR STATE
+   ========================================================= */
+
+.error-state {
+    min-height: 400px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    text-align: center;
+}
+
+.error-state h2 {
+    margin: 0;
+
+    color: #ddd;
+
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.error-state p {
+    max-width: 400px;
+
+    margin: 0 0 10px;
+
+    color: #777;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.error-state button {
+    padding: 8px 12px;
+
+    border: 1px solid #303030;
+    border-radius: 5px;
+
+    background: #191919;
+    color: #999;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.error-state button:hover {
+    border-color: #53612f;
+
+    background: #252c18;
+    color: #d9f99d;
+}

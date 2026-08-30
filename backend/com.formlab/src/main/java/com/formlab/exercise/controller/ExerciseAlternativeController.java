@@ -12,7 +12,6 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/exercises/{exerciseId}/alternatives")
-@CrossOrigin(origins = "http://localhost:5173")
 public class ExerciseAlternativeController {
 
     private final ExerciseAlternativeService alternativeService;
