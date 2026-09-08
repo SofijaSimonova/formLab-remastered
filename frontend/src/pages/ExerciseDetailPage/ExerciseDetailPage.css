@@ -183,7 +183,7 @@
     gap: 12px;
 }
 
-.exercise-instruction {
+.exercise-detail-instruction {
     display: grid;
 
     grid-template-columns: 28px minmax(0, 1fr);
@@ -193,7 +193,7 @@
     align-items: start;
 }
 
-.exercise-instruction > span {
+.exercise-detail-instruction > span {
     padding-top: 1px;
 
     color: #555;
@@ -202,7 +202,7 @@
     font-weight: 700;
 }
 
-.exercise-instruction p {
+.exercise-detail-instruction p {
     margin: 0;
 
     color: #999;
@@ -216,14 +216,14 @@
    FOCUS VARIATIONS
    ========================================================= */
 
-.focus-variation-toggle {
+.exercise-detail-focus-variation-toggle {
     display: flex;
     flex-wrap: wrap;
 
     gap: 6px;
 }
 
-.focus-variation-toggle button {
+.exercise-detail-focus-variation-toggle button {
     min-height: 30px;
 
     padding: 0 11px;
@@ -240,14 +240,14 @@
     cursor: pointer;
 }
 
-.focus-variation-toggle button:hover {
+.exercise-detail-focus-variation-toggle button:hover {
     border-color: #444;
 
     background: #222;
     color: #ddd;
 }
 
-.focus-variation-toggle button.active {
+.exercise-detail-focus-variation-toggle button.exercise-detail-focus-variation-active {
     border-color: #53612f;
 
     background: #252c18;
@@ -332,7 +332,7 @@
    ALTERNATIVES
    ========================================================= */
 
-.exercise-alternatives {
+.exercise-detail-alternatives {
     padding: 20px;
 
     border: 1px solid #292929;
@@ -341,7 +341,7 @@
     background: #151515;
 }
 
-.exercise-alternatives-header {
+.exercise-detail-alternatives-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -349,14 +349,14 @@
     margin-bottom: 16px;
 }
 
-.exercise-alternatives-header > div {
+.exercise-detail-alternatives-header > div {
     display: flex;
     align-items: center;
 
     gap: 10px;
 }
 
-.exercise-alternatives-header > div > span {
+.exercise-detail-alternatives-header > div > span {
     color: #555;
 
     font-size: 11px;
@@ -364,7 +364,7 @@
     letter-spacing: 1.1px;
 }
 
-.exercise-alternatives-header h2 {
+.exercise-detail-alternatives-header h2 {
     margin: 0;
 
     color: #ddd;
@@ -375,7 +375,7 @@
     text-transform: uppercase;
 }
 
-.exercise-alternatives-count {
+.exercise-detail-alternatives-count {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -399,14 +399,14 @@
    ALTERNATIVE LIST
    ========================================================= */
 
-.exercise-alternatives-list {
+.exercise-detail-alternatives-list {
     display: flex;
     flex-direction: column;
 
     gap: 9px;
 }
 
-.exercise-alternative-card {
+.exercise-detail-alternative-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -426,17 +426,17 @@
     cursor: pointer;
 }
 
-.exercise-alternative-card:hover {
+.exercise-detail-alternative-card:hover {
     border-color: #3a3a3a;
 
     background: #202020;
 }
 
-.exercise-alternative-card > div {
+.exercise-detail-alternative-card > div {
     min-width: 0;
 }
 
-.exercise-alternative-card strong {
+.exercise-detail-alternative-card strong {
     display: block;
 
     overflow: hidden;
@@ -450,7 +450,7 @@
     white-space: nowrap;
 }
 
-.exercise-alternative-card p {
+.exercise-detail-alternative-card p {
     margin: 4px 0 0;
 
     overflow: hidden;
@@ -465,7 +465,7 @@
     -webkit-box-orient: vertical;
 }
 
-.exercise-alternative-card > span {
+.exercise-detail-alternative-card > span {
     flex-shrink: 0;
 
     margin-left: 14px;
@@ -475,7 +475,7 @@
     font-size: 18px;
 }
 
-.exercise-alternative-card:hover > span {
+.exercise-detail-alternative-card:hover > span {
     color: #d9f99d;
 }
 
@@ -484,7 +484,7 @@
    EMPTY / LOADING
    ========================================================= */
 
-.exercise-alternatives-status {
+.exercise-detail-alternatives-status {
     margin: 4px 0;
 
     color: #666;
@@ -495,22 +495,17 @@
 
 
 /* =========================================================
-   EXERCISE RESULTS LOADER
-   ========================================================= */
-
-
-/* =========================================================
    SELECTED FOCUS VARIATION
    ========================================================= */
 
-.focus-variation-content {
+.exercise-detail-focus-variation-content {
     margin-top: 14px;
     padding-top: 14px;
 
     border-top: 1px solid #252525;
 }
 
-.focus-variation-content h3 {
+.exercise-detail-focus-variation-content h3 {
     margin: 0 0 6px;
 
     color: #ccc;
@@ -519,7 +514,7 @@
     font-weight: 600;
 }
 
-.focus-variation-content p {
+.exercise-detail-focus-variation-content p {
     margin: 0;
 
     color: #888;
@@ -574,6 +569,8 @@
         padding: 13px;
     }
 }
+
+
 /* DETAIL PAGE LOADER */
 
 .exercise-detail-loader {

@@ -7,17 +7,25 @@ import com.formlab.auth.service.AuthService;
 import com.formlab.user.dto.AppUserResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import com.formlab.auth.dto.ChangePasswordRequest;
+import com.formlab.security.AuthorizationService;
+import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
 
     private final AuthService authService;
+    private final AuthorizationService authorizationService;
 
-    public AuthController(AuthService authService) {
+    public AuthController(AuthService authService, AuthorizationService authorizationService) {
         this.authService = authService;
+        this.authorizationService = authorizationService;
     }
 
     @PostMapping("/login")
@@ -35,5 +43,20 @@ public class AuthController {
             @Valid @RequestBody RegisterRequest request
     ) {
         return authService.register(request);
+    }
+
+    @PutMapping("/me/password")
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void changePassword(
+            Authentication authentication,
+            @Valid @RequestBody ChangePasswordRequest request
+    ) {
+        authService.changePassword(
+                authorizationService.getCurrentUserId(
+                        authentication
+                ),
+                request
+        );
     }
 }

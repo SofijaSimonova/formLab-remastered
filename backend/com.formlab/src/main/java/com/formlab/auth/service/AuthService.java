@@ -1,5 +1,6 @@
 package com.formlab.auth.service;
 
+import com.formlab.auth.dto.ChangePasswordRequest;
 import com.formlab.auth.dto.LoginRequest;
 import com.formlab.auth.dto.LoginResponse;
 import com.formlab.auth.dto.RegisterRequest;
@@ -7,6 +8,7 @@ import com.formlab.auth.entity.UserCredential;
 import com.formlab.auth.repository.UserCredentialRepository;
 import com.formlab.auth.security.AuthenticatedUser;
 import com.formlab.common.exception.BadRequestException;
+import com.formlab.common.exception.ResourceNotFoundException;
 import com.formlab.user.dto.AppUserResponse;
 import com.formlab.user.entity.AppUser;
 import com.formlab.user.mapper.AppUserMapper;
@@ -16,6 +18,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -87,5 +90,45 @@ public class AuthService {
         userCredentialRepository.save(credential);
 
         return appUserMapper.toResponse(savedUser);
+    }
+
+    @Transactional
+    public void changePassword(
+            UUID userId,
+            ChangePasswordRequest request
+    ) {
+        UserCredential credential =
+                userCredentialRepository.findByUserId(userId)
+                        .orElseThrow(() ->
+                                new ResourceNotFoundException(
+                                        "User credentials not found"
+                                )
+                        );
+
+        if (!passwordEncoder.matches(
+                request.currentPassword(),
+                credential.getPasswordHash()
+        )) {
+            throw new BadRequestException(
+                    "Current password is incorrect"
+            );
+        }
+
+        if (passwordEncoder.matches(
+                request.newPassword(),
+                credential.getPasswordHash()
+        )) {
+            throw new BadRequestException(
+                    "New password must be different from current password"
+            );
+        }
+
+        credential.setPasswordHash(
+                passwordEncoder.encode(
+                        request.newPassword()
+                )
+        );
+
+        userCredentialRepository.save(credential);
     }
 }

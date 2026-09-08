@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/workout-exercises/{workoutExerciseId}/sets")
+@RequestMapping("/api/workout-sessions/{workoutSessionId}/exercises/{workoutExerciseId}/sets")
 public class WorkoutSetController {
 
     private final WorkoutSetService workoutSetService;
@@ -24,21 +24,31 @@ public class WorkoutSetController {
     }
 
     @GetMapping
-    @PreAuthorize("@authorizationService.canAccessWorkoutExercise(#workoutExerciseId, authentication)")
+    @PreAuthorize(
+            "@authorizationService.canAccessWorkoutSession(#workoutSessionId, authentication)"
+    )
     public List<WorkoutSetResponse> getSets(
+            @PathVariable UUID workoutSessionId,
             @PathVariable UUID workoutExerciseId
     ) {
-        return workoutSetService.getSets(workoutExerciseId);
+        return workoutSetService.getSets(
+                workoutSessionId,
+                workoutExerciseId
+        );
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @PreAuthorize("@authorizationService.canAccessWorkoutExercise(#workoutExerciseId, authentication)")
+    @PreAuthorize(
+            "@authorizationService.canAccessWorkoutSession(#workoutSessionId, authentication)"
+    )
     public WorkoutSetResponse addSet(
+            @PathVariable UUID workoutSessionId,
             @PathVariable UUID workoutExerciseId,
             @Valid @RequestBody CreateWorkoutSetRequest request
     ) {
         return workoutSetService.addSet(
+                workoutSessionId,
                 workoutExerciseId,
                 request
         );
@@ -46,12 +56,16 @@ public class WorkoutSetController {
 
     @DeleteMapping("/{setId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PreAuthorize("@authorizationService.canAccessWorkoutExercise(#workoutExerciseId, authentication)")
+    @PreAuthorize(
+            "@authorizationService.canAccessWorkoutSession(#workoutSessionId, authentication)"
+    )
     public void deleteSet(
+            @PathVariable UUID workoutSessionId,
             @PathVariable UUID workoutExerciseId,
             @PathVariable UUID setId
     ) {
         workoutSetService.deleteSet(
+                workoutSessionId,
                 workoutExerciseId,
                 setId
         );

@@ -17,7 +17,7 @@ export function LandingPage() {
                 </div>
 
                 <div className="landing-nav-actions">
-                    <Link to="/login" className="nav-login">
+                    <Link to="/login" className="landing-nav-login">
                         Log in
                     </Link>
 
@@ -33,11 +33,11 @@ export function LandingPage() {
             <main>
 
                 {/* HERO */}
-                <section className="hero">
-                    <div className="hero-content">
+                <section className="landing-hero">
+                    <div className="landing-hero-content">
 
-                        <div className="hero-eyebrow">
-                            <span className="hero-eyebrow-dot" />
+                        <div className="landing-hero-eyebrow">
+                            <span className="landing-hero-eyebrow-dot" />
                             PRECISION TRAINING SYSTEM
                         </div>
 
@@ -49,23 +49,23 @@ export function LandingPage() {
                             <span>Get stronger.</span>
                         </h1>
 
-                        <p className="hero-description">
+                        <p className="landing-hero-description">
                             Train with precision. Learn correct exercise
                             technique through interactive 3D guidance and
                             track every set, rep, and load in one place.
                         </p>
 
-                        <div className="hero-actions">
+                        <div className="landing-hero-actions">
                             <Link
                                 to="/register"
-                                className="button button-primary"
+                                className="landing-button landing-button-primary"
                             >
                                 Start training
                             </Link>
 
                             <a
                                 href="#features"
-                                className="button button-secondary"
+                                className="landing-button landing-button-secondary"
                             >
                                 Explore FormLab
                             </a>
@@ -73,100 +73,99 @@ export function LandingPage() {
                     </div>
 
                     {/* HERO PRODUCT MOCKUP */}
-                    <div className="hero-visual">
-                        <div className="product-frame">
+                    <div className="landing-hero-visual">
+                        <div className="landing-product-frame">
 
-                            <div className="product-topbar">
-                                <div className="product-dots">
+                            <div className="landing-product-topbar">
+                                <div className="landing-product-dots">
                                     <span />
                                     <span />
                                     <span />
                                 </div>
 
-                                <span className="product-url">
+                                <span className="landing-product-url">
                                     formlab.app / exercise-guide
                                 </span>
 
-                                <span className="product-status">
+                                <span className="landing-product-status">
                                     ● LIVE
                                 </span>
                             </div>
 
-                            <div className="exercise-view">
+                            <div className="landing-exercise-view">
 
-                                <div className="hero-exercise-grid" />
+                                <div className="landing-hero-exercise-grid" />
 
-                                <div className="exercise-title">
+                                <div className="landing-exercise-title">
                                     <span>EXERCISE GUIDE</span>
                                     <strong>Barbell Back Squat</strong>
                                 </div>
 
-                                <div className="form-cues">
+                                <div className="landing-form-cues">
                                     <span>✓ Keep chest up</span>
                                     <span>✓ Knees track over toes</span>
                                     <span>✓ Controlled descent</span>
                                 </div>
 
-                                {/* CSS 3D mannequin */}
-                                <div className="squat-model">
-                                    <div className="model-head" />
-                                    <div className="model-torso" />
+                                <div className="landing-squat-model">
+                                    <div className="landing-model-head" />
+                                    <div className="landing-model-torso" />
 
-                                    <div className="model-arm model-arm-left" />
-                                    <div className="model-arm model-arm-right" />
+                                    <div className="landing-model-arm landing-model-arm-left" />
+                                    <div className="landing-model-arm landing-model-arm-right" />
 
-                                    <div className="barbell">
+                                    <div className="landing-barbell">
                                         <span />
                                         <div />
                                         <span />
                                     </div>
 
-                                    <div className="model-leg model-leg-left" />
-                                    <div className="model-leg model-leg-right" />
+                                    <div className="landing-model-leg landing-model-leg-left" />
+                                    <div className="landing-model-leg landing-model-leg-right" />
 
-                                    <div className="model-foot model-foot-left" />
-                                    <div className="model-foot model-foot-right" />
+                                    <div className="landing-model-foot landing-model-foot-left" />
+                                    <div className="landing-model-foot landing-model-foot-right" />
                                 </div>
 
-                                <div className="movement-arrow arrow-left">
+                                <div className="landing-movement-arrow landing-arrow-left">
                                     ↓
                                 </div>
 
-                                <div className="movement-arrow arrow-right">
+                                <div className="landing-movement-arrow landing-arrow-right">
                                     ↓
                                 </div>
 
-                                <div className="joint joint-shoulder-left" />
-                                <div className="joint joint-shoulder-right" />
-                                <div className="joint joint-knee-left" />
-                                <div className="joint joint-knee-right" />
+                                <div className="landing-joint landing-joint-shoulder-left" />
+                                <div className="landing-joint landing-joint-shoulder-right" />
+                                <div className="landing-joint landing-joint-knee-left" />
+                                <div className="landing-joint landing-joint-knee-right" />
 
-                                <div className="set-panel">
-                                    <div className="set-panel-heading">
+                                <div className="landing-set-panel">
+                                    <div className="landing-set-panel-heading">
                                         <span>SESSION</span>
                                         <span>SETS</span>
                                     </div>
 
-                                    <div className="set-row">
+                                    <div className="landing-set-row">
                                         <span>Set 1</span>
                                         <strong>140 kg × 8</strong>
                                         <b>✓</b>
                                     </div>
 
-                                    <div className="set-row">
+                                    <div className="landing-set-row">
                                         <span>Set 2</span>
                                         <strong>140 kg × 8</strong>
                                         <b>✓</b>
                                     </div>
 
-                                    <div className="set-row active">
+                                    <div className="landing-set-row landing-set-row-active">
                                         <span>Set 3</span>
                                         <strong>145 kg × 6</strong>
                                         <b>✓</b>
                                     </div>
                                 </div>
 
-                                <div className="viewer-label">
+                                <div className="landing-viewer-label">
                                     3D EXERCISE GUIDE
                                 </div>
                             </div>
@@ -177,10 +176,10 @@ export function LandingPage() {
                 {/* FEATURES */}
                 <section
                     id="features"
-                    className="features"
+                    className="landing-features"
                 >
-                    <div className="section-heading">
-                        <span className="section-label">
+                    <div className="landing-section-heading">
+                        <span className="landing-section-label">
                             THE SYSTEM
                         </span>
 
@@ -197,12 +196,12 @@ export function LandingPage() {
                         </p>
                     </div>
 
-                    <div className="feature-grid">
+                    <div className="landing-feature-grid">
 
-                        <article className="feature-card">
-                            <span className="feature-number">01</span>
+                        <article className="landing-feature-card">
+                            <span className="landing-feature-number">01</span>
 
-                            <div className="feature-icon">↗</div>
+                            <div className="landing-feature-icon">↗</div>
 
                             <h3>Build workouts</h3>
 
@@ -212,10 +211,10 @@ export function LandingPage() {
                             </p>
                         </article>
 
-                        <article className="feature-card">
-                            <span className="feature-number">02</span>
+                        <article className="landing-feature-card">
+                            <span className="landing-feature-number">02</span>
 
-                            <div className="feature-icon">◉</div>
+                            <div className="landing-feature-icon">◉</div>
 
                             <h3>3D exercise guidance</h3>
 
@@ -225,10 +224,10 @@ export function LandingPage() {
                             </p>
                         </article>
 
-                        <article className="feature-card">
-                            <span className="feature-number">03</span>
+                        <article className="landing-feature-card">
+                            <span className="landing-feature-number">03</span>
 
-                            <div className="feature-icon">⌁</div>
+                            <div className="landing-feature-icon">⌁</div>
 
                             <h3>Track your sets</h3>
 
@@ -238,10 +237,10 @@ export function LandingPage() {
                             </p>
                         </article>
 
-                        <article className="feature-card">
-                            <span className="feature-number">04</span>
+                        <article className="landing-feature-card">
+                            <span className="landing-feature-number">04</span>
 
-                            <div className="feature-icon">□</div>
+                            <div className="landing-feature-icon">□</div>
 
                             <h3>Stay organized</h3>
 
@@ -257,10 +256,10 @@ export function LandingPage() {
                 {/* HOW IT WORKS */}
                 <section
                     id="how-it-works"
-                    className="workflow"
+                    className="landing-workflow"
                 >
-                    <div className="section-heading centered">
-                        <span className="section-label">
+                    <div className="landing-section-heading landing-section-heading-centered">
+                        <span className="landing-section-label">
                             STANDARD OPERATING PROCEDURE
                         </span>
 
@@ -269,9 +268,9 @@ export function LandingPage() {
                         </h2>
                     </div>
 
-                    <div className="workflow-grid">
+                    <div className="landing-workflow-grid">
 
-                        <article className="workflow-card">
+                        <article className="landing-workflow-card">
                             <span>01</span>
 
                             <h3>Create your account</h3>
@@ -282,7 +281,7 @@ export function LandingPage() {
                             </p>
                         </article>
 
-                        <article className="workflow-card">
+                        <article className="landing-workflow-card">
                             <span>02</span>
 
                             <h3>Build your workout</h3>
@@ -293,7 +292,7 @@ export function LandingPage() {
                             </p>
                         </article>
 
-                        <article className="workflow-card">
+                        <article className="landing-workflow-card">
                             <span>03</span>
 
                             <h3>Train with precision</h3>
@@ -307,26 +306,26 @@ export function LandingPage() {
                     </div>
 
                     {/* DASHBOARD PREVIEW */}
-                    <div className="dashboard-preview">
+                    <div className="landing-dashboard-preview">
 
-                        <div className="dashboard-browser-bar">
-                            <div className="browser-dots">
+                        <div className="landing-dashboard-browser-bar">
+                            <div className="landing-browser-dots">
                                 <span />
                                 <span />
                                 <span />
                             </div>
 
-                            <div className="browser-address">
+                            <div className="landing-browser-address">
                                 formlab.app / dashboard
                             </div>
                         </div>
 
-                        <div className="dashboard-body">
+                        <div className="landing-dashboard-body">
 
-                            <aside className="dashboard-sidebar">
+                            <aside className="landing-dashboard-sidebar">
                                 <strong>FormLab</strong>
 
-                                <span className="dashboard-active">
+                                <span className="landing-dashboard-active">
                                     ▣ Dashboard
                                 </span>
 
@@ -334,9 +333,9 @@ export function LandingPage() {
                                 <span>⌁ Analytics</span>
                             </aside>
 
-                            <div className="dashboard-main">
+                            <div className="landing-dashboard-main">
 
-                                <div className="dashboard-header">
+                                <div className="landing-dashboard-header">
                                     <div>
                                         <small>CURRENT PROGRAM</small>
                                         <h3>
@@ -344,26 +343,26 @@ export function LandingPage() {
                                         </h3>
                                     </div>
 
-                                    <span className="dashboard-time">
+                                    <span className="landing-dashboard-time">
                                         45:12
                                     </span>
                                 </div>
 
-                                <div className="dashboard-content">
+                                <div className="landing-dashboard-content">
 
-                                    <div className="volume-chart">
+                                    <div className="landing-volume-chart">
                                         <span>Volume Trend (kg)</span>
 
-                                        <div className="bars">
+                                        <div className="landing-bars">
                                             <i />
                                             <i />
                                             <i />
                                             <i />
-                                            <i className="current" />
+                                            <i className="landing-bars-current" />
                                         </div>
                                     </div>
 
-                                    <div className="progress-panel">
+                                    <div className="landing-progress-panel">
                                         <span>IN PROGRESS</span>
 
                                         <strong>Barbell Back Squat</strong>
@@ -378,7 +377,7 @@ export function LandingPage() {
                                             <b>140kg × 8 ✓</b>
                                         </div>
 
-                                        <div className="current-set">
+                                        <div className="landing-progress-current-set">
                                             Set 3
                                             <b>145kg × 6 ✓</b>
                                         </div>
@@ -391,8 +390,8 @@ export function LandingPage() {
                 </section>
 
                 {/* CTA */}
-                <section className="final-cta">
-                    <span className="section-label">
+                <section className="landing-final-cta">
+                    <span className="landing-section-label">
                         START TRAINING
                     </span>
 
@@ -407,17 +406,17 @@ export function LandingPage() {
                         technique, and track your progress with FormLab.
                     </p>
 
-                    <div className="hero-actions">
+                    <div className="landing-hero-actions">
                         <Link
                             to="/register"
-                            className="button button-primary"
+                            className="landing-button landing-button-primary"
                         >
                             Get started
                         </Link>
 
                         <Link
                             to="/login"
-                            className="button button-secondary"
+                            className="landing-button landing-button-secondary"
                         >
                             Log in
                         </Link>
@@ -429,7 +428,7 @@ export function LandingPage() {
             {/* FOOTER */}
             <footer className="landing-footer">
 
-                <div className="footer-brand">
+                <div className="landing-footer-brand">
                     <strong>FormLab</strong>
 
                     <p>
@@ -439,19 +438,19 @@ export function LandingPage() {
                     </p>
                 </div>
 
-                <div className="footer-column">
+                <div className="landing-footer-column">
                     <strong>PRODUCT</strong>
                     <a href="#features">Features</a>
                     <a href="#how-it-works">How it works</a>
                 </div>
 
-                <div className="footer-column">
+                <div className="landing-footer-column">
                     <strong>ACCOUNT</strong>
                     <Link to="/login">Log in</Link>
                     <Link to="/register">Get started</Link>
                 </div>
 
-                <div className="footer-bottom">
+                <div className="landing-footer-bottom">
                     <span>
                         © 2026 FormLab Systems. All rights reserved.
                     </span>

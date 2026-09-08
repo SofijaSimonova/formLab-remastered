@@ -20,4 +20,13 @@ public interface UserCredentialRepository
     Optional<UserCredential> findByUserEmailIgnoreCase(
             @Param("email") String email
     );
+
+    @Query("""
+            SELECT uc
+            FROM UserCredential uc
+            WHERE uc.user.id = :userId
+            """)
+    Optional<UserCredential> findByUserId(
+            @Param("userId") UUID userId
+    );
 }

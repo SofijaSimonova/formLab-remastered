@@ -1,5 +1,5 @@
-import type { ExerciseListResponse } from '../types/exercise.types'
 import { useNavigate } from 'react-router-dom'
+import type { ExerciseListResponse } from '../types/exercise.types'
 
 interface ExerciseCardProps {
     exercise: ExerciseListResponse
@@ -10,17 +10,17 @@ export function ExerciseCard({ exercise }: ExerciseCardProps) {
 
     return (
         <article
-            className="exercise-card"
+            className="exercises-card"
             onClick={() => navigate(`/exercises/${exercise.id}`)}
             role="button"
             tabIndex={0}
         >
-            <div className="exercise-card-image">
-                <div className="exercise-card-badges">
+            <div className="exercises-card-image">
+                <div className="exercises-card-badges">
                     {exercise.tags.map((tag) => (
                         <span
                             key={tag.id}
-                            className="exercise-card-badge"
+                            className="exercises-card-badge"
                         >
                             {tag.name}
                         </span>
@@ -28,8 +28,8 @@ export function ExerciseCard({ exercise }: ExerciseCardProps) {
                 </div>
             </div>
 
-            <div className="exercise-card-content">
-                <div className="exercise-card-header">
+            <div className="exercises-card-content">
+                <div className="exercises-card-header">
                     <h3>{exercise.name}</h3>
 
                     <button
@@ -43,7 +43,7 @@ export function ExerciseCard({ exercise }: ExerciseCardProps) {
 
                 <p>{exercise.description}</p>
 
-                <div className="exercise-card-body-parts">
+                <div className="exercises-card-body-parts">
                     {exercise.bodyParts.map((bodyPart) => (
                         <span key={bodyPart.id}>
                             {bodyPart.name}

@@ -1,0 +1,413 @@
+.profile-page {
+    min-height: 100vh;
+    padding: 42px 48px 64px;
+}
+
+.profile-page * {
+    box-sizing: border-box;
+}
+
+.profile-container {
+    width: min(980px, 100%);
+    margin: 0 auto;
+}
+
+.profile-header {
+    margin-bottom: 34px;
+}
+
+.profile-eyebrow,
+.profile-section-eyebrow {
+    display: block;
+
+    color: #7f8790;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.profile-header h1 {
+    margin: 8px 0;
+
+    color: #f5f7fa;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+}
+
+.profile-header p {
+    margin: 0;
+
+    color: #8f969f;
+    font-size: 13px;
+}
+
+.profile-section {
+    margin-bottom: 26px;
+}
+
+.profile-section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+}
+
+.profile-section-header h2 {
+    margin: 6px 0 0;
+
+    color: #f2f4f7;
+    font-size: 19px;
+    font-weight: 750;
+}
+
+.profile-section-header p {
+    margin: 6px 0 0;
+
+    color: #858c95;
+    font-size: 11px;
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-card,
+.profile-goals-card,
+.profile-password-card {
+    background: #181a1c;
+    border: 1px solid #2b2e32;
+    border-radius: 6px;
+}
+
+.profile-card {
+    display: flex;
+    gap: 28px;
+
+    padding: 26px;
+}
+
+.profile-avatar {
+    width: 72px;
+    height: 72px;
+    min-width: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #384554;
+    border-radius: 50%;
+
+    background: #202938;
+    color: #8fb8ff;
+
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.profile-details {
+    flex: 1;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.profile-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.profile-detail span {
+    color: #777e87;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.profile-detail strong {
+    color: #e9edf2;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   PROFILE EDIT
+========================= */
+
+.profile-edit-button,
+.profile-save-button,
+.profile-goal-add-button {
+    border: 0;
+    border-radius: 4px;
+
+    background: #398cff;
+    color: #fff;
+
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.profile-edit-button {
+    padding: 9px 14px;
+}
+
+.profile-edit-form {
+    flex: 1;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.profile-field,
+.profile-password-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.profile-field label,
+.profile-password-field label {
+    color: #7f8790;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.profile-field input,
+.profile-password-field input,
+.profile-goal-add-row select {
+    width: 100%;
+
+    padding: 10px 11px;
+
+    border: 1px solid #34383d;
+    border-radius: 4px;
+
+    background: #101112;
+    color: #e7eaee;
+
+    outline: none;
+
+    font-size: 11px;
+}
+
+.profile-field input:focus,
+.profile-password-field input:focus,
+.profile-goal-add-row select:focus {
+    border-color: #4e7ebc;
+}
+
+.profile-edit-actions {
+    grid-column: 1 / -1;
+
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    margin-top: 4px;
+}
+
+.profile-cancel-button {
+    padding: 9px 14px;
+
+    border: 1px solid #35393f;
+    border-radius: 4px;
+
+    background: transparent;
+    color: #9ba1a9;
+
+    cursor: pointer;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.profile-save-button {
+    padding: 9px 14px;
+}
+
+.profile-save-button:disabled,
+.profile-goal-add-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+
+/* =========================
+   GOALS
+========================= */
+
+.profile-goals-card {
+    padding: 20px;
+}
+
+.profile-user-goals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-user-goal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 14px;
+
+    border: 1px solid #2b2f34;
+    border-radius: 4px;
+
+    background: #141618;
+}
+
+.profile-user-goal strong {
+    color: #e6eaf0;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.profile-goal-remove-button {
+    width: 26px;
+    height: 26px;
+
+    border: 1px solid #33383e;
+    border-radius: 4px;
+
+    background: transparent;
+    color: #858c94;
+
+    cursor: pointer;
+
+    font-size: 16px;
+    line-height: 1;
+}
+
+.profile-goal-remove-button:hover {
+    color: #ff7777;
+    border-color: #754242;
+}
+
+.profile-goal-add-row {
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 14px;
+    padding-top: 14px;
+
+    border-top: 1px solid #292c30;
+}
+
+.profile-goal-add-row select {
+    flex: 1;
+}
+
+.profile-goal-add-button {
+    min-width: 100px;
+    padding: 0 14px;
+}
+
+.profile-goals-empty,
+.profile-goals-state,
+.profile-page-state {
+    color: #777f88;
+    font-size: 11px;
+}
+
+.profile-goals-empty {
+    padding: 14px 0;
+}
+
+
+/* =========================
+   PASSWORD
+========================= */
+
+.profile-password-card {
+    padding: 24px;
+}
+
+.profile-password-form {
+    max-width: 620px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+.profile-password-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 4px;
+}
+
+.profile-password-message {
+    margin: 0;
+
+    color: #8f969f;
+
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   STATE
+========================= */
+
+.profile-page-state {
+    min-height: 60vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+    .profile-page {
+        padding: 28px 18px 48px;
+    }
+
+    .profile-card {
+        flex-direction: column;
+    }
+
+    .profile-details,
+    .profile-edit-form {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-section-header {
+        align-items: flex-start;
+
+        gap: 14px;
+
+        flex-direction: column;
+    }
+
+    .profile-goal-add-row {
+        flex-direction: column;
+    }
+
+    .profile-goal-add-button {
+        min-height: 36px;
+    }
+}

@@ -5,9 +5,9 @@ import { useExercise } from '../../features/exercises/hooks/useExercise'
 import { useExerciseAlternatives } from '../../features/exercises/hooks/useExerciseAlternatives'
 
 import './ExerciseDetailPage.css'
-import {ErrorState} from "../../components/ErrorState";
+import { ErrorState } from '../../components/ErrorState'
 import '../../components/shared.css'
-import {LoadingState} from "../../components/LoadingState";
+import { LoadingState } from '../../components/LoadingState'
 
 export function ExerciseDetailPage() {
     const { id } = useParams<{ id: string }>()
@@ -90,7 +90,7 @@ export function ExerciseDetailPage() {
                                 .map((instruction, index) => (
                                     <div
                                         key={index}
-                                        className="exercise-instruction"
+                                        className="exercise-detail-instruction"
                                     >
                                         <span>
                                             {String(index + 1).padStart(
@@ -113,14 +113,14 @@ export function ExerciseDetailPage() {
                                 <h2>Focus Variations</h2>
                             </div>
 
-                            <div className="focus-variation-toggle">
+                            <div className="exercise-detail-focus-variation-toggle">
                                 {exercise.focusVariations.map((variation) => (
                                     <button
                                         key={variation.id}
                                         type="button"
                                         className={
                                             selectedVariation?.id === variation.id
-                                                ? 'active'
+                                                ? 'exercise-detail-focus-variation-active'
                                                 : ''
                                         }
                                         onClick={() =>
@@ -133,7 +133,7 @@ export function ExerciseDetailPage() {
                             </div>
 
                             {selectedVariation && (
-                                <div className="focus-variation-content">
+                                <div className="exercise-detail-focus-variation-content">
                                     <h3>{selectedVariation.name}</h3>
 
                                     <p>
@@ -192,30 +192,30 @@ export function ExerciseDetailPage() {
                     </section>
 
                     {/* ALTERNATIVES */}
-                    <section className="exercise-alternatives">
-                        <div className="exercise-alternatives-header">
+                    <section className="exercise-detail-alternatives">
+                        <div className="exercise-detail-alternatives-header">
                             <div>
                                 <span>03</span>
                                 <h2>Alternative Exercises</h2>
                             </div>
 
-                            <span className="exercise-alternatives-count">
+                            <span className="exercise-detail-alternatives-count">
                                 {alternatives?.length ?? 0}
                             </span>
                         </div>
 
                         {isLoadingAlternatives ? (
-                            <p className="exercise-alternatives-status">
+                            <p className="exercise-detail-alternatives-status">
                                 Loading alternatives...
                             </p>
                         ) : alternatives &&
                         alternatives.length > 0 ? (
-                            <div className="exercise-alternatives-list">
+                            <div className="exercise-detail-alternatives-list">
                                 {alternatives.map((alternative) => (
                                     <button
                                         key={alternative.id}
                                         type="button"
-                                        className="exercise-alternative-card"
+                                        className="exercise-detail-alternative-card"
                                         onClick={() =>
                                             navigate(
                                                 `/exercises/${alternative.alternativeExerciseId}`,
@@ -239,7 +239,7 @@ export function ExerciseDetailPage() {
                                 ))}
                             </div>
                         ) : (
-                            <p className="exercise-alternatives-status">
+                            <p className="exercise-detail-alternatives-status">
                                 No alternative exercises.
                             </p>
                         )}

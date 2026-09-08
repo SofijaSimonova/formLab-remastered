@@ -5,6 +5,7 @@ export interface ExerciseListResponse {
     movementPatternId: string | null
     bodyParts: ReferenceResponse[]
     tags: ReferenceResponse[]
+    trackingType: ExerciseTrackingType
 }
 
 export interface ExerciseResponse {
@@ -15,6 +16,7 @@ export interface ExerciseResponse {
     movementPatternId: string | null
     bodyParts: ReferenceResponse[]
     equipment: ReferenceResponse[]
+    trackingType: ExerciseTrackingType
     focusVariations: ExerciseFocusVariationResponse[]
 }
 
@@ -46,3 +48,7 @@ export interface ExerciseAlternativeResponse {
     alternativeExerciseName: string,
     reason: string
 }
+
+export type ExerciseTrackingType =
+    | 'WEIGHT'
+    | 'REPS'

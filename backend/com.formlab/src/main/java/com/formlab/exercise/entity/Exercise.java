@@ -59,4 +59,8 @@ public class Exercise {
 
     @OneToMany(mappedBy = "exercise", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ExerciseFocusVariation> focusVariations = new ArrayList<>();
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tracking_type", nullable = false, length = 20)
+    private ExerciseTrackingType trackingType;
 }

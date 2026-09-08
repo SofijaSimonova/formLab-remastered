@@ -16,8 +16,34 @@ const workoutKeys = {
     exercises: (workoutId: string) =>
         [...workoutKeys.detail(workoutId), 'exercises'] as const,
 
-    sets: (workoutExerciseId: string) =>
-        ['workout-exercise', workoutExerciseId, 'sets'] as const,
+    sets: (
+        workoutSessionId: string,
+        workoutExerciseId: string,
+    ) => [
+        'workoutSets',
+        workoutSessionId,
+        workoutExerciseId,
+    ],
+
+    summary: (
+        workoutId: string,
+        workoutSessionId: string,
+    ) => [
+        ...workoutKeys.all,
+        'summary',
+        workoutId,
+        workoutSessionId,
+    ],
+
+    session: (
+        workoutId: string,
+        workoutSessionId: string,
+    ) => [
+        ...workoutKeys.all,
+        'session',
+        workoutId,
+        workoutSessionId,
+    ],
 }
 
 export { workoutKeys }

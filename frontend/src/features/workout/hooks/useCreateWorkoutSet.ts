@@ -5,6 +5,7 @@ import type { CreateWorkoutSetRequest } from '../types/workout.types'
 import { workoutKeys } from '../workout.keys'
 
 interface CreateWorkoutSetVariables {
+    workoutSessionId: string
     workoutExerciseId: string
     request: CreateWorkoutSetRequest
 }
@@ -14,17 +15,23 @@ export function useCreateWorkoutSet() {
 
     return useMutation({
         mutationFn: ({
+                         workoutSessionId,
                          workoutExerciseId,
                          request,
                      }: CreateWorkoutSetVariables) =>
             createWorkoutSet(
+                workoutSessionId,
                 workoutExerciseId,
                 request,
             ),
 
-        onSuccess: async (_, variables): Promise<void> => {
-            await queryClient.invalidateQueries({
+        onSuccess: (
+            _data,
+            variables,
+        ): void => {
+            void queryClient.invalidateQueries({
                 queryKey: workoutKeys.sets(
+                    variables.workoutSessionId,
                     variables.workoutExerciseId,
                 ),
             })

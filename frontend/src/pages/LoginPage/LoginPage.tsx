@@ -98,7 +98,7 @@ export function LoginPage() {
                         onSubmit={handleSubmit(onSubmit)}
                         noValidate
                     >
-                        <div className="form-field">
+                        <div className="login-form-field">
                             <label htmlFor="email">
                                 Email
                             </label>
@@ -118,8 +118,8 @@ export function LoginPage() {
                             )}
                         </div>
 
-                        <div className="form-field">
-                            <div className="form-field-header">
+                        <div className="login-form-field">
+                            <div className="login-form-field-header">
                                 <label htmlFor="password">
                                     Password
                                 </label>
@@ -175,7 +175,7 @@ export function LoginPage() {
                     </p>
 
                     <div className="login-status">
-                        <span className="status-dot" />
+                        <span className="login-status-dot" />
                         SECURE TRAINING ENVIRONMENT
                     </div>
                 </div>

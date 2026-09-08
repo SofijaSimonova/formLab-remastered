@@ -1,0 +1,451 @@
+.progress-page {
+    min-height: 100%;
+    padding: 36px 40px 48px;
+}
+
+.progress-header {
+    margin-bottom: 30px;
+}
+
+.progress-eyebrow,
+.card-eyebrow {
+    margin: 0 0 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    opacity: 0.55;
+}
+
+.progress-header h1 {
+    margin: 0;
+    font-size: 34px;
+    line-height: 1.1;
+}
+
+.progress-header p:last-child {
+    margin: 9px 0 0;
+    opacity: 0.62;
+}
+
+.progress-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.progress-metric-card,
+.progress-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--bg-surface);
+}
+
+.progress-metric-card {
+    padding: 22px;
+}
+
+.progress-metric-card span {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.progress-metric-card strong {
+    display: block;
+    font-size: 27px;
+    line-height: 1;
+}
+
+.progress-main-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(330px, 0.9fr);
+    gap: 18px;
+    align-items: start;
+}
+
+.progress-left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.progress-card {
+    padding: 24px;
+}
+
+.card-header,
+.ai-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.card-header h2,
+.ai-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.card-header select {
+    min-width: 170px;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    font: inherit;
+    cursor: pointer;
+}
+
+.card-header select option {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+.range-selector {
+    display: flex;
+    gap: 5px;
+    margin-top: 22px;
+    margin-bottom: 12px;
+}
+
+.range-selector button {
+    padding: 7px 12px;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.range-selector button:hover {
+    color: var(--text-primary);
+}
+
+.range-selector button.active {
+    background: rgba(255, 255, 255, 0.09);
+    color: var(--text-primary);
+}
+
+.strength-chart {
+    width: 100%;
+    height: 320px;
+    margin-top: 6px;
+}
+
+.chart-state,
+.card-state {
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.weekly-volume {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+    height: 190px;
+    margin-top: 24px;
+    align-items: end;
+}
+
+.volume-day {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 9px;
+}
+
+.volume-bar-container {
+    width: 100%;
+    height: 145px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.volume-bar {
+    width: min(30px, 70%);
+    min-height: 4px;
+    border-radius: 7px 7px 3px 3px;
+    background: currentColor;
+    opacity: 0.7;
+}
+
+.volume-day span {
+    color: var(--text-secondary);
+    font-size: 11px;
+}
+
+.records-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.record-item {
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.record-item span {
+    display: block;
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+.record-item strong {
+    display: block;
+    margin-top: 9px;
+    font-size: 22px;
+}
+
+.record-item small {
+    display: block;
+    margin-top: 7px;
+    font-size: 11px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ai-card {
+    position: sticky;
+    top: 24px;
+}
+
+.ai-badge {
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+}
+
+.ai-summary {
+    margin-top: 26px;
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.ai-summary h3,
+.ai-section h3 {
+    margin: 0;
+    font-size: 13px;
+}
+
+.ai-summary p {
+    margin: 9px 0 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.ai-section {
+    margin-top: 24px;
+}
+
+.ai-section ul {
+    margin: 11px 0 0;
+    padding-left: 18px;
+}
+
+.ai-section li {
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+}
+
+.ai-prompts {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.ai-prompts p {
+    margin: 0 0 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.ai-prompts button {
+    width: 100%;
+    margin-top: 8px;
+    padding: 11px 13px;
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.025);
+    color: inherit;
+    text-align: left;
+    font: inherit;
+    font-size: 12px;
+    line-height: 1.45;
+    opacity: 0.7;
+    cursor: pointer;
+    transition:
+            background-color 0.15s ease,
+            border-color 0.15s ease,
+            opacity 0.15s ease;
+}
+
+.ai-prompts button:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--border-color, rgba(255, 255, 255, 0.16));
+    opacity: 1;
+}
+
+.ai-prompts button.selected {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: var(--border-color, rgba(255, 255, 255, 0.18));
+    opacity: 1;
+}
+
+.ai-answer {
+    margin-top: 24px;
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.ai-answer h3 {
+    margin: 0;
+    font-size: 13px;
+}
+
+.ai-answer p {
+    margin: 10px 0 0;
+    font-size: 13px;
+    line-height: 1.6;
+    opacity: 0.72;
+}
+
+.ai-answer .ai-question {
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.ai-answer-loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.ai-answer-loading .ai-pulse {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.ai-answer-loading p {
+    margin: 0;
+}
+
+.ai-answer-error {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ai-state {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.ai-pulse {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 14px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    border-right-color: transparent;
+    animation: ai-spin 0.8s linear infinite;
+}
+
+.ai-state p {
+    margin: 0;
+    font-size: 13px;
+}
+
+.progress-loading,
+.progress-error {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+}
+
+@keyframes ai-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 1100px) {
+    .progress-main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-card {
+        position: static;
+    }
+}
+
+@media (max-width: 800px) {
+    .progress-page {
+        padding: 24px 18px 36px;
+    }
+
+    .progress-metrics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .records-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-header {
+        flex-direction: column;
+    }
+
+    .card-header select {
+        width: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    .progress-metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .records-grid {
+        grid-template-columns: 1fr;
+    }
+}

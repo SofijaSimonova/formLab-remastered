@@ -14,7 +14,11 @@ import java.util.UUID;
         name = "workout_set",
         uniqueConstraints = @UniqueConstraint(
                 name = "uk_workout_set_number",
-                columnNames = {"workout_exercise_id", "set_number"}
+                columnNames = {
+                        "workout_session_id",
+                        "workout_exercise_id",
+                        "set_number"
+                }
         )
 )
 @Getter
@@ -25,6 +29,10 @@ public class WorkoutSet {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "workout_session_id", nullable = false)
+    private WorkoutSession workoutSession;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "workout_exercise_id", nullable = false)

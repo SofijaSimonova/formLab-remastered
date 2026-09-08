@@ -22,3 +22,8 @@ export interface RegisterResponse {
     createdAt: string
     updatedAt: string
 }
+
+export interface ChangePasswordRequest {
+    currentPassword: string
+    newPassword: string
+}

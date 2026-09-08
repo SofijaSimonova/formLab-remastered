@@ -94,7 +94,7 @@ export function RegisterPage() {
                         noValidate
                     >
                         <div className="register-name-row">
-                            <div className="form-field">
+                            <div className="register-form-field">
                                 <label htmlFor="firstName">
                                     First name
                                 </label>
@@ -206,7 +206,7 @@ export function RegisterPage() {
                     </p>
 
                     <div className="register-status">
-                        <span className="status-dot" />
+                        <span className="register-status-dot" />
                         SECURE TRAINING ENVIRONMENT
                     </div>
                 </div>

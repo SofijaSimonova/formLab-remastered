@@ -14,7 +14,8 @@ import { useDebounce } from '../../hooks/useDebounce'
 import type { ExerciseListResponse } from '../../features/exercises/types/exercise.types'
 
 import { ExerciseLibraryModal } from '../../features/workout/components/ExerciseLibraryModal'
-
+import { useNavigate } from 'react-router-dom'
+import { useCreateWorkoutSession } from '../../features/workout/hooks/useCreateWorkoutSession'
 import './CreateWorkoutPage.css'
 
 
@@ -66,6 +67,12 @@ export function CreateWorkoutPage() {
         ) ?? []
 
 
+    const navigate = useNavigate()
+
+    const createWorkoutSessionMutation =
+        useCreateWorkoutSession()
+
+
     async function handleCreateWorkout(
         event: SubmitEvent<HTMLFormElement>,
     ) {
@@ -110,16 +117,26 @@ export function CreateWorkoutPage() {
         })
 
         /*
-         * Do NOT navigate anywhere.
-         *
-         * The workout has already been created and we stay
-         * on /workouts/new. Only close the library modal.
-         *
-         * useAddWorkoutExercise invalidates the workout
-         * exercises query, so the newly added exercise
-         * appears in the sequence automatically.
+         * Keep the library open so the modal can confirm the
+         * save and the user can add or update another exercise.
          */
-        setIsExerciseLibraryOpen(false)
+    }
+
+    async function handleStartWorkout() {
+        if (!createdWorkoutId || !workoutExercises?.length) {
+            return
+        }
+
+        const firstWorkoutExercise = workoutExercises[0]
+
+        const session =
+            await createWorkoutSessionMutation.mutateAsync(
+                createdWorkoutId,
+            )
+
+        navigate(
+            `/workouts/${createdWorkoutId}/session/${session.id}/exercises/${firstWorkoutExercise.id}`,
+        )
     }
 
 
@@ -157,11 +174,11 @@ export function CreateWorkoutPage() {
     return (
         <main className="create-workout-page">
 
-            <header className="create-workout-header">
+            <header className="create-workout-page-header">
 
                 <Link
                     to="/workouts"
-                    className="create-workout-back"
+                    className="create-workout-page-back"
                     aria-label="Back to workouts"
                 >
                     ←
@@ -171,20 +188,36 @@ export function CreateWorkoutPage() {
                     Create New Workout
                 </h1>
 
-                <div className="create-workout-actions">
+                <div className="create-workout-page-actions">
 
                     <Link
                         to="/workouts"
-                        className="create-workout-discard"
+                        className="create-workout-page-discard"
                     >
                         Discard
                     </Link>
+
+                    {createdWorkoutId && (
+                        <button
+                            type="button"
+                            className="create-workout-page-save"
+                            onClick={handleStartWorkout}
+                            disabled={
+                                createWorkoutSessionMutation.isPending ||
+                                !workoutExercises?.length
+                            }
+                        >
+                            {createWorkoutSessionMutation.isPending
+                                ? 'Starting...'
+                                : 'Start Workout'}
+                        </button>
+                    )}
 
                     {!createdWorkoutId && (
                         <button
                             type="submit"
                             form="create-workout-form"
-                            className="create-workout-save"
+                            className="create-workout-page-save"
                             disabled={
                                 createWorkoutMutation.isPending ||
                                 !name.trim()
@@ -201,9 +234,9 @@ export function CreateWorkoutPage() {
             </header>
 
 
-            <div className="create-workout-main">
+            <div className="create-workout-page-main">
 
-                <section className="create-workout-card">
+                <section className="create-workout-page-card">
 
                     <h2>
                         Workout Details
@@ -215,7 +248,7 @@ export function CreateWorkoutPage() {
                         onSubmit={handleCreateWorkout}
                     >
 
-                        <div className="create-workout-field">
+                        <div className="create-workout-page-field">
 
                             <label htmlFor="workout-name">
                                 Workout name
@@ -235,7 +268,7 @@ export function CreateWorkoutPage() {
                         </div>
 
 
-                        <div className="create-workout-field">
+                        <div className="create-workout-page-field">
 
                             <label htmlFor="workout-description">
                                 Description
@@ -257,7 +290,7 @@ export function CreateWorkoutPage() {
 
 
                         {createWorkoutMutation.isError && (
-                            <div className="create-workout-error">
+                            <div className="create-workout-page-error">
                                 Failed to create workout.
                                 Please try again.
                             </div>
@@ -267,7 +300,7 @@ export function CreateWorkoutPage() {
 
 
                     {createdWorkoutId && (
-                        <div className="create-workout-field">
+                        <div className="create-workout-page-field">
 
                             <label>
                                 Target Metrics
@@ -296,9 +329,9 @@ export function CreateWorkoutPage() {
                 </section>
 
 
-                <section className="create-workout-sequence">
+                <section className="create-workout-page-sequence">
 
-                    <div className="create-workout-sequence-header">
+                    <div className="create-workout-page-sequence-header">
 
                         <div>
                             <h2>
@@ -322,9 +355,9 @@ export function CreateWorkoutPage() {
 
                     {!createdWorkoutId ? (
 
-                        <div className="create-workout-empty">
+                        <div className="create-workout-page-empty">
 
-                            <div className="create-workout-empty-icon">
+                            <div className="create-workout-page-empty-icon">
                                 +
                             </div>
 
@@ -341,9 +374,9 @@ export function CreateWorkoutPage() {
 
                     ) : isWorkoutExercisesLoading ? (
 
-                        <div className="create-workout-empty">
+                        <div className="create-workout-page-empty">
 
-                            <div className="create-workout-empty-icon">
+                            <div className="create-workout-page-empty-icon">
                                 ...
                             </div>
 
@@ -360,9 +393,9 @@ export function CreateWorkoutPage() {
                     ) : !workoutExercises ||
                     workoutExercises.length === 0 ? (
 
-                        <div className="create-workout-empty">
+                        <div className="create-workout-page-empty">
 
-                            <div className="create-workout-empty-icon">
+                            <div className="create-workout-page-empty-icon">
                                 +
                             </div>
 
@@ -377,7 +410,7 @@ export function CreateWorkoutPage() {
 
                             <button
                                 type="button"
-                                className="create-workout-add-exercise"
+                                className="create-workout-page-add-exercise"
                                 onClick={() =>
                                     setIsExerciseLibraryOpen(true)
                                 }
@@ -429,7 +462,7 @@ export function CreateWorkoutPage() {
 
                             <button
                                 type="button"
-                                className="create-workout-add-exercise"
+                                className="create-workout-page-add-exercise"
                                 onClick={() =>
                                     setIsExerciseLibraryOpen(true)
                                 }
@@ -466,6 +499,10 @@ export function CreateWorkoutPage() {
 
                     bodyParts={
                         bodyParts ?? []
+                    }
+
+                    workoutExercises={
+                        workoutExercises ?? []
                     }
 
                     onSearchChange={

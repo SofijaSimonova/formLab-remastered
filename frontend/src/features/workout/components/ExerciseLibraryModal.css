@@ -240,6 +240,19 @@
     text-transform: uppercase;
 }
 
+.exercise-library-added {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    color: #33d69f;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
 .exercise-library-add {
     flex-shrink: 0;
 
@@ -261,6 +274,21 @@
 .exercise-library-add:hover {
     background: #fff;
     color: #111;
+}
+
+.exercise-library-add.is-added {
+    border-color: #277f61;
+    color: #74e4ba;
+}
+
+.exercise-library-add.is-added:hover:not(:disabled) {
+    background: #183d31;
+    color: #a1f3d2;
+}
+
+.exercise-library-add:disabled {
+    cursor: wait;
+    opacity: 0.65;
 }
 
 .exercise-library-load-more {

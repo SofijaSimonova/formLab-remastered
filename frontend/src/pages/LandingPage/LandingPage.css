@@ -1,7 +1,13 @@
+/* =========================================================
+   LANDING PAGE
+   ========================================================= */
+
 .landing-page {
     min-height: 100vh;
+
     background: #0a0a0b;
     color: #e5e2e3;
+
     font-family: Inter, Arial, sans-serif;
 }
 
@@ -14,9 +20,10 @@
     text-decoration: none;
 }
 
-/* =========================
+
+/* =========================================================
    NAV
-========================= */
+   ========================================================= */
 
 .landing-nav {
     height: 64px;
@@ -57,12 +64,14 @@
 
 .landing-nav-actions {
     margin-left: auto;
+
     display: flex;
     align-items: center;
+
     gap: 12px;
 }
 
-.nav-login {
+.landing-nav-login {
     padding: 9px 16px;
 
     border: 1px solid #262629;
@@ -72,7 +81,7 @@
     font-size: 11px;
 }
 
-.nav-login:hover {
+.landing-nav-login:hover {
     background: #161618;
 }
 
@@ -80,8 +89,8 @@
     padding: 10px 17px;
 
     border-radius: 8px;
-    background: #3b82f6;
 
+    background: #3b82f6;
     color: white;
 
     font-family: "JetBrains Mono", monospace;
@@ -93,11 +102,12 @@
     background: #4d8eff;
 }
 
-/* =========================
-   HERO
-========================= */
 
-.hero {
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.landing-hero {
     min-height: 650px;
 
     max-width: 1280px;
@@ -106,19 +116,21 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr;
+
     gap: 64px;
 
     align-items: center;
 }
 
-.hero-content {
+.landing-hero-content {
     max-width: 620px;
 }
 
-.hero-eyebrow,
-.section-label {
+.landing-hero-eyebrow,
+.landing-section-label {
     display: flex;
     align-items: center;
+
     gap: 9px;
 
     margin-bottom: 20px;
@@ -131,15 +143,16 @@
     color: #8c909f;
 }
 
-.hero-eyebrow-dot {
+.landing-hero-eyebrow-dot {
     width: 6px;
     height: 6px;
 
     border-radius: 50%;
+
     background: #4edea3;
 }
 
-.hero h1 {
+.landing-hero h1 {
     margin: 0;
 
     font-size: clamp(42px, 5vw, 64px);
@@ -148,27 +161,28 @@
     font-weight: 700;
 }
 
-.hero h1 span {
+.landing-hero h1 span {
     color: #adc6ff;
 }
 
-.hero-description {
+.landing-hero-description {
     max-width: 530px;
 
     margin: 28px 0 32px;
 
     font-size: 16px;
     line-height: 25px;
+
     color: #c2c6d6;
 }
 
-.hero-actions {
+.landing-hero-actions {
     display: flex;
     gap: 12px;
     align-items: center;
 }
 
-.button {
+.landing-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -183,33 +197,34 @@
     font-weight: 500;
 }
 
-.button-primary {
+.landing-button-primary {
     background: #3b82f6;
     color: white;
 }
 
-.button-primary:hover {
+.landing-button-primary:hover {
     background: #4d8eff;
 }
 
-.button-secondary {
+.landing-button-secondary {
     border: 1px solid #262629;
     background: #0e0e0f;
 }
 
-.button-secondary:hover {
+.landing-button-secondary:hover {
     background: #1c1b1c;
 }
 
-/* =========================
-   HERO PRODUCT
-========================= */
 
-.hero-visual {
+/* =========================================================
+   HERO PRODUCT
+   ========================================================= */
+
+.landing-hero-visual {
     width: 100%;
 }
 
-.product-frame {
+.landing-product-frame {
     width: 100%;
 
     padding: 12px;
@@ -224,7 +239,7 @@
             inset 0 0 40px rgba(173, 198, 255, 0.03);
 }
 
-.product-topbar {
+.landing-product-topbar {
     height: 30px;
 
     display: flex;
@@ -239,24 +254,27 @@
     font-size: 8px;
 }
 
-.product-dots {
+.landing-product-dots {
     display: flex;
     gap: 4px;
 }
 
-.product-dots span {
+.landing-product-dots span {
     width: 5px;
     height: 5px;
+
     border-radius: 50%;
+
     background: #424754;
 }
 
-.product-status {
+.landing-product-status {
     color: #4edea3;
 }
 
-.exercise-view {
+.landing-exercise-view {
     height: 390px;
+
     position: relative;
     overflow: hidden;
 
@@ -272,7 +290,7 @@
             #0e0e0f;
 }
 
-.hero-exercise-grid {
+.landing-hero-exercise-grid {
     position: absolute;
     inset: 0;
 
@@ -288,33 +306,37 @@
     transform-origin: bottom;
 }
 
-.exercise-title {
+.landing-exercise-title {
     position: absolute;
+
     left: 18px;
     top: 18px;
 
     display: flex;
     flex-direction: column;
+
     gap: 5px;
 }
 
-.exercise-title span {
+.landing-exercise-title span {
     font-family: "JetBrains Mono", monospace;
     font-size: 8px;
     color: #8c909f;
 }
 
-.exercise-title strong {
+.landing-exercise-title strong {
     font-size: 13px;
 }
 
-.form-cues {
+.landing-form-cues {
     position: absolute;
+
     left: 18px;
     top: 70px;
 
     display: flex;
     flex-direction: column;
+
     gap: 5px;
 
     font-family: "JetBrains Mono", monospace;
@@ -323,15 +345,16 @@
     color: #c2c6d6;
 }
 
-.form-cues span::first-letter {
+.landing-form-cues span::first-letter {
     color: #4edea3;
 }
 
-/* =========================
-   CSS MODEL
-========================= */
 
-.squat-model {
+/* =========================================================
+   CSS MODEL
+   ========================================================= */
+
+.landing-squat-model {
     position: absolute;
 
     left: 50%;
@@ -343,7 +366,7 @@
     transform: translate(-50%, -50%);
 }
 
-.model-head {
+.landing-model-head {
     position: absolute;
 
     width: 30px;
@@ -360,7 +383,7 @@
             0 0 20px rgba(173, 198, 255, 0.25);
 }
 
-.model-torso {
+.landing-model-torso {
     position: absolute;
 
     left: 48px;
@@ -381,7 +404,7 @@
     transform: rotate(-3deg);
 }
 
-.model-arm {
+.landing-model-arm {
     position: absolute;
 
     width: 70px;
@@ -394,17 +417,17 @@
     background: #737986;
 }
 
-.model-arm-left {
+.landing-model-arm-left {
     left: -10px;
     transform: rotate(18deg);
 }
 
-.model-arm-right {
+.landing-model-arm-right {
     right: -10px;
     transform: rotate(-18deg);
 }
 
-.barbell {
+.landing-barbell {
     position: absolute;
 
     left: -35px;
@@ -418,8 +441,9 @@
     box-shadow: 0 0 10px rgba(173, 198, 255, 0.35);
 }
 
-.barbell div {
+.landing-barbell div {
     position: absolute;
+
     left: 70px;
     top: -7px;
 
@@ -430,8 +454,9 @@
     border-radius: 3px;
 }
 
-.barbell span {
+.landing-barbell span {
     position: absolute;
+
     top: -10px;
 
     width: 10px;
@@ -440,15 +465,15 @@
     background: #444952;
 }
 
-.barbell span:first-child {
+.landing-barbell span:first-child {
     left: -5px;
 }
 
-.barbell span:last-child {
+.landing-barbell span:last-child {
     right: -5px;
 }
 
-.model-leg {
+.landing-model-leg {
     position: absolute;
 
     top: 95px;
@@ -466,17 +491,17 @@
     );
 }
 
-.model-leg-left {
+.landing-model-leg-left {
     left: 47px;
     transform: rotate(30deg);
 }
 
-.model-leg-right {
+.landing-model-leg-right {
     left: 76px;
     transform: rotate(-30deg);
 }
 
-.model-foot {
+.landing-model-foot {
     position: absolute;
 
     width: 45px;
@@ -489,17 +514,17 @@
     background: #555b66;
 }
 
-.model-foot-left {
+.landing-model-foot-left {
     left: 10px;
     transform: rotate(-8deg);
 }
 
-.model-foot-right {
+.landing-model-foot-right {
     right: 10px;
     transform: rotate(8deg);
 }
 
-.joint {
+.landing-joint {
     position: absolute;
 
     width: 8px;
@@ -512,27 +537,27 @@
     box-shadow: 0 0 12px #adc6ff;
 }
 
-.joint-shoulder-left {
+.landing-joint-shoulder-left {
     left: 43%;
     top: 42%;
 }
 
-.joint-shoulder-right {
+.landing-joint-shoulder-right {
     left: 57%;
     top: 42%;
 }
 
-.joint-knee-left {
+.landing-joint-knee-left {
     left: 45%;
     bottom: 31%;
 }
 
-.joint-knee-right {
+.landing-joint-knee-right {
     left: 55%;
     bottom: 31%;
 }
 
-.movement-arrow {
+.landing-movement-arrow {
     position: absolute;
 
     color: #adc6ff;
@@ -541,17 +566,17 @@
     font-size: 24px;
 }
 
-.arrow-left {
+.landing-arrow-left {
     left: 36%;
     top: 42%;
 }
 
-.arrow-right {
+.landing-arrow-right {
     right: 36%;
     top: 42%;
 }
 
-.set-panel {
+.landing-set-panel {
     position: absolute;
 
     right: 16px;
@@ -570,7 +595,7 @@
     font-size: 7px;
 }
 
-.set-panel-heading {
+.landing-set-panel-heading {
     display: flex;
     justify-content: space-between;
 
@@ -579,8 +604,9 @@
     color: #8c909f;
 }
 
-.set-row {
+.landing-set-row {
     display: grid;
+
     grid-template-columns: 34px 1fr 10px;
 
     gap: 5px;
@@ -590,19 +616,19 @@
     border-top: 1px solid #262629;
 }
 
-.set-row strong {
+.landing-set-row strong {
     font-weight: 500;
 }
 
-.set-row b {
+.landing-set-row b {
     color: #4edea3;
 }
 
-.set-row.active {
+.landing-set-row-active {
     background: #1c1b1c;
 }
 
-.viewer-label {
+.landing-viewer-label {
     position: absolute;
 
     left: 16px;
@@ -614,34 +640,36 @@
     color: #8c909f;
 }
 
-/* =========================
-   SECTIONS
-========================= */
 
-.features,
-.workflow {
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.landing-features,
+.landing-workflow {
     padding: 100px 24px;
 
     border-top: 1px solid #262629;
 }
 
-.features {
+.landing-features {
     background: #131314;
 }
 
-.section-heading {
+.landing-section-heading {
     max-width: 700px;
+
     margin: 0 auto 48px;
 
     text-align: center;
 }
 
-.section-heading .section-label {
+.landing-section-heading .landing-section-label {
     justify-content: center;
 }
 
-.section-heading h2,
-.final-cta h2 {
+.landing-section-heading h2,
+.landing-final-cta h2 {
     margin: 0;
 
     font-size: clamp(32px, 4vw, 48px);
@@ -649,7 +677,7 @@
     letter-spacing: -0.035em;
 }
 
-.section-heading p {
+.landing-section-heading p {
     max-width: 600px;
 
     margin: 20px auto 0;
@@ -660,17 +688,28 @@
     line-height: 24px;
 }
 
-.feature-grid {
+.landing-section-heading-centered {
+    text-align: center;
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.landing-feature-grid {
     max-width: 1200px;
 
     margin: 0 auto;
 
     display: grid;
+
     grid-template-columns: repeat(4, 1fr);
+
     gap: 16px;
 }
 
-.feature-card {
+.landing-feature-card {
     min-height: 230px;
 
     padding: 24px;
@@ -685,12 +724,12 @@
             transform 0.2s;
 }
 
-.feature-card:hover {
+.landing-feature-card:hover {
     border-color: #424754;
     transform: translateY(-3px);
 }
 
-.feature-number {
+.landing-feature-number {
     display: block;
 
     margin-bottom: 24px;
@@ -701,7 +740,7 @@
     color: #adc6ff;
 }
 
-.feature-icon {
+.landing-feature-icon {
     width: 30px;
     height: 30px;
 
@@ -719,14 +758,14 @@
     font-family: "JetBrains Mono", monospace;
 }
 
-.feature-card h3 {
+.landing-feature-card h3 {
     margin: 0 0 10px;
 
     font-size: 18px;
     letter-spacing: -0.02em;
 }
 
-.feature-card p {
+.landing-feature-card p {
     margin: 0;
 
     color: #8c909f;
@@ -735,29 +774,28 @@
     line-height: 20px;
 }
 
-/* =========================
-   WORKFLOW
-========================= */
 
-.workflow {
+/* =========================================================
+   WORKFLOW
+   ========================================================= */
+
+.landing-workflow {
     background: #0a0a0b;
 }
 
-.centered {
-    text-align: center;
-}
-
-.workflow-grid {
+.landing-workflow-grid {
     max-width: 1200px;
 
     margin: 0 auto 56px;
 
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 16px;
 }
 
-.workflow-card {
+.landing-workflow-card {
     padding: 24px;
 
     min-height: 170px;
@@ -768,20 +806,20 @@
     background: #161618;
 }
 
-.workflow-card > span {
+.landing-workflow-card > span {
     font-family: "JetBrains Mono", monospace;
     font-size: 10px;
 
     color: #adc6ff;
 }
 
-.workflow-card h3 {
+.landing-workflow-card h3 {
     margin: 18px 0 8px;
 
     font-size: 18px;
 }
 
-.workflow-card p {
+.landing-workflow-card p {
     margin: 0;
 
     color: #8c909f;
@@ -790,11 +828,12 @@
     line-height: 20px;
 }
 
-/* =========================
-   DASHBOARD
-========================= */
 
-.dashboard-preview {
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+.landing-dashboard-preview {
     max-width: 1200px;
 
     margin: 0 auto;
@@ -807,7 +846,7 @@
     background: #161618;
 }
 
-.dashboard-browser-bar {
+.landing-dashboard-browser-bar {
     height: 38px;
 
     display: flex;
@@ -818,12 +857,12 @@
     border-bottom: 1px solid #262629;
 }
 
-.browser-dots {
+.landing-browser-dots {
     display: flex;
     gap: 5px;
 }
 
-.browser-dots span {
+.landing-browser-dots span {
     width: 6px;
     height: 6px;
 
@@ -832,7 +871,7 @@
     background: #424754;
 }
 
-.browser-address {
+.landing-browser-address {
     margin: 0 auto;
 
     padding: 4px 40px;
@@ -846,17 +885,18 @@
     color: #8c909f;
 }
 
-.dashboard-body {
+.landing-dashboard-body {
     display: flex;
 
     min-height: 360px;
 }
 
-.dashboard-sidebar {
+.landing-dashboard-sidebar {
     width: 150px;
 
     display: flex;
     flex-direction: column;
+
     gap: 18px;
 
     padding: 24px 16px;
@@ -869,7 +909,7 @@
     color: #8c909f;
 }
 
-.dashboard-sidebar strong {
+.landing-dashboard-sidebar strong {
     margin-bottom: 18px;
 
     color: #e5e2e3;
@@ -878,7 +918,7 @@
     font-size: 15px;
 }
 
-.dashboard-active {
+.landing-dashboard-active {
     padding: 9px;
 
     border-radius: 5px;
@@ -888,13 +928,13 @@
     color: #adc6ff;
 }
 
-.dashboard-main {
+.landing-dashboard-main {
     flex: 1;
 
     padding: 28px;
 }
 
-.dashboard-header {
+.landing-dashboard-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -902,91 +942,96 @@
     margin-bottom: 24px;
 }
 
-.dashboard-header small {
+.landing-dashboard-header small {
     font-family: "JetBrains Mono", monospace;
     font-size: 8px;
 
     color: #8c909f;
 }
 
-.dashboard-header h3 {
+.landing-dashboard-header h3 {
     margin: 7px 0 0;
 
     font-size: 20px;
 }
 
-.dashboard-time {
+.landing-dashboard-time {
     font-family: "JetBrains Mono", monospace;
     font-size: 10px;
 
     color: #8c909f;
 }
 
-.dashboard-content {
+.landing-dashboard-content {
     display: grid;
+
     grid-template-columns: 1fr 280px;
+
     gap: 16px;
 }
 
-.volume-chart,
-.progress-panel {
+.landing-volume-chart,
+.landing-progress-panel {
     border: 1px solid #262629;
     border-radius: 8px;
 
     background: #0e0e0f;
 }
 
-.volume-chart {
+.landing-volume-chart {
     padding: 20px;
 }
 
-.volume-chart > span,
-.progress-panel > span {
+.landing-volume-chart > span,
+.landing-progress-panel > span {
     font-family: "JetBrains Mono", monospace;
     font-size: 8px;
 
     color: #8c909f;
 }
 
-.bars {
+.landing-bars {
     height: 220px;
 
     display: flex;
     align-items: flex-end;
+
     gap: 10px;
 
     padding-top: 30px;
 }
 
-.bars i {
+.landing-bars i {
     flex: 1;
 
     height: 30%;
+
     background: #353a46;
 }
 
-.bars i:nth-child(2) {
+.landing-bars i:nth-child(2) {
     height: 45%;
 }
 
-.bars i:nth-child(3) {
+.landing-bars i:nth-child(3) {
     height: 52%;
 }
 
-.bars i:nth-child(4) {
+.landing-bars i:nth-child(4) {
     height: 68%;
 }
 
-.bars i.current {
-    height: 82%;
-    background: #59667e;
+.landing-bars-current {
+    height: 82% !important;
+
+    background: #59667e !important;
 }
 
-.progress-panel {
+.landing-progress-panel {
     padding: 20px;
 }
 
-.progress-panel > strong {
+.landing-progress-panel > strong {
     display: block;
 
     margin: 14px 0;
@@ -994,7 +1039,7 @@
     font-size: 13px;
 }
 
-.progress-panel > div {
+.landing-progress-panel > div {
     display: flex;
     justify-content: space-between;
 
@@ -1006,20 +1051,22 @@
     font-size: 9px;
 }
 
-.progress-panel b {
+.landing-progress-panel b {
     font-weight: 400;
+
     color: #8c909f;
 }
 
-.progress-panel .current-set {
+.landing-progress-current-set {
     color: #adc6ff;
 }
 
-/* =========================
-   CTA
-========================= */
 
-.final-cta {
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.landing-final-cta {
     padding: 120px 24px;
 
     border-top: 1px solid #262629;
@@ -1029,15 +1076,15 @@
     background: #131314;
 }
 
-.final-cta .section-label {
+.landing-final-cta .landing-section-label {
     justify-content: center;
 }
 
-.final-cta h2 {
+.landing-final-cta h2 {
     margin-bottom: 20px;
 }
 
-.final-cta p {
+.landing-final-cta p {
     max-width: 520px;
 
     margin: 0 auto 30px;
@@ -1048,19 +1095,22 @@
     line-height: 24px;
 }
 
-.final-cta .hero-actions {
+.landing-final-cta .landing-hero-actions {
     justify-content: center;
 }
 
-/* =========================
+
+/* =========================================================
    FOOTER
-========================= */
+   ========================================================= */
 
 .landing-footer {
     padding: 48px 24px 24px;
 
     display: grid;
+
     grid-template-columns: 2fr 1fr 1fr;
+
     gap: 48px;
 
     border-top: 1px solid #262629;
@@ -1068,15 +1118,15 @@
     background: #0e0e0f;
 }
 
-.footer-brand {
+.landing-footer-brand {
     max-width: 300px;
 }
 
-.footer-brand strong {
+.landing-footer-brand strong {
     font-size: 18px;
 }
 
-.footer-brand p {
+.landing-footer-brand p {
     margin: 12px 0 0;
 
     color: #8c909f;
@@ -1085,15 +1135,16 @@
     line-height: 19px;
 }
 
-.footer-column {
+.landing-footer-column {
     display: flex;
     flex-direction: column;
+
     gap: 12px;
 
     font-size: 12px;
 }
 
-.footer-column strong {
+.landing-footer-column strong {
     margin-bottom: 4px;
 
     font-family: "JetBrains Mono", monospace;
@@ -1102,15 +1153,15 @@
     color: #8c909f;
 }
 
-.footer-column a {
+.landing-footer-column a {
     color: #c2c6d6;
 }
 
-.footer-column a:hover {
+.landing-footer-column a:hover {
     color: #adc6ff;
 }
 
-.footer-bottom {
+.landing-footer-bottom {
     grid-column: 1 / -1;
 
     padding-top: 24px;
@@ -1126,33 +1177,35 @@
     color: #626673;
 }
 
-/* =========================
+
+/* =========================================================
    RESPONSIVE
-========================= */
+   ========================================================= */
 
 @media (max-width: 900px) {
-    .hero {
+    .landing-hero {
         grid-template-columns: 1fr;
+
         padding-top: 70px;
     }
 
-    .hero-content {
+    .landing-hero-content {
         max-width: 700px;
     }
 
-    .feature-grid {
+    .landing-feature-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .workflow-grid {
+    .landing-workflow-grid {
         grid-template-columns: 1fr;
     }
 
-    .dashboard-content {
+    .landing-dashboard-content {
         grid-template-columns: 1fr;
     }
 
-    .progress-panel {
+    .landing-progress-panel {
         min-height: 250px;
     }
 }
@@ -1166,81 +1219,84 @@
         display: none;
     }
 
-    .hero {
+    .landing-hero {
         padding: 60px 16px;
+
         gap: 42px;
     }
 
-    .hero h1 {
+    .landing-hero h1 {
         font-size: 42px;
     }
 
-    .hero-description {
+    .landing-hero-description {
         font-size: 14px;
     }
 
-    .hero-actions {
+    .landing-hero-actions {
         flex-wrap: wrap;
     }
 
-    .hero-visual {
+    .landing-hero-visual {
         overflow: hidden;
     }
 
-    .exercise-view {
+    .landing-exercise-view {
         height: 330px;
     }
 
-    .set-panel {
+    .landing-set-panel {
         transform: scale(0.8);
         transform-origin: top right;
     }
 
-    .form-cues {
+    .landing-form-cues {
         transform: scale(0.85);
         transform-origin: top left;
     }
 
-    .features,
-    .workflow {
+    .landing-features,
+    .landing-workflow {
         padding: 72px 16px;
     }
 
-    .feature-grid {
+    .landing-feature-grid {
         grid-template-columns: 1fr;
     }
 
-    .dashboard-body {
+    .landing-dashboard-body {
         min-height: auto;
     }
 
-    .dashboard-sidebar {
+    .landing-dashboard-sidebar {
         display: none;
     }
 
-    .dashboard-main {
+    .landing-dashboard-main {
         padding: 18px;
     }
 
-    .dashboard-content {
+    .landing-dashboard-content {
         grid-template-columns: 1fr;
     }
 
-    .volume-chart {
+    .landing-volume-chart {
         min-height: 280px;
     }
 
     .landing-footer {
         grid-template-columns: 1fr 1fr;
+
         padding: 40px 16px 20px;
     }
 
-    .footer-brand {
+    .landing-footer-brand {
         grid-column: 1 / -1;
     }
 
-    .footer-bottom {
+    .landing-footer-bottom {
         flex-direction: column;
+
         gap: 10px;
     }
 }

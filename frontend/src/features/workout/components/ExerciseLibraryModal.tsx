@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import type { ExerciseListResponse } from '../../exercises/types/exercise.types'
+import type { WorkoutExerciseResponse } from '../types/workout.types'
 
 import './ExerciseLibraryModal.css'
 
@@ -14,6 +15,8 @@ interface ExerciseLibraryModalProps {
         id: string
         name: string
     }[]
+
+    workoutExercises: WorkoutExerciseResponse[]
 
     onSearchChange: (search: string) => void
     onBodyPartChange: (bodyPartId: string | undefined) => void
@@ -34,6 +37,7 @@ export function ExerciseLibraryModal({
                                          isFetchingNextPage,
                                          hasNextPage,
                                          bodyParts,
+                                         workoutExercises,
                                          onSearchChange,
                                          onBodyPartChange,
                                          onLoadMore,
@@ -44,6 +48,10 @@ export function ExerciseLibraryModal({
 
     const [targetSets, setTargetSets] = useState(3)
     const [targetReps, setTargetReps] = useState(8)
+    const [savingExerciseId, setSavingExerciseId] =
+        useState<string | null>(null)
+    const [savedExerciseId, setSavedExerciseId] =
+        useState<string | null>(null)
 
     function handleSearchChange(
         event: React.ChangeEvent<HTMLInputElement>,
@@ -65,11 +73,19 @@ export function ExerciseLibraryModal({
     async function handleAdd(
         exercise: ExerciseListResponse,
     ) {
-        await onAdd(
-            exercise,
-            targetSets,
-            targetReps,
-        )
+        setSavingExerciseId(exercise.id)
+
+        try {
+            await onAdd(
+                exercise,
+                targetSets,
+                targetReps,
+            )
+
+            setSavedExerciseId(exercise.id)
+        } finally {
+            setSavingExerciseId(null)
+        }
     }
 
     return (
@@ -194,11 +210,25 @@ export function ExerciseLibraryModal({
                             No exercises found.
                         </div>
                     ) : (
-                        exercises.map((exercise) => (
-                            <div
-                                key={exercise.id}
-                                className="exercise-library-item"
-                            >
+                        exercises.map((exercise) => {
+                            const existingWorkoutExercise =
+                                workoutExercises.find(
+                                    (workoutExercise) =>
+                                        workoutExercise.exerciseId ===
+                                        exercise.id,
+                                )
+
+                            const isSaving =
+                                savingExerciseId === exercise.id
+
+                            const isSaved =
+                                savedExerciseId === exercise.id
+
+                            return (
+                                <div
+                                    key={exercise.id}
+                                    className="exercise-library-item"
+                                >
                                 <div className="exercise-library-item-info">
                                     <h3>
                                         {exercise.name}
@@ -221,19 +251,42 @@ export function ExerciseLibraryModal({
                                             ),
                                         )}
                                     </div>
+
+                                    {existingWorkoutExercise && (
+                                        <span className="exercise-library-added">
+                                            ✓ Added to workout
+                                        </span>
+                                    )}
                                 </div>
 
                                 <button
                                     type="button"
-                                    className="exercise-library-add"
+                                    className={[
+                                        'exercise-library-add',
+                                        existingWorkoutExercise
+                                            ? 'is-added'
+                                            : '',
+                                    ]
+                                        .filter(Boolean)
+                                        .join(' ')}
                                     onClick={() =>
                                         handleAdd(exercise)
                                     }
+                                    disabled={isSaving}
                                 >
-                                    + Add
+                                    {isSaving
+                                        ? existingWorkoutExercise
+                                            ? 'Updating...'
+                                            : 'Adding...'
+                                        : isSaved
+                                            ? '✓ Saved'
+                                            : existingWorkoutExercise
+                                                ? 'Update targets'
+                                                : '+ Add'}
                                 </button>
                             </div>
-                        ))
+                            )
+                        })
                     )}
 
                     {hasNextPage && (

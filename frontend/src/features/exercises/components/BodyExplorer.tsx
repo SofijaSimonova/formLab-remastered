@@ -12,12 +12,15 @@ export function BodyExplorer({
                                  onSelectBodyPart,
                              }: BodyExplorerProps) {
     return (
-        <aside className="body-explorer">
-            <div className="body-explorer-header">
+        <aside className="exercises-body-explorer">
+            <div className="exercises-body-explorer-header">
                 <span>BODY EXPLORER</span>
 
-                <div className="body-explorer-view-toggle">
-                    <button type="button" className="active">
+                <div className="exercises-body-explorer-view-toggle">
+                    <button
+                        type="button"
+                        className="exercises-body-explorer-view-active"
+                    >
                         Front
                     </button>
 
@@ -27,17 +30,17 @@ export function BodyExplorer({
                 </div>
             </div>
 
-            <div className="body-explorer-model">
-                <div className="body-explorer-placeholder">
+            <div className="exercises-body-explorer-model">
+                <div className="exercises-body-explorer-placeholder">
                     <span>3D BODY MODEL</span>
 
                     {bodyParts.map((bodyPart) => (
                         <button
                             key={bodyPart.id}
                             type="button"
-                            className={`body-part-point ${
+                            className={`exercises-body-part-point ${
                                 selectedBodyPartId === bodyPart.id
-                                    ? 'selected'
+                                    ? 'exercises-body-part-selected'
                                     : ''
                             }`}
                             onClick={() =>

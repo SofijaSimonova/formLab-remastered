@@ -3,6 +3,7 @@ import type {
     LoginResponse,
     RegisterRequest,
     RegisterResponse,
+    ChangePasswordRequest
 } from './types/types'
 
 import { apiClient } from '../../api/client'
@@ -27,4 +28,13 @@ export async function register(
     )
 
     return response.data
+}
+
+export async function changePassword(
+    request: ChangePasswordRequest,
+): Promise<void> {
+    await apiClient.put(
+        '/api/auth/me/password',
+        request,
+    )
 }

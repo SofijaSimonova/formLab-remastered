@@ -8,6 +8,13 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface WorkoutSetMapper {
 
-    @Mapping(target = "workoutExerciseId", source = "workoutExercise.id")
+    @Mapping(
+            target = "workoutSessionId",
+            source = "workoutSession.id"
+    )
+    @Mapping(
+            target = "workoutExerciseId",
+            source = "workoutExercise.id"
+    )
     WorkoutSetResponse toResponse(WorkoutSet workoutSet);
 }

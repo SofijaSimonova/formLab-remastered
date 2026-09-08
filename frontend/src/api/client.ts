@@ -45,3 +45,20 @@ apiClient.interceptors.response.use(
         return Promise.reject(error)
     },
 )
+
+export const aiClient = axios.create({
+    baseURL: import.meta.env.VITE_AI_API_BASE_URL,
+    headers: {
+        'Content-Type': 'application/json',
+    },
+})
+
+aiClient.interceptors.request.use((config) => {
+    const token = getToken()
+
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+    }
+
+    return config
+})

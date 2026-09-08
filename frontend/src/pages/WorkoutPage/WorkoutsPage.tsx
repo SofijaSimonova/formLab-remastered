@@ -153,7 +153,7 @@ export function WorkoutsPage() {
                                         ).toLocaleDateString()}
                                     </span>
 
-                                    <span>
+                                    <span className="workout-card-footer-action">
                                         Open workout
                                     </span>
                                 </div>

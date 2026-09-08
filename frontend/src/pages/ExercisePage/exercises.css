@@ -53,7 +53,7 @@
     flex-shrink: 0;
 }
 
-.exercise-search {
+.exercises-page-search {
     display: flex;
     align-items: center;
 
@@ -69,13 +69,13 @@
     gap: 7px;
 }
 
-.exercise-search > span {
+.exercises-page-search > span {
     color: #777;
 
     font-size: 12px;
 }
 
-.exercise-search input {
+.exercises-page-search input {
     width: 100%;
     height: 100%;
 
@@ -90,11 +90,11 @@
     font-size: 11px;
 }
 
-.exercise-search input::placeholder {
+.exercises-page-search input::placeholder {
     color: #666;
 }
 
-.add-custom-button {
+.exercises-page-add-custom-button {
     height: 30px;
     padding: 0 13px;
 
@@ -110,7 +110,7 @@
     cursor: pointer;
 }
 
-.add-custom-button:hover {
+.exercises-page-add-custom-button:hover {
     background: #bdd0ff;
 }
 
@@ -119,7 +119,7 @@
    MAIN LAYOUT
    ========================================================= */
 
-.exercises-layout {
+.exercises-page-layout {
     display: grid;
 
     grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
@@ -132,6 +132,8 @@
     min-height: 0;
 
     align-items: stretch;
+
+    position: relative;
 }
 
 
@@ -139,7 +141,7 @@
    EXERCISE TOOLBAR
    ========================================================= */
 
-.exercise-toolbar {
+.exercises-toolbar {
     display: flex;
     align-items: center;
 
@@ -159,7 +161,7 @@
     gap: 6px;
 }
 
-.targeting-label {
+.exercises-toolbar-targeting-label {
     display: flex;
     align-items: center;
 
@@ -176,13 +178,13 @@
     gap: 6px;
 }
 
-.targeting-label strong {
+.exercises-toolbar-targeting-label strong {
     color: #aaa;
 
     font-weight: 600;
 }
 
-.targeting-value {
+.exercises-toolbar-targeting-value {
     padding: 4px 7px;
 
     border-radius: 4px;
@@ -194,7 +196,7 @@
     font-weight: 600;
 }
 
-.clear-filter-button {
+.exercises-toolbar-clear-filter {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -209,11 +211,11 @@
     cursor: pointer;
 }
 
-.clear-filter-button:hover {
+.exercises-toolbar-clear-filter:hover {
     color: #fff;
 }
 
-.filter-button {
+.exercises-toolbar-filter {
     height: 30px;
     padding: 0 10px;
 
@@ -229,12 +231,12 @@
     cursor: pointer;
 }
 
-.filter-button:hover {
+.exercises-toolbar-filter:hover {
     background: #242424;
     color: #ddd;
 }
 
-.exercise-toolbar-spacer {
+.exercises-toolbar-spacer {
     flex: 1;
 }
 
@@ -243,7 +245,7 @@
    BODY EXPLORER
    ========================================================= */
 
-.body-explorer {
+.exercises-body-explorer {
     width: 100%;
     height: 100%;
     min-height: 0;
@@ -258,9 +260,12 @@
     background: #111;
 
     align-self: stretch;
+
+    position: relative;
+    isolation: isolate;
 }
 
-.body-explorer-header {
+.exercises-body-explorer-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -280,13 +285,13 @@
     font-weight: 700;
 }
 
-.body-explorer-view-toggle {
+.exercises-body-explorer-view-toggle {
     display: flex;
 
     gap: 4px;
 }
 
-.body-explorer-view-toggle button {
+.exercises-body-explorer-view-toggle button {
     padding: 5px 8px;
 
     border: 1px solid #333;
@@ -300,12 +305,13 @@
     cursor: pointer;
 }
 
-.body-explorer-view-toggle button:hover {
+.exercises-body-explorer-view-toggle button:hover {
     background: #242424;
     color: #ddd;
 }
 
-.body-explorer-view-toggle button.active {
+.exercises-body-explorer-view-toggle
+button.exercises-body-explorer-view-active {
     background: #292929;
     color: #fff;
 }
@@ -315,23 +321,25 @@
    BODY MODEL
    ========================================================= */
 
-.body-explorer-model {
+.exercises-body-explorer-model {
     position: relative;
 
     width: 100%;
     height: calc(100% - 42px);
 
     overflow: hidden;
+
+    isolation: isolate;
 }
 
-.body-explorer-placeholder {
+.exercises-body-explorer-placeholder {
     position: relative;
 
     width: 100%;
     height: 100%;
 }
 
-.body-explorer-placeholder > span {
+.exercises-body-explorer-placeholder > span {
     font-size: 11px;
     letter-spacing: 1px;
 }
@@ -341,7 +349,7 @@
    BODY PART POINTS
    ========================================================= */
 
-.body-part-point {
+.exercises-body-part-point {
     position: absolute;
 
     display: flex;
@@ -361,7 +369,7 @@
     cursor: pointer;
 }
 
-.body-part-point span {
+.exercises-body-part-point span {
     width: 9px;
     height: 9px;
 
@@ -372,18 +380,18 @@
     background: #777;
 }
 
-.body-part-point:hover {
+.exercises-body-part-point:hover {
     color: #fff;
 }
 
-.body-part-point:hover span,
-.body-part-point.selected span {
+.exercises-body-part-point:hover span,
+.exercises-body-part-point.exercises-body-part-selected span {
     background: #d9f99d;
 
     box-shadow: 0 0 8px rgba(217, 249, 157, 0.7);
 }
 
-.body-part-point.selected {
+.exercises-body-part-point.exercises-body-part-selected {
     color: #d9f99d;
 }
 
@@ -392,27 +400,27 @@
    TEMPORARY BODY PART POSITIONS
    ========================================================= */
 
-.body-part-point:nth-child(2) {
+.exercises-body-part-point:nth-child(2) {
     top: 28%;
     left: 40%;
 }
 
-.body-part-point:nth-child(3) {
+.exercises-body-part-point:nth-child(3) {
     top: 35%;
     left: 60%;
 }
 
-.body-part-point:nth-child(4) {
+.exercises-body-part-point:nth-child(4) {
     top: 45%;
     left: 35%;
 }
 
-.body-part-point:nth-child(5) {
+.exercises-body-part-point:nth-child(5) {
     top: 48%;
     left: 60%;
 }
 
-.body-part-point:nth-child(6) {
+.exercises-body-part-point:nth-child(6) {
     top: 60%;
     left: 42%;
 }
@@ -422,7 +430,7 @@
    EXERCISE RESULTS
    ========================================================= */
 
-.exercise-results {
+.exercises-page-results {
     min-width: 0;
     min-height: 0;
 
@@ -437,6 +445,10 @@
     padding-bottom: 20px;
 
     scrollbar-gutter: stable;
+
+    position: relative;
+    isolation: isolate;
+    z-index: 1;
 }
 
 
@@ -444,7 +456,7 @@
    EXERCISE GRID
    ========================================================= */
 
-.exercise-grid {
+.exercises-page-grid {
     display: grid;
 
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -454,12 +466,15 @@
     width: 100%;
 }
 
+.exercises-page-grid-loading {
+}
+
 
 /* =========================================================
    EXERCISE CARD
    ========================================================= */
 
-.exercise-card {
+.exercises-card {
     min-width: 0;
 
     overflow: hidden;
@@ -468,6 +483,9 @@
     border-radius: 8px;
 
     background: #151515;
+
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -475,7 +493,7 @@
    CARD IMAGE
    ========================================================= */
 
-.exercise-card-image {
+.exercises-card-image {
     position: relative;
 
     width: 100%;
@@ -491,7 +509,7 @@
    CARD BADGES
    ========================================================= */
 
-.exercise-card-badges {
+.exercises-card-badges {
     position: absolute;
 
     top: 10px;
@@ -506,7 +524,7 @@
     gap: 6px;
 }
 
-.exercise-card-badge {
+.exercises-card-badge {
     display: inline-flex;
     align-items: center;
 
@@ -529,7 +547,7 @@
    CARD CONTENT
    ========================================================= */
 
-.exercise-card-content {
+.exercises-card-content {
     padding: 14px;
 }
 
@@ -538,7 +556,7 @@
    CARD HEADER
    ========================================================= */
 
-.exercise-card-header {
+.exercises-card-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -546,7 +564,7 @@
     gap: 12px;
 }
 
-.exercise-card-header h3 {
+.exercises-card-header h3 {
     min-width: 0;
 
     margin: 0;
@@ -558,7 +576,7 @@
     line-height: 1.3;
 }
 
-.exercise-card-header button {
+.exercises-card-header button {
     flex-shrink: 0;
 
     padding: 0;
@@ -574,7 +592,7 @@
     cursor: pointer;
 }
 
-.exercise-card-header button:hover {
+.exercises-card-header button:hover {
     color: #fff;
 }
 
@@ -583,7 +601,7 @@
    CARD DESCRIPTION
    ========================================================= */
 
-.exercise-card-content p {
+.exercises-card-content p {
     margin: 8px 0 14px;
 
     color: #8d8d8d;
@@ -603,14 +621,14 @@
    CARD BODY PARTS
    ========================================================= */
 
-.exercise-card-body-parts {
+.exercises-card-body-parts {
     display: flex;
     flex-wrap: wrap;
 
     gap: 6px;
 }
 
-.exercise-card-body-parts span {
+.exercises-card-body-parts span {
     display: inline-flex;
     align-items: center;
 
@@ -631,7 +649,7 @@
    LOAD MORE
    ========================================================= */
 
-.load-more-button {
+.exercises-page-load-more {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -653,17 +671,17 @@
     cursor: pointer;
 }
 
-.load-more-button:hover {
+.exercises-page-load-more:hover {
     color: #d9f99d;
 }
 
-.load-more-button:disabled {
+.exercises-page-load-more:disabled {
     opacity: 0.6;
 
     cursor: default;
 }
 
-.load-more-button span {
+.exercises-page-load-more span {
     font-size: 15px;
 }
 
@@ -672,7 +690,7 @@
    EMPTY STATE
    ========================================================= */
 
-.empty-exercises {
+.exercises-page-empty {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -690,28 +708,28 @@
    ========================================================= */
 
 @media (max-width: 1200px) {
-    .exercise-grid {
+    .exercises-page-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 1000px) {
-    .exercises-layout {
+    .exercises-page-layout {
         grid-template-columns: 1fr;
 
         height: auto;
     }
 
-    .body-explorer {
+    .exercises-body-explorer {
         height: 500px;
         min-height: 500px;
     }
 
-    .body-explorer-model {
+    .exercises-body-explorer-model {
         height: calc(500px - 42px);
     }
 
-    .exercise-results {
+    .exercises-page-results {
         height: auto;
         overflow-y: visible;
     }
@@ -729,16 +747,16 @@
         width: 100%;
     }
 
-    .exercise-search {
+    .exercises-page-search {
         flex: 1;
         width: auto;
     }
 
-    .exercise-grid {
+    .exercises-page-grid {
         grid-template-columns: 1fr;
     }
 
-    .exercise-toolbar {
+    .exercises-toolbar {
         flex-wrap: wrap;
     }
 }
@@ -748,20 +766,20 @@
    CUSTOM SCROLLBAR - EXERCISE CARDS
    ========================================================= */
 
-.exercise-results {
+.exercises-page-results {
     scrollbar-width: thin;
     scrollbar-color: #3a3a3a transparent;
 }
 
-.exercise-results::-webkit-scrollbar {
+.exercises-page-results::-webkit-scrollbar {
     width: 8px;
 }
 
-.exercise-results::-webkit-scrollbar-track {
+.exercises-page-results::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.exercise-results::-webkit-scrollbar-thumb {
+.exercises-page-results::-webkit-scrollbar-thumb {
     background: #3a3a3a;
     border-radius: 10px;
 
@@ -771,41 +789,13 @@
     transition: background 0.2s ease;
 }
 
-.exercise-results::-webkit-scrollbar-thumb:hover {
+.exercises-page-results::-webkit-scrollbar-thumb:hover {
     background: #d9f99d;
 
     border: 2px solid transparent;
     background-clip: padding-box;
 }
 
-.exercise-results::-webkit-scrollbar-corner {
+.exercises-page-results::-webkit-scrollbar-corner {
     background: transparent;
-}
-
-.exercises-page,
-.exercises-layout,
-.body-explorer,
-.body-explorer-model,
-.exercise-results {
-    position: relative;
-}
-
-.body-explorer {
-    isolation: isolate;
-    overflow: hidden;
-}
-
-.body-explorer-model {
-    isolation: isolate;
-    overflow: hidden;
-}
-
-.exercise-results {
-    isolation: isolate;
-    z-index: 1;
-}
-
-.exercise-card {
-    position: relative;
-    z-index: 1;
 }

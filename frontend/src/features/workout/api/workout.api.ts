@@ -2,10 +2,10 @@ import { apiClient } from '../../../api/client'
 
 import type {
     AddWorkoutExerciseRequest,
-    CreateWorkoutRequest,
+    CreateWorkoutRequest, CreateWorkoutSessionResponse,
     CreateWorkoutSetRequest,
     WorkoutExerciseResponse,
-    WorkoutResponse,
+    WorkoutResponse, WorkoutSessionSummaryResponse,
     WorkoutSetResponse,
 } from '../types/workout.types'
 
@@ -77,22 +77,23 @@ export async function deleteWorkoutExercise(
 
 
 export async function getWorkoutSets(
+    workoutSessionId: string,
     workoutExerciseId: string,
 ): Promise<WorkoutSetResponse[]> {
     const response = await apiClient.get<WorkoutSetResponse[]>(
-        `/api/workout-exercises/${workoutExerciseId}/sets`,
+        `/api/workout-sessions/${workoutSessionId}/exercises/${workoutExerciseId}/sets`,
     )
 
     return response.data
 }
 
-
 export async function createWorkoutSet(
+    workoutSessionId: string,
     workoutExerciseId: string,
     request: CreateWorkoutSetRequest,
 ): Promise<WorkoutSetResponse> {
     const response = await apiClient.post<WorkoutSetResponse>(
-        `/api/workout-exercises/${workoutExerciseId}/sets`,
+        `/api/workout-sessions/${workoutSessionId}/exercises/${workoutExerciseId}/sets`,
         request,
     )
 
@@ -101,10 +102,58 @@ export async function createWorkoutSet(
 
 
 export async function deleteWorkoutSet(
+    workoutSessionId: string,
     workoutExerciseId: string,
     setId: string,
 ): Promise<void> {
     await apiClient.delete(
-        `/api/workout-exercises/${workoutExerciseId}/sets/${setId}`,
+        `/api/workout-sessions/${workoutSessionId}/exercises/${workoutExerciseId}/sets/${setId}`,
     )
+}
+
+export async function createWorkoutSession(
+    workoutId: string,
+): Promise<CreateWorkoutSessionResponse> {
+    const response =
+        await apiClient.post<CreateWorkoutSessionResponse>(
+            `/api/workouts/${workoutId}/sessions`,
+        )
+
+    return response.data
+}
+
+export async function getWorkoutSessionSummary(
+    workoutId: string,
+    sessionId: string,
+): Promise<WorkoutSessionSummaryResponse> {
+    const response =
+        await apiClient.get<WorkoutSessionSummaryResponse>(
+            `/api/workouts/${workoutId}/sessions/${sessionId}/summary`,
+        )
+
+    return response.data
+}
+
+export async function completeWorkoutSession(
+    workoutId: string,
+    sessionId: string,
+): Promise<CreateWorkoutSessionResponse> {
+    const response =
+        await apiClient.post<CreateWorkoutSessionResponse>(
+            `/api/workouts/${workoutId}/sessions/${sessionId}/complete`,
+        )
+
+    return response.data
+}
+
+export async function getWorkoutSession(
+    workoutId: string,
+    sessionId: string,
+): Promise<CreateWorkoutSessionResponse> {
+    const response =
+        await apiClient.get<CreateWorkoutSessionResponse>(
+            `/api/workouts/${workoutId}/sessions/${sessionId}`,
+        )
+
+    return response.data
 }

@@ -24,7 +24,7 @@ public class WorkoutExerciseController {
     }
 
     @GetMapping
-//    @PreAuthorize("@authorizationService.canAccessWorkout(#workoutId, authentication)")
+    @PreAuthorize("@authorizationService.canAccessWorkout(#workoutId, authentication)")
     public List<WorkoutExerciseResponse> getWorkoutExercises(
             @PathVariable UUID workoutId
     ) {

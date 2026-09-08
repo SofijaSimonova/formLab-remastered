@@ -41,7 +41,7 @@ public class UserGoalService {
             throw new ResourceNotFoundException("User not found");
         }
 
-        return userGoalRepository.findByUserId(userId)
+        return userGoalRepository.findByUserIdWithGoal(userId)
                 .stream()
                 .map(userGoalMapper::toResponse)
                 .toList();

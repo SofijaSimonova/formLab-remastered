@@ -12,6 +12,7 @@ import com.formlab.workout.mapper.WorkoutExerciseMapper;
 import com.formlab.workout.repository.WorkoutExerciseRepository;
 import com.formlab.workout.repository.WorkoutRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -50,6 +51,7 @@ public class WorkoutExerciseService {
                 .toList();
     }
 
+    @Transactional
     public WorkoutExerciseResponse addExercise(
             UUID workoutId,
             AddWorkoutExerciseRequest request
@@ -60,6 +62,29 @@ public class WorkoutExerciseService {
                                 "Workout not found"
                         )
                 );
+
+        WorkoutExercise existingWorkoutExercise =
+                workoutExerciseRepository
+                        .findByWorkoutIdAndExerciseId(
+                                workoutId,
+                                request.exerciseId()
+                        )
+                        .orElse(null);
+
+        if (existingWorkoutExercise != null) {
+            existingWorkoutExercise.setTargetSets(
+                    request.targetSets()
+            );
+            existingWorkoutExercise.setTargetReps(
+                    request.targetReps()
+            );
+
+            return workoutExerciseMapper.toResponse(
+                    workoutExerciseRepository.save(
+                            existingWorkoutExercise
+                    )
+            );
+        }
 
         Exercise exercise = exerciseRepository.findById(request.exerciseId())
                 .orElseThrow(() ->

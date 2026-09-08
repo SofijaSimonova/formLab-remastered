@@ -1,5 +1,7 @@
 package com.formlab.exercise.dto;
 
+import com.formlab.exercise.entity.ExerciseTrackingType;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -9,6 +11,7 @@ public record ExerciseListResponse(
         String description,
         UUID movementPatternId,
         List<ReferenceResponse> bodyParts,
-        List<ReferenceResponse> tags
+        List<ReferenceResponse> tags,
+        ExerciseTrackingType trackingType
 ) {
 }

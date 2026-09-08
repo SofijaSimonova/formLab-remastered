@@ -1,0 +1,256 @@
+.workout-detail-page {
+    min-height: 100%;
+    background: #0a0a0b;
+    color: #e5e2e3;
+    font-family: Inter, sans-serif;
+}
+
+.workout-detail-container {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 48px 32px;
+    box-sizing: border-box;
+}
+
+.workout-detail-back {
+    display: inline-flex;
+    margin-bottom: 32px;
+    color: #adc6ff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+.workout-detail-back:hover {
+    color: #ffffff;
+}
+
+.workout-detail-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: 40px;
+}
+
+.workout-detail-eyebrow,
+.workout-detail-section-label,
+.workout-detail-actions-label {
+    display: block;
+    margin-bottom: 10px;
+    color: #8c909f;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.workout-detail-header h1 {
+    margin: 0 0 10px;
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.workout-detail-header p {
+    max-width: 640px;
+    margin: 0;
+    color: #8c909f;
+    font-size: 15px;
+    line-height: 24px;
+}
+
+.workout-detail-updated {
+    flex-shrink: 0;
+    color: #60636e;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.workout-detail-plan,
+.workout-detail-actions,
+.workout-detail-state {
+    border: 1px solid #262629;
+    border-radius: 12px;
+    background: #161618;
+}
+
+.workout-detail-plan {
+    overflow: hidden;
+}
+
+.workout-detail-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    border-bottom: 1px solid #262629;
+}
+
+.workout-detail-section-heading h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.workout-detail-exercise-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.workout-detail-exercise-list li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border-bottom: 1px solid #222224;
+}
+
+.workout-detail-exercise-list li:last-child {
+    border-bottom: 0;
+}
+
+.workout-detail-exercise-order {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    color: #adc6ff;
+    border: 1px solid #35415b;
+    border-radius: 50%;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+}
+
+.workout-detail-exercise-list h3 {
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.workout-detail-exercise-list p,
+.workout-detail-actions p {
+    margin: 0;
+    color: #8c909f;
+    font-size: 13px;
+}
+
+.workout-detail-empty {
+    padding: 40px 24px;
+    color: #8c909f;
+    font-size: 14px;
+    text-align: center;
+}
+
+.workout-detail-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 20px;
+    padding: 24px;
+}
+
+.workout-detail-actions-label {
+    margin-bottom: 6px;
+}
+
+.workout-detail-start {
+    min-width: 150px;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 8px;
+    background: #3b82f6;
+    color: #ffffff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+            background 0.2s ease,
+            transform 0.1s ease;
+}
+
+.workout-detail-start:hover:not(:disabled) {
+    background: #4d8eff;
+}
+
+.workout-detail-start:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.workout-detail-start:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.workout-detail-state {
+    padding: 48px 24px;
+    color: #8c909f;
+    text-align: center;
+}
+
+.workout-detail-state-error {
+    color: #ffb4ab;
+}
+
+.workout-detail-state-error h1 {
+    margin: 0 0 8px;
+    font-size: 24px;
+}
+
+.workout-detail-state-error p {
+    margin: 0 0 20px;
+    color: #8c909f;
+}
+
+.workout-detail-error-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.workout-detail-error-actions button,
+.workout-detail-error-actions a {
+    padding: 10px 16px;
+    border: 1px solid #424754;
+    border-radius: 8px;
+    background: transparent;
+    color: #e5e2e3;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.workout-detail-start-error {
+    margin: 12px 0 0;
+    color: #ffb4ab;
+    font-size: 13px;
+}
+
+@media (max-width: 640px) {
+    .workout-detail-container {
+        padding: 32px 16px;
+    }
+
+    .workout-detail-header,
+    .workout-detail-actions {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .workout-detail-header h1 {
+        font-size: 32px;
+    }
+
+    .workout-detail-start {
+        width: 100%;
+    }
+}

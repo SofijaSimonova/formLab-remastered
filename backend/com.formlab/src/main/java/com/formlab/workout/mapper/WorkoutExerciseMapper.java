@@ -11,6 +11,7 @@ public interface WorkoutExerciseMapper {
     @Mapping(target = "workoutId", source = "workout.id")
     @Mapping(target = "exerciseId", source = "exercise.id")
     @Mapping(target = "exerciseName", source = "exercise.name")
+    @Mapping(target = "trackingType", source = "exercise.trackingType")
     WorkoutExerciseResponse toResponse(
             WorkoutExercise workoutExercise
     );

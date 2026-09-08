@@ -4,6 +4,7 @@ import { deleteWorkoutSet } from '../api/workout.api'
 import { workoutKeys } from '../workout.keys'
 
 interface DeleteWorkoutSetVariables {
+    workoutSessionId: string
     workoutExerciseId: string
     setId: string
 }
@@ -13,10 +14,12 @@ export function useDeleteWorkoutSet() {
 
     return useMutation({
         mutationFn: ({
+                         workoutSessionId,
                          workoutExerciseId,
                          setId,
                      }: DeleteWorkoutSetVariables) =>
             deleteWorkoutSet(
+                workoutSessionId,
                 workoutExerciseId,
                 setId,
             ),
@@ -24,6 +27,7 @@ export function useDeleteWorkoutSet() {
         onSuccess: async (_, variables): Promise<void> => {
             await queryClient.invalidateQueries({
                 queryKey: workoutKeys.sets(
+                    variables.workoutSessionId,
                     variables.workoutExerciseId,
                 ),
             })

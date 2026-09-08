@@ -11,6 +11,13 @@ import { LoginPage } from '../pages/LoginPage/LoginPage'
 import { RegisterPage } from '../pages/RegisterPage/RegisterPage'
 import {WorkoutsPage} from "../pages/WorkoutPage/WorkoutsPage";
 import {CreateWorkoutPage} from "../pages/CreateWorkoutPage/CreateWorkoutPage";
+import { WorkoutSetPage } from '../pages/WorkoutSetPage/WorkoutSetPage'
+import {WorkoutCompletePage} from "../pages/WorkoutCompletePage/WorkoutCompletePage";
+import { WorkoutDetailPage } from '../pages/WorkoutDetailPage/WorkoutDetailPage'
+import {ProfilePage} from "../pages/ProfilePage/ProfilePage";
+import ProgressPage from "../pages/ProgressPage/ProgressPage";
+import {HistoryPage} from "../pages/HistoryPage/HistoryPage";
+
 
 
 export function AppRoutes() {
@@ -57,6 +64,33 @@ export function AppRoutes() {
                     <Route
                         path="/workouts/new"
                         element={<CreateWorkoutPage />}
+                    />
+
+                    <Route
+                        path="/workouts/:workoutId"
+                        element={<WorkoutDetailPage />}
+                    />
+
+                    <Route
+                        path="/workouts/:workoutId/session/:workoutSessionId/exercises/:workoutExerciseId"
+                        element={<WorkoutSetPage />}
+                    />
+
+                    <Route
+                        path="/workouts/:workoutId/session/:workoutSessionId/complete"
+                        element={<WorkoutCompletePage />}
+                    />
+                    <Route
+                        path="/profile"
+                        element={<ProfilePage />}
+                    />
+                    <Route
+                        path="/progress"
+                        element={<ProgressPage />}
+                    />
+                    <Route
+                        path="/history"
+                        element={<HistoryPage />}
                     />
 
                 </Route>

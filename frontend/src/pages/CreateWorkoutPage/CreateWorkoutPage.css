@@ -4,9 +4,14 @@
     color: #e5e2e3;
 }
 
-.create-workout-header {
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.create-workout-page-header {
     height: 64px;
-    padding: 0 22px;
+    padding: 0 28px;
 
     display: flex;
     align-items: center;
@@ -15,9 +20,9 @@
     background: #141415;
 }
 
-.create-workout-back {
+.create-workout-page-back {
     width: 36px;
-    margin-right: 4px;
+    margin-right: 8px;
 
     color: #8c909f;
     text-decoration: none;
@@ -28,62 +33,64 @@
     transition: color 0.2s ease;
 }
 
-.create-workout-back:hover {
+.create-workout-page-back:hover {
     color: #adc6ff;
 }
 
-.create-workout-header h1 {
+.create-workout-page-header h1 {
     margin: 0;
+
+    color: #e5e2e3;
 
     font-size: 20px;
     line-height: 28px;
     font-weight: 600;
-    letter-spacing: -0.01em;
 }
 
-.create-workout-actions {
+.create-workout-page-actions {
     margin-left: auto;
 
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
-.create-workout-discard {
+.create-workout-page-discard {
     height: 38px;
     padding: 0 16px;
 
     display: flex;
     align-items: center;
+    justify-content: center;
 
     color: #9a9ca6;
     background: #1b1b1d;
 
     border: 1px solid #303136;
-    border-radius: 6px;
+    border-radius: 5px;
 
     text-decoration: none;
 
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    font-weight: 500;
 
-    transition:
-            color 0.2s ease,
-            border-color 0.2s ease;
+    cursor: pointer;
+
+    transition: 0.2s ease;
 }
 
-.create-workout-discard:hover {
+.create-workout-page-discard:hover {
     color: #e5e2e3;
     border-color: #46474d;
+    background: #202023;
 }
 
-.create-workout-save {
+.create-workout-page-save {
     height: 38px;
     padding: 0 18px;
 
     border: 1px solid #adc6ff;
-    border-radius: 6px;
+    border-radius: 5px;
 
     color: #111318;
     background: #adc6ff;
@@ -94,37 +101,48 @@
 
     cursor: pointer;
 
-    transition:
-            background 0.2s ease,
-            transform 0.1s ease;
+    transition: 0.2s ease;
 }
 
-.create-workout-save:hover:not(:disabled) {
+.create-workout-page-save:hover:not(:disabled) {
     background: #c0d2ff;
 }
 
-.create-workout-save:active:not(:disabled) {
-    transform: translateY(1px);
-}
-
-.create-workout-save:disabled {
+.create-workout-page-save:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
 
-.create-workout-main {
-    padding: 20px;
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+.create-workout-page-main {
+    width: 100%;
+    max-width: 1280px;
+
+    box-sizing: border-box;
+
+    padding: 30px 30px 50px;
+    margin: 0 auto;
 
     display: grid;
-    grid-template-columns: 302px minmax(0, 1fr);
+    grid-template-columns: 314px minmax(0, 1fr);
     gap: 38px;
 
-    max-width: 1280px;
-    margin: 0 auto;
+    align-items: start;
 }
 
-.create-workout-card {
-    padding: 20px;
+
+/* =========================================================
+   WORKOUT DETAILS
+   ========================================================= */
+
+.create-workout-page-card {
+    padding: 22px;
+
+    box-sizing: border-box;
 
     background: #1a1a1b;
 
@@ -132,9 +150,8 @@
     border-radius: 7px;
 }
 
-.create-workout-card h2,
-.create-workout-sequence h2 {
-    margin: 0;
+.create-workout-page-card h2 {
+    margin: 0 0 22px;
 
     color: #adc6ff;
 
@@ -143,24 +160,30 @@
     font-weight: 600;
 }
 
-.create-workout-field {
-    margin-top: 24px;
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.create-workout-page-field {
+    margin-top: 20px;
 }
 
-.create-workout-field label {
+.create-workout-page-field label {
     display: block;
     margin-bottom: 8px;
 
-    color: #8c909f;
+    color: #858792;
 
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 600;
     letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
-.create-workout-field input,
-.create-workout-field textarea {
+.create-workout-page-field input,
+.create-workout-page-field textarea {
     width: 100%;
     box-sizing: border-box;
 
@@ -180,40 +203,72 @@
             box-shadow 0.2s ease;
 }
 
-.create-workout-field input {
-    height: 44px;
-    padding: 0 10px;
+.create-workout-page-field input {
+    height: 42px;
+    padding: 0 11px;
 }
 
-.create-workout-field textarea {
-    padding: 10px;
+.create-workout-page-field textarea {
+    min-height: 105px;
+    padding: 10px 11px;
+
     resize: vertical;
-    min-height: 110px;
 }
 
-.create-workout-field input::placeholder,
-.create-workout-field textarea::placeholder {
+.create-workout-page-field input::placeholder,
+.create-workout-page-field textarea::placeholder {
     color: #62646d;
 }
 
-.create-workout-field input:focus,
-.create-workout-field textarea:focus {
+.create-workout-page-field input:focus,
+.create-workout-page-field textarea:focus {
     border-color: #adc6ff;
     box-shadow: 0 0 0 2px rgba(173, 198, 255, 0.08);
 }
 
-.create-workout-field-error {
-    display: block;
-    margin-top: 6px;
 
-    color: #ffb4ab;
+/* =========================================================
+   TARGET METRICS
+   ========================================================= */
 
-    font-size: 11px;
-    line-height: 16px;
+/*
+ * No new class is needed here.
+ * We style the existing markup inside create-workout-page-field.
+ */
+
+.create-workout-page-card > .create-workout-page-field:last-child {
+    padding-top: 18px;
+
+    border-top: 1px solid #303136;
 }
 
-.create-workout-error {
-    margin-top: 20px;
+.create-workout-page-card > .create-workout-page-field:last-child > div {
+    padding: 12px 13px;
+
+    color: #b8b9c0;
+
+    background: #141415;
+
+    border: 1px solid #303136;
+    border-radius: 5px;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    line-height: 18px;
+}
+
+.create-workout-page-card > .create-workout-page-field:last-child strong {
+    color: #e5e2e3;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   ERRORS
+   ========================================================= */
+
+.create-workout-page-error {
+    margin-top: 18px;
     padding: 10px 12px;
 
     color: #ffb4ab;
@@ -226,44 +281,166 @@
     line-height: 18px;
 }
 
-.create-workout-sequence {
+
+/* =========================================================
+   EXERCISE SEQUENCE HEADER
+   ========================================================= */
+
+.create-workout-page-sequence {
     min-width: 0;
 }
 
-.create-workout-sequence-header {
+.create-workout-page-sequence-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
 
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
-.create-workout-sequence-header p {
+.create-workout-page-sequence-header h2 {
+    margin: 0;
+
+    color: #adc6ff;
+
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+.create-workout-page-sequence-header p {
     margin: 4px 0 0;
+
+    color: #777984;
+
+    font-size: 11px;
+    line-height: 17px;
+}
+
+.create-workout-page-sequence-header > span {
+    padding-top: 3px;
+
+    color: #c0c1c7;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   EXERCISE CARDS
+   ========================================================= */
+
+/*
+ * IMPORTANT:
+ * The JSX <article> does not have a class.
+ * We intentionally target it through the existing
+ * .create-workout-page-sequence class.
+ */
+
+.create-workout-page-sequence > article {
+    min-height: 92px;
+
+    margin-bottom: 10px;
+    padding: 0 18px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    background: #1a1a1b;
+
+    border: 1px solid #303136;
+    border-radius: 7px;
+
+    transition:
+            border-color 0.2s ease,
+            background 0.2s ease,
+            transform 0.15s ease;
+}
+
+.create-workout-page-sequence > article:hover {
+    background: #1d1d1f;
+    border-color: #45464c;
+}
+
+
+/* exercise number */
+
+.create-workout-page-sequence > article > div:first-child {
+    width: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-workout-page-sequence > article > div:first-child span {
+    color: #adc6ff;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* exercise content */
+
+.create-workout-page-sequence > article > div:last-child {
+    min-width: 0;
+}
+
+.create-workout-page-sequence > article h3 {
+    margin: 0 0 5px;
+
+    color: #e5e2e3;
+
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.create-workout-page-sequence > article p {
+    margin: 0;
 
     color: #858792;
 
-    font-size: 12px;
-    line-height: 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    line-height: 16px;
 }
 
-.create-workout-empty {
-    min-height: 320px;
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.create-workout-page-empty {
+    min-height: 250px;
+
+    padding: 32px;
+
+    box-sizing: border-box;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    padding: 32px;
-
     border: 1px dashed #45464c;
     border-radius: 6px;
+
+    background: rgba(255, 255, 255, 0.01);
 
     text-align: center;
 }
 
-.create-workout-empty-icon {
+.create-workout-page-empty-icon {
     width: 38px;
     height: 38px;
     margin-bottom: 14px;
@@ -277,10 +454,10 @@
     border: 1px solid #45464c;
     border-radius: 50%;
 
-    font-size: 22px;
+    font-size: 20px;
 }
 
-.create-workout-empty h3 {
+.create-workout-page-empty h3 {
     margin: 0 0 6px;
 
     color: #d9d8dc;
@@ -289,47 +466,33 @@
     font-weight: 600;
 }
 
-.create-workout-empty p {
-    max-width: 340px;
+.create-workout-page-empty p {
+    max-width: 360px;
     margin: 0;
 
     color: #777984;
 
-    font-size: 12px;
+    font-size: 11px;
     line-height: 18px;
 }
 
-@media (max-width: 800px) {
-    .create-workout-main {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
 
-    .create-workout-sequence {
-        order: 2;
-    }
-}
+/* =========================================================
+   ADD EXERCISE
+   ========================================================= */
 
-@media (max-width: 600px) {
-    .create-workout-header {
-        padding: 0 14px;
-    }
+.create-workout-page-add-exercise {
+    width: 100%;
+    min-height: 48px;
 
-    .create-workout-header h1 {
-        font-size: 17px;
-    }
-
-    .create-workout-discard {
-        display: none;
-    }
-
-    .create-workout-main {
-        padding: 16px;
-    }
-}
-.create-workout-add-exercise {
-    margin-top: 20px;
+    margin-top: 16px;
     padding: 12px 18px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     color: #adc6ff;
     background: transparent;
@@ -338,7 +501,7 @@
     border-radius: 6px;
 
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 500;
 
     cursor: pointer;
@@ -349,8 +512,43 @@
             background 0.2s ease;
 }
 
-.create-workout-add-exercise:hover {
+.create-workout-page-add-exercise:hover {
     color: #c0d2ff;
     border-color: #adc6ff;
     background: rgba(173, 198, 255, 0.06);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .create-workout-page-main {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+}
+
+@media (max-width: 600px) {
+    .create-workout-page-header {
+        height: 58px;
+        padding: 0 14px;
+    }
+
+    .create-workout-page-header h1 {
+        font-size: 17px;
+    }
+
+    .create-workout-page-discard {
+        display: none;
+    }
+
+    .create-workout-page-main {
+        padding: 18px 14px 36px;
+    }
+
+    .create-workout-page-card {
+        padding: 18px;
+    }
 }

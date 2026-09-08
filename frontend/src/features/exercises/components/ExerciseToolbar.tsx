@@ -8,20 +8,20 @@ export function ExerciseToolbar({
                                     onClearBodyPart,
                                 }: ExerciseToolbarProps) {
     return (
-        <div className="exercise-toolbar">
-            <div className="targeting-label">
+        <div className="exercises-toolbar">
+            <div className="exercises-toolbar-targeting-label">
                 <span>⌖</span>
 
                 <strong>Targeting:</strong>
 
-                <span className="targeting-value">
+                <span className="exercises-toolbar-targeting-value">
                     {selectedBodyPartName ?? 'All'}
                 </span>
 
                 {selectedBodyPartName && (
                     <button
                         type="button"
-                        className="clear-filter-button"
+                        className="exercises-toolbar-clear-filter"
                         onClick={onClearBodyPart}
                     >
                         ×
@@ -31,14 +31,14 @@ export function ExerciseToolbar({
 
             <button
                 type="button"
-                className="filter-button"
+                className="exercises-toolbar-filter"
             >
                 Equipment
             </button>
 
             <button
                 type="button"
-                className="filter-button"
+                className="exercises-toolbar-filter"
             >
                 Movement
             </button>
