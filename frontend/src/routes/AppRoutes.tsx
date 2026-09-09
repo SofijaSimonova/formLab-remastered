@@ -17,7 +17,8 @@ import { WorkoutDetailPage } from '../pages/WorkoutDetailPage/WorkoutDetailPage'
 import {ProfilePage} from "../pages/ProfilePage/ProfilePage";
 import ProgressPage from "../pages/ProgressPage/ProgressPage";
 import {HistoryPage} from "../pages/HistoryPage/HistoryPage";
-
+import { AdminRoute } from '../features/auth/AdminRoute'
+import {AdminDashboardPage} from "../pages/AdminDashboardPage/AdminDashboardPage";
 
 
 export function AppRoutes() {
@@ -92,6 +93,14 @@ export function AppRoutes() {
                         path="/history"
                         element={<HistoryPage />}
                     />
+
+                    {/* Admin-only pages */}
+                    <Route element={<AdminRoute />}>
+                        <Route
+                            path="/admin"
+                            element={<AdminDashboardPage />}
+                        />
+                    </Route>
 
                 </Route>
             </Route>

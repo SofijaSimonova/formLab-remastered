@@ -29,7 +29,8 @@ public class JwtService {
 
     public String generateToken(
             UUID userId,
-            String email
+            String email,
+            Integer tokenVersion
     ) {
         Date now = new Date();
         Date expiry = new Date(
@@ -39,6 +40,7 @@ public class JwtService {
         return Jwts.builder()
                 .subject(email)
                 .claim("userId", userId.toString())
+                .claim("tokenVersion", tokenVersion)
                 .issuedAt(now)
                 .expiration(expiry)
                 .signWith(secretKey)
@@ -56,14 +58,23 @@ public class JwtService {
         return UUID.fromString(userId);
     }
 
+    public Integer extractTokenVersion(String token) {
+        return extractClaims(token)
+                .get("tokenVersion", Integer.class);
+    }
+
     public boolean isTokenValid(
             String token,
-            String email
+            String email,
+            Integer currentTokenVersion
     ) {
         try {
             String tokenEmail = extractEmail(token);
+            Integer tokenVersion = extractTokenVersion(token);
 
             return tokenEmail.equalsIgnoreCase(email)
+                    && tokenVersion != null
+                    && tokenVersion.equals(currentTokenVersion)
                     && !extractClaims(token)
                     .getExpiration()
                     .before(new Date());

@@ -52,3 +52,26 @@ export interface ExerciseAlternativeResponse {
 export type ExerciseTrackingType =
     | 'WEIGHT'
     | 'REPS'
+
+export interface CreateExerciseRequest {
+    name: string
+    description: string
+    instructions: string
+    movementPatternId: string | null
+    trackingType: ExerciseTrackingType
+}
+
+export interface UpdateExerciseRequest {
+    name: string
+    description: string
+    instructions: string
+    movementPatternId: string | null
+    trackingType: ExerciseTrackingType
+    bodyPartIds: string[]
+    equipmentIds: string[]
+    tagIds: string[]
+}
+export interface EquipmentResponse {
+    id: string
+    name: string
+}

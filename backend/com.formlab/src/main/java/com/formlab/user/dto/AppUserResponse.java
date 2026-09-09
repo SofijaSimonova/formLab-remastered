@@ -1,5 +1,7 @@
 package com.formlab.user.dto;
 
+import com.formlab.user.entity.UserRole;
+
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -9,6 +11,7 @@ public record AppUserResponse(
         String firstName,
         String lastName,
         OffsetDateTime createdAt,
-        OffsetDateTime updatedAt
+        OffsetDateTime updatedAt,
+        UserRole role
 ) {
 }

@@ -1,3 +1,7 @@
+export type UserRole =
+    | 'USER'
+    | 'ADMIN'
+
 export interface AppUserResponse {
     id: string
     email: string
@@ -5,6 +9,7 @@ export interface AppUserResponse {
     lastName: string
     createdAt: string
     updatedAt: string
+    role: UserRole
 }
 
 export interface UpdateAppUserRequest {

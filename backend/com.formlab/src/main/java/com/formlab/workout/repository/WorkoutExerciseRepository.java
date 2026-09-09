@@ -58,4 +58,6 @@ public interface WorkoutExerciseRepository
             @Param("workoutExerciseId") UUID workoutExerciseId,
             @Param("workoutId") UUID workoutId
     );
+
+    boolean existsByExerciseId(UUID exerciseId);
 }

@@ -5,8 +5,10 @@ import com.formlab.exercise.dto.ExercisePageResponse;
 import com.formlab.exercise.dto.ExerciseResponse;
 import com.formlab.exercise.dto.UpdateExerciseRequest;
 import com.formlab.exercise.service.ExerciseService;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -32,22 +34,25 @@ public class ExerciseController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     public ExerciseResponse createExercise(
-            @RequestBody CreateExerciseRequest request
+            @Valid @RequestBody CreateExerciseRequest request
     ) {
         return exerciseService.createExercise(request);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ExerciseResponse updateExercise(
             @PathVariable UUID id,
-            @RequestBody UpdateExerciseRequest request
+            @Valid @RequestBody UpdateExerciseRequest request
     ) {
         return exerciseService.updateExercise(id, request);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteExercise(@PathVariable UUID id) {
         exerciseService.deleteExercise(id);

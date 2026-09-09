@@ -1,5 +1,6 @@
 package com.formlab.security;
 
+import com.formlab.auth.security.AuthenticatedUser;
 import com.formlab.auth.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -52,12 +53,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             if (email != null
                     && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-                UserDetails userDetails =
-                        userDetailsService.loadUserByUsername(email);
+                AuthenticatedUser userDetails =
+                        (AuthenticatedUser)
+                                userDetailsService.loadUserByUsername(email);
 
                 if (jwtService.isTokenValid(
                         token,
-                        userDetails.getUsername()
+                        userDetails.getUsername(),
+                        userDetails.getTokenVersion()
                 )) {
 
                     UsernamePasswordAuthenticationToken authentication =

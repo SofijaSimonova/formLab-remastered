@@ -59,7 +59,8 @@ public class AuthService {
 
         String token = jwtService.generateToken(
                 user.getUserId(),
-                user.getUsername()
+                user.getUsername(),
+                user.getTokenVersion()
         );
 
         return new LoginResponse(token);
@@ -127,6 +128,12 @@ public class AuthService {
                 passwordEncoder.encode(
                         request.newPassword()
                 )
+        );
+
+        AppUser user = credential.getUser();
+
+        user.setTokenVersion(
+                user.getTokenVersion() + 1
         );
 
         userCredentialRepository.save(credential);

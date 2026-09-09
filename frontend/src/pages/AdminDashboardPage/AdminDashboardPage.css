@@ -1,0 +1,791 @@
+/* =========================================================
+   ADMIN DASHBOARD
+   ========================================================= */
+
+.admin-dashboard-page {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px 40px 48px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.admin-dashboard-header {
+    margin-bottom: 28px;
+}
+
+.admin-dashboard-eyebrow {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #d9f99d;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.admin-dashboard-title {
+    margin: 0;
+
+    color: #ddd;
+
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.admin-dashboard-subtitle {
+    margin: 8px 0 0;
+
+    color: #777;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   EXERCISE PANEL
+   ========================================================= */
+
+.admin-dashboard-panel {
+    width: 100%;
+
+    border: 1px solid #252525;
+    border-radius: 8px;
+
+    background: #151515;
+
+    overflow: hidden;
+}
+
+.admin-dashboard-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #252525;
+}
+
+.admin-dashboard-section-title {
+    margin: 0;
+
+    color: #ddd;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.admin-dashboard-section-description {
+    margin: 6px 0 0;
+
+    color: #666;
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.admin-dashboard-toolbar {
+    display: flex;
+    align-items: center;
+
+    padding: 14px 22px;
+
+    border-bottom: 1px solid #252525;
+}
+
+.admin-dashboard-search-input {
+    width: 100%;
+    max-width: 400px;
+    height: 36px;
+
+    box-sizing: border-box;
+
+    padding: 0 11px;
+
+    border: 1px solid #303030;
+    border-radius: 5px;
+
+    outline: none;
+
+    background: #191919;
+    color: #ddd;
+
+    font: inherit;
+    font-size: 11px;
+
+    transition:
+            border-color 0.15s ease,
+            background-color 0.15s ease;
+}
+
+.admin-dashboard-search-input::placeholder {
+    color: #666;
+}
+
+.admin-dashboard-search-input:focus {
+    border-color: #53612f;
+
+    background: #1c1c1c;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.admin-dashboard-primary-button,
+.admin-dashboard-secondary-button,
+.admin-dashboard-danger-button {
+    min-height: 34px;
+
+    padding: 8px 12px;
+
+    border-radius: 5px;
+
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+            border-color 0.15s ease,
+            background-color 0.15s ease,
+            color 0.15s ease,
+            opacity 0.15s ease;
+}
+
+.admin-dashboard-primary-button {
+    border: 1px solid #53612f;
+
+    background: #252c18;
+    color: #d9f99d;
+}
+
+.admin-dashboard-primary-button:hover:not(:disabled) {
+    border-color: #65773a;
+
+    background: #2d351c;
+}
+
+.admin-dashboard-secondary-button {
+    border: 1px solid #303030;
+
+    background: #191919;
+    color: #999;
+}
+
+.admin-dashboard-secondary-button:hover:not(:disabled) {
+    border-color: #444;
+
+    background: #222;
+    color: #ddd;
+}
+
+.admin-dashboard-danger-button {
+    border: 1px solid #303030;
+
+    background: #191919;
+    color: #999;
+}
+
+.admin-dashboard-danger-button:hover:not(:disabled) {
+    border-color: #444;
+
+    background: #252525;
+    color: #ddd;
+}
+
+.admin-dashboard-primary-button:disabled,
+.admin-dashboard-secondary-button:disabled,
+.admin-dashboard-danger-button:disabled {
+    cursor: default;
+
+    opacity: 0.4;
+}
+
+
+/* =========================================================
+   EXERCISE TABLE
+   ========================================================= */
+
+.admin-dashboard-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.admin-dashboard-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    text-align: left;
+}
+
+.admin-dashboard-table th {
+    padding: 11px 22px;
+
+    border-bottom: 1px solid #252525;
+
+    color: #666;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+.admin-dashboard-table td {
+    padding: 15px 22px;
+
+    border-bottom: 1px solid #222;
+
+    color: #999;
+
+    font-size: 11px;
+
+    vertical-align: middle;
+}
+
+.admin-dashboard-table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.admin-dashboard-table tbody tr:hover {
+    background: #191919;
+}
+
+.admin-dashboard-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-dashboard-exercise-name {
+    color: #ddd;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.admin-dashboard-exercise-description {
+    max-width: 420px;
+
+    margin-top: 4px;
+
+    overflow: hidden;
+
+    color: #666;
+
+    font-size: 10px;
+    line-height: 1.45;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.admin-dashboard-tracking-badge {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 22px;
+
+    padding: 0 7px;
+
+    border: 1px solid #303030;
+    border-radius: 4px;
+
+    background: #191919;
+    color: #999;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.admin-dashboard-body-parts {
+    max-width: 260px;
+
+    color: #777;
+
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.admin-dashboard-row-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 6px;
+
+    white-space: nowrap;
+}
+
+.admin-dashboard-empty-state {
+    padding: 40px 22px !important;
+
+    color: #666 !important;
+
+    text-align: center;
+    font-size: 11px !important;
+}
+
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
+.admin-dashboard-pagination {
+    display: flex;
+    justify-content: center;
+
+    padding: 16px 22px;
+
+    border-top: 1px solid #222;
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.admin-dashboard-modal-backdrop {
+    position: fixed;
+    z-index: 1000;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    box-sizing: border-box;
+
+    background: rgba(0, 0, 0, 0.72);
+
+    backdrop-filter: blur(4px);
+}
+
+.admin-dashboard-modal {
+    width: min(620px, 100%);
+    max-height: calc(100vh - 48px);
+
+    overflow-y: auto;
+
+    border: 1px solid #303030;
+    border-radius: 8px;
+
+    background: #151515;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.admin-dashboard-delete-modal {
+    width: min(440px, 100%);
+
+    padding: 22px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #303030;
+    border-radius: 8px;
+
+    background: #151515;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.admin-dashboard-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #252525;
+}
+
+.admin-dashboard-modal-title {
+    margin: 0;
+
+    color: #ddd;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.admin-dashboard-modal-description {
+    margin: 6px 0 0;
+
+    color: #666;
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.admin-dashboard-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    flex-shrink: 0;
+
+    padding: 0;
+
+    border: 1px solid #303030;
+    border-radius: 5px;
+
+    background: #191919;
+    color: #777;
+
+    font: inherit;
+    font-size: 18px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+            border-color 0.15s ease,
+            background-color 0.15s ease,
+            color 0.15s ease;
+}
+
+.admin-dashboard-modal-close:hover:not(:disabled) {
+    border-color: #444;
+
+    background: #222;
+    color: #ddd;
+}
+
+.admin-dashboard-modal-close:disabled {
+    cursor: default;
+
+    opacity: 0.4;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.admin-dashboard-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 17px;
+
+    padding: 22px;
+}
+
+.admin-dashboard-form-field {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.admin-dashboard-form-field label {
+    color: #999;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.admin-dashboard-form-field input,
+.admin-dashboard-form-field textarea,
+.admin-dashboard-form-field select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid #303030;
+    border-radius: 5px;
+
+    outline: none;
+
+    background: #191919;
+    color: #ddd;
+
+    font: inherit;
+    font-size: 11px;
+
+    transition:
+            border-color 0.15s ease,
+            background-color 0.15s ease;
+}
+
+.admin-dashboard-form-field input,
+.admin-dashboard-form-field select {
+    height: 36px;
+
+    padding: 0 10px;
+}
+
+.admin-dashboard-form-field textarea {
+    min-height: 90px;
+
+    padding: 9px 10px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+.admin-dashboard-form-field input::placeholder,
+.admin-dashboard-form-field textarea::placeholder {
+    color: #555;
+}
+
+.admin-dashboard-form-field input:focus,
+.admin-dashboard-form-field textarea:focus,
+.admin-dashboard-form-field select:focus {
+    border-color: #53612f;
+
+    background: #1c1c1c;
+}
+
+.admin-dashboard-form-field
+input:disabled,
+.admin-dashboard-form-field
+textarea:disabled,
+.admin-dashboard-form-field
+select:disabled {
+    cursor: default;
+
+    opacity: 0.45;
+}
+
+.admin-dashboard-form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+
+/* =========================================================
+   REFERENCE DATA
+   ========================================================= */
+
+.admin-dashboard-reference-section {
+    display: flex;
+    flex-direction: column;
+
+    gap: 9px;
+
+    padding-top: 2px;
+}
+
+.admin-dashboard-reference-title {
+    color: #999;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.admin-dashboard-body-part-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 6px;
+}
+
+.admin-dashboard-body-part-tag {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 23px;
+
+    padding: 0 7px;
+
+    border: 1px solid #303030;
+    border-radius: 4px;
+
+    background: #191919;
+    color: #777;
+
+    font-size: 9px;
+}
+
+.admin-dashboard-reference-note {
+    padding: 0 22px 20px;
+
+    color: #555;
+
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+   ========================================================= */
+
+.admin-dashboard-form-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 7px;
+
+    padding-top: 3px;
+}
+
+
+/* =========================================================
+   DELETE CONFIRMATION
+   ========================================================= */
+
+.admin-dashboard-delete-message {
+    margin: 13px 0 0;
+
+    color: #aaa;
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.admin-dashboard-delete-message strong {
+    color: #ddd;
+}
+
+.admin-dashboard-delete-warning {
+    margin: 8px 0 0;
+
+    color: #666;
+
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.admin-dashboard-delete-modal
+.admin-dashboard-form-actions {
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   ADMIN FORM ERROR
+   ========================================================= */
+
+.admin-dashboard-form-error {
+    margin: 0;
+
+    padding: 9px 11px;
+
+    border: 1px solid #303030;
+    border-radius: 5px;
+
+    background: #191919;
+    color: #999;
+
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .admin-dashboard-page {
+        padding: 24px 24px 40px;
+    }
+
+    .admin-dashboard-table th,
+    .admin-dashboard-table td {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+@media (max-width: 640px) {
+    .admin-dashboard-page {
+        padding: 20px 16px 32px;
+    }
+
+    .admin-dashboard-title {
+        font-size: 24px;
+    }
+
+    .admin-dashboard-panel-header {
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 16px;
+    }
+
+    .admin-dashboard-panel-header
+    .admin-dashboard-primary-button {
+        width: 100%;
+    }
+
+    .admin-dashboard-toolbar {
+        padding: 12px 16px;
+    }
+
+    .admin-dashboard-search-input {
+        max-width: none;
+    }
+
+    .admin-dashboard-table th,
+    .admin-dashboard-table td {
+        padding: 12px 14px;
+    }
+
+    .admin-dashboard-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-dashboard-modal-backdrop {
+        align-items: flex-start;
+
+        padding: 12px;
+    }
+
+    .admin-dashboard-modal {
+        max-height: calc(100vh - 24px);
+    }
+
+    .admin-dashboard-modal-header,
+    .admin-dashboard-form {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .admin-dashboard-row-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

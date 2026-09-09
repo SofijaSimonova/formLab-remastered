@@ -5,6 +5,7 @@ import com.formlab.exercise.dto.ExerciseTagResponse;
 import com.formlab.exercise.service.ExerciseTagService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class ExerciseTagController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     public ExerciseTagResponse addTag(
             @PathVariable UUID exerciseId,
@@ -39,6 +41,7 @@ public class ExerciseTagController {
     }
 
     @DeleteMapping("/{tagId}")
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeTag(
             @PathVariable UUID exerciseId,

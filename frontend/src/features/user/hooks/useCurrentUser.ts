@@ -8,5 +8,6 @@ export function useCurrentUser() {
         queryKey: userKeys.me(),
         queryFn: getCurrentUser,
         staleTime: 5 * 60 * 1000,
+        refetchOnMount: 'always',
     })
 }

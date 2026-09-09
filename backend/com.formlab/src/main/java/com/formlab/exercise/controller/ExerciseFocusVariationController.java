@@ -6,6 +6,7 @@ import com.formlab.exercise.dto.UpdateExerciseFocusVariationRequest;
 import com.formlab.exercise.service.ExerciseFocusVariationService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class ExerciseFocusVariationController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     public ExerciseFocusVariationResponse create(
             @PathVariable UUID exerciseId,
@@ -40,6 +42,7 @@ public class ExerciseFocusVariationController {
     }
 
     @PutMapping("/{variationId}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ExerciseFocusVariationResponse update(
             @PathVariable UUID exerciseId,
             @PathVariable UUID variationId,
@@ -49,6 +52,7 @@ public class ExerciseFocusVariationController {
     }
 
     @DeleteMapping("/{variationId}")
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(
             @PathVariable UUID exerciseId,

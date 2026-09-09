@@ -1,5 +1,6 @@
 package com.formlab.exercise.service;
 
+import com.formlab.common.exception.BadRequestException;
 import com.formlab.common.exception.ResourceNotFoundException;
 import com.formlab.exercise.dto.CreateExerciseRequest;
 import com.formlab.exercise.dto.ExerciseListResponse;
@@ -14,6 +15,7 @@ import com.formlab.exercise.repository.ExerciseFocusVariationRepository;
 import com.formlab.exercise.repository.ExerciseRepository;
 import com.formlab.exercise.repository.MovementPatternRepository;
 import com.formlab.exercise.specification.ExerciseSpecification;
+import com.formlab.workout.repository.WorkoutExerciseRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
@@ -33,17 +35,20 @@ public class ExerciseService {
     private final ExerciseMapper exerciseMapper;
     private final MovementPatternRepository movementPatternRepository;
     private final ExerciseFocusVariationRepository variationRepository;
+    private final WorkoutExerciseRepository workoutExerciseRepository;
 
     public ExerciseService(
             ExerciseRepository exerciseRepository,
             ExerciseMapper exerciseMapper,
             MovementPatternRepository movementPatternRepository,
-            ExerciseFocusVariationRepository variationRepository
+            ExerciseFocusVariationRepository variationRepository,
+            WorkoutExerciseRepository workoutExerciseRepository
     ) {
         this.exerciseRepository = exerciseRepository;
         this.exerciseMapper = exerciseMapper;
         this.movementPatternRepository = movementPatternRepository;
         this.variationRepository = variationRepository;
+        this.workoutExerciseRepository = workoutExerciseRepository;
     }
 
     public ExercisePageResponse getAllExercises(
@@ -159,9 +164,9 @@ public class ExerciseService {
             exercise.setMovementPattern(null);
         }
 
-        return exerciseMapper.toResponse(
-                exerciseRepository.save(exercise)
-        );
+        exerciseRepository.save(exercise);
+
+        return getExerciseById(id);
     }
 
     public void deleteExercise(UUID id) {
@@ -171,6 +176,12 @@ public class ExerciseService {
                                 "Exercise not found"
                         )
                 );
+
+        if (workoutExerciseRepository.existsByExerciseId(id)) {
+            throw new BadRequestException(
+                    "Exercise cannot be deleted because it is used in a workout"
+            );
+        }
 
         exerciseRepository.delete(exercise);
     }

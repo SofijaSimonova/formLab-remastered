@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { useCurrentUser } from '../../features/user/hooks/useCurrentUser'
 import { useUpdateCurrentUser } from '../../features/user/hooks/useUpdateCurrentUser'
@@ -9,10 +10,13 @@ import { useAddUserGoal } from '../../features/goals/hooks/useAddUserGoal'
 import { useRemoveUserGoal } from '../../features/goals/hooks/useRemoveUserGoal'
 
 import { useChangePassword } from '../../features/auth/hooks/useChangePassword'
+import { removeToken } from '../../features/auth/authStorage'
 
 import './ProfilePage.css'
 
 export function ProfilePage() {
+    const navigate = useNavigate()
+
     const {
         data: user,
         isLoading: isUserLoading,
@@ -151,6 +155,11 @@ export function ProfilePage() {
             setPasswordMessage(
                 'Password changed successfully.',
             )
+
+            setTimeout(() => {
+                removeToken()
+                navigate('/login')
+            }, 1500)
         } catch {
             setPasswordMessage(
                 'Unable to change password. Please check your current password.',
@@ -571,3 +580,4 @@ export function ProfilePage() {
         </main>
     )
 }
+

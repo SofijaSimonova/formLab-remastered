@@ -11,15 +11,17 @@ import java.util.UUID;
 public class AuthenticatedUser extends User {
 
     private final UUID userId;
+    private final Integer tokenVersion;
 
     public AuthenticatedUser(
             UUID userId,
             String email,
             String password,
+            Integer tokenVersion,
             Collection<? extends GrantedAuthority> authorities
     ) {
         super(email, password, authorities);
         this.userId = userId;
+        this.tokenVersion = tokenVersion;
     }
-
 }

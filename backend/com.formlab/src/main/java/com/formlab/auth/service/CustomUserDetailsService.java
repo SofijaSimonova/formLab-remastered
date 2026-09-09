@@ -4,7 +4,7 @@ import com.formlab.auth.entity.UserCredential;
 import com.formlab.auth.repository.UserCredentialRepository;
 import com.formlab.auth.security.AuthenticatedUser;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
+import com.formlab.user.entity.UserRole;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -41,7 +41,15 @@ public class CustomUserDetailsService implements UserDetailsService {
                 credential.getUser().getId(),
                 credential.getUser().getEmail(),
                 credential.getPasswordHash(),
-                List.of(new SimpleGrantedAuthority("USER"))
+                credential.getUser().getTokenVersion(),
+                List.of(
+                        new SimpleGrantedAuthority(
+                                "ROLE_" +
+                                        credential.getUser()
+                                                .getRole()
+                                                .name()
+                        )
+                )
         );
     }
 }

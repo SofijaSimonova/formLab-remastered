@@ -5,6 +5,7 @@ import com.formlab.exercise.dto.ExerciseAlternativeResponse;
 import com.formlab.exercise.service.ExerciseAlternativeService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class ExerciseAlternativeController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     public ExerciseAlternativeResponse createAlternative(
             @PathVariable UUID exerciseId,
@@ -39,6 +41,7 @@ public class ExerciseAlternativeController {
     }
 
     @DeleteMapping("/{alternativeId}")
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteAlternative(
             @PathVariable UUID exerciseId,
