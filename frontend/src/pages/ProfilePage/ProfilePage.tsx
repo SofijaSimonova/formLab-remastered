@@ -10,12 +10,13 @@ import { useAddUserGoal } from '../../features/goals/hooks/useAddUserGoal'
 import { useRemoveUserGoal } from '../../features/goals/hooks/useRemoveUserGoal'
 
 import { useChangePassword } from '../../features/auth/hooks/useChangePassword'
-import { removeToken } from '../../features/auth/authStorage'
+import { useAuth } from '../../features/auth/AuthContext'
 
 import './ProfilePage.css'
 
 export function ProfilePage() {
     const navigate = useNavigate()
+    const { logout } = useAuth()
 
     const {
         data: user,
@@ -157,7 +158,7 @@ export function ProfilePage() {
             )
 
             setTimeout(() => {
-                removeToken()
+                logout()
                 navigate('/login')
             }, 1500)
         } catch {

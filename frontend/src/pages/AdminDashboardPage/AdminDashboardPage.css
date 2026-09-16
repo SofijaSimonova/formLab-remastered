@@ -3,19 +3,18 @@
    ========================================================= */
 
 .admin-dashboard-page {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
+    min-height: 100%;
     padding: 32px 40px 48px;
-    box-sizing: border-box;
+
+    background: #101010;
+    color: #ddd;
 }
 
-
-/* =========================================================
-   HEADER
-   ========================================================= */
-
 .admin-dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
     margin-bottom: 28px;
 }
 
@@ -24,47 +23,45 @@
 
     margin-bottom: 7px;
 
-    color: #d9f99d;
+    color: #53612f;
 
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 
 .admin-dashboard-title {
     margin: 0;
 
-    color: #ddd;
+    color: #eee;
 
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.2;
 }
 
 .admin-dashboard-subtitle {
     margin: 8px 0 0;
 
-    color: #777;
+    color: #666;
 
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1.5;
 }
 
 
 /* =========================================================
-   EXERCISE PANEL
+   PANEL
    ========================================================= */
 
 .admin-dashboard-panel {
-    width: 100%;
+    overflow: hidden;
 
     border: 1px solid #252525;
-    border-radius: 8px;
+    border-radius: 7px;
 
     background: #151515;
-
-    overflow: hidden;
 }
 
 .admin-dashboard-panel-header {
@@ -72,7 +69,7 @@
     align-items: center;
     justify-content: space-between;
 
-    gap: 24px;
+    gap: 20px;
 
     padding: 20px 22px;
 
@@ -84,16 +81,16 @@
 
     color: #ddd;
 
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
 }
 
 .admin-dashboard-section-description {
-    margin: 6px 0 0;
+    margin: 5px 0 0;
 
     color: #666;
 
-    font-size: 11px;
+    font-size: 10px;
     line-height: 1.5;
 }
 
@@ -106,19 +103,21 @@
     display: flex;
     align-items: center;
 
-    padding: 14px 22px;
+    padding: 12px 16px;
 
     border-bottom: 1px solid #252525;
+
+    background: #131313;
 }
 
 .admin-dashboard-search-input {
     width: 100%;
-    max-width: 400px;
-    height: 36px;
+    max-width: 340px;
+    height: 34px;
 
     box-sizing: border-box;
 
-    padding: 0 11px;
+    padding: 0 10px;
 
     border: 1px solid #303030;
     border-radius: 5px;
@@ -137,7 +136,7 @@
 }
 
 .admin-dashboard-search-input::placeholder {
-    color: #666;
+    color: #555;
 }
 
 .admin-dashboard-search-input:focus {
@@ -156,15 +155,13 @@
 .admin-dashboard-danger-button {
     min-height: 34px;
 
-    padding: 8px 12px;
+    padding: 0 12px;
 
     border-radius: 5px;
 
     font: inherit;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
-
-    line-height: 1;
 
     cursor: pointer;
 
@@ -178,14 +175,14 @@
 .admin-dashboard-primary-button {
     border: 1px solid #53612f;
 
-    background: #252c18;
-    color: #d9f99d;
+    background: #53612f;
+    color: #eee;
 }
 
 .admin-dashboard-primary-button:hover:not(:disabled) {
-    border-color: #65773a;
+    border-color: #65763a;
 
-    background: #2d351c;
+    background: #65763a;
 }
 
 .admin-dashboard-secondary-button {
@@ -203,17 +200,17 @@
 }
 
 .admin-dashboard-danger-button {
-    border: 1px solid #303030;
+    border: 1px solid #402828;
 
-    background: #191919;
-    color: #999;
+    background: #211717;
+    color: #a66;
 }
 
 .admin-dashboard-danger-button:hover:not(:disabled) {
-    border-color: #444;
+    border-color: #603636;
 
-    background: #252525;
-    color: #ddd;
+    background: #291919;
+    color: #c77;
 }
 
 .admin-dashboard-primary-button:disabled,
@@ -226,12 +223,10 @@
 
 
 /* =========================================================
-   EXERCISE TABLE
+   TABLE
    ========================================================= */
 
 .admin-dashboard-table-wrapper {
-    width: 100%;
-
     overflow-x: auto;
 }
 
@@ -239,132 +234,48 @@
     width: 100%;
 
     border-collapse: collapse;
-
-    text-align: left;
 }
 
 .admin-dashboard-table th {
-    padding: 11px 22px;
+    padding: 11px 18px;
 
     border-bottom: 1px solid #252525;
+
+    background: #131313;
 
     color: #666;
 
     font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.07em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-align: left;
     text-transform: uppercase;
-
-    white-space: nowrap;
 }
 
 .admin-dashboard-table td {
-    padding: 15px 22px;
+    padding: 13px 18px;
 
     border-bottom: 1px solid #222;
 
     color: #999;
 
-    font-size: 11px;
-
+    font-size: 10px;
     vertical-align: middle;
-}
-
-.admin-dashboard-table tbody tr {
-    transition: background-color 0.15s ease;
-}
-
-.admin-dashboard-table tbody tr:hover {
-    background: #191919;
 }
 
 .admin-dashboard-table tbody tr:last-child td {
     border-bottom: none;
 }
 
-.admin-dashboard-exercise-name {
-    color: #ddd;
-
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.4;
-}
-
-.admin-dashboard-exercise-description {
-    max-width: 420px;
-
-    margin-top: 4px;
-
-    overflow: hidden;
-
-    color: #666;
-
-    font-size: 10px;
-    line-height: 1.45;
-
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.admin-dashboard-tracking-badge {
-    display: inline-flex;
-    align-items: center;
-
-    min-height: 22px;
-
-    padding: 0 7px;
-
-    border: 1px solid #303030;
-    border-radius: 4px;
-
-    background: #191919;
-    color: #999;
-
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-}
-
-.admin-dashboard-body-parts {
-    max-width: 260px;
-
-    color: #777;
-
-    font-size: 10px;
-    line-height: 1.5;
+.admin-dashboard-table tbody tr:hover {
+    background: #181818;
 }
 
 .admin-dashboard-row-actions {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
 
     gap: 6px;
-
-    white-space: nowrap;
-}
-
-.admin-dashboard-empty-state {
-    padding: 40px 22px !important;
-
-    color: #666 !important;
-
-    text-align: center;
-    font-size: 11px !important;
-}
-
-
-/* =========================================================
-   PAGINATION
-   ========================================================= */
-
-.admin-dashboard-pagination {
-    display: flex;
-    justify-content: center;
-
-    padding: 16px 22px;
-
-    border-top: 1px solid #222;
 }
 
 
@@ -374,9 +285,8 @@
 
 .admin-dashboard-modal-backdrop {
     position: fixed;
-    z-index: 1000;
-
     inset: 0;
+    z-index: 1000;
 
     display: flex;
     align-items: center;
@@ -387,17 +297,15 @@
     box-sizing: border-box;
 
     background: rgba(0, 0, 0, 0.72);
-
-    backdrop-filter: blur(4px);
 }
 
 .admin-dashboard-modal {
-    width: min(620px, 100%);
+    width: min(760px, 100%);
     max-height: calc(100vh - 48px);
 
     overflow-y: auto;
 
-    border: 1px solid #303030;
+    border: 1px solid #2b2b2b;
     border-radius: 8px;
 
     background: #151515;
@@ -412,7 +320,7 @@
 
     box-sizing: border-box;
 
-    border: 1px solid #303030;
+    border: 1px solid #2b2b2b;
     border-radius: 8px;
 
     background: #151515;
@@ -514,7 +422,7 @@
     gap: 6px;
 }
 
-.admin-dashboard-form-field label {
+.admin-dashboard-form-field > label {
     color: #999;
 
     font-size: 10px;
@@ -574,12 +482,9 @@
     background: #1c1c1c;
 }
 
-.admin-dashboard-form-field
-input:disabled,
-.admin-dashboard-form-field
-textarea:disabled,
-.admin-dashboard-form-field
-select:disabled {
+.admin-dashboard-form-field input:disabled,
+.admin-dashboard-form-field textarea:disabled,
+.admin-dashboard-form-field select:disabled {
     cursor: default;
 
     opacity: 0.45;
@@ -625,26 +530,179 @@ select:disabled {
     display: inline-flex;
     align-items: center;
 
-    min-height: 23px;
+    min-height: 28px;
 
-    padding: 0 7px;
+    box-sizing: border-box;
+
+    padding: 0 9px;
 
     border: 1px solid #303030;
-    border-radius: 4px;
+    border-radius: 5px;
 
     background: #191919;
     color: #777;
 
     font-size: 9px;
+
+    cursor: pointer;
+
+    transition:
+            border-color 0.15s ease,
+            background-color 0.15s ease,
+            color 0.15s ease;
+}
+
+.admin-dashboard-body-part-tag:hover {
+    border-color: #444;
+
+    background: #202020;
+    color: #aaa;
+}
+
+.admin-dashboard-body-part-tag:has(input:checked) {
+    border-color: #53612f;
+
+    background: #242a19;
+    color: #b5bf92;
+}
+
+.admin-dashboard-body-part-tag input {
+    width: 12px;
+    height: 12px;
+
+    margin: 0 6px 0 0;
+
+    accent-color: #53612f;
+
+    cursor: pointer;
+}
+
+.admin-dashboard-body-part-tag input:disabled {
+    cursor: default;
+}
+
+.admin-dashboard-body-part-tag:has(input:disabled) {
+    cursor: default;
+
+    opacity: 0.45;
 }
 
 .admin-dashboard-reference-note {
-    padding: 0 22px 20px;
-
     color: #555;
 
     font-size: 9px;
     line-height: 1.5;
+}
+
+
+/* =========================================================
+   METADATA
+   ========================================================= */
+
+.admin-dashboard-metadata-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.admin-dashboard-metadata-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 14px;
+
+    padding: 10px;
+
+    border: 1px solid #292929;
+    border-radius: 5px;
+
+    background: #191919;
+}
+
+.admin-dashboard-metadata-item strong {
+    display: block;
+
+    color: #bbb;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.admin-dashboard-metadata-item p {
+    margin: 5px 0 0;
+
+    color: #666;
+
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+.admin-dashboard-metadata-item small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #555;
+
+    font-size: 8px;
+}
+
+.admin-dashboard-metadata-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+
+    padding-top: 3px;
+}
+
+.admin-dashboard-metadata-form input,
+.admin-dashboard-metadata-form textarea,
+.admin-dashboard-metadata-form select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid #303030;
+    border-radius: 5px;
+
+    outline: none;
+
+    background: #191919;
+    color: #ddd;
+
+    font: inherit;
+    font-size: 10px;
+}
+
+.admin-dashboard-metadata-form input,
+.admin-dashboard-metadata-form select {
+    height: 34px;
+
+    padding: 0 9px;
+}
+
+.admin-dashboard-metadata-form textarea {
+    min-height: 70px;
+
+    padding: 8px 9px;
+
+    resize: vertical;
+}
+
+.admin-dashboard-metadata-form input::placeholder,
+.admin-dashboard-metadata-form textarea::placeholder {
+    color: #555;
+}
+
+.admin-dashboard-metadata-form input:focus,
+.admin-dashboard-metadata-form textarea:focus,
+.admin-dashboard-metadata-form select:focus {
+    border-color: #53612f;
+
+    background: #1c1c1c;
 }
 
 
@@ -688,8 +746,7 @@ select:disabled {
     line-height: 1.5;
 }
 
-.admin-dashboard-delete-modal
-.admin-dashboard-form-actions {
+.admin-dashboard-delete-modal .admin-dashboard-form-actions {
     margin-top: 20px;
 }
 
@@ -711,6 +768,205 @@ select:disabled {
 
     font-size: 10px;
     line-height: 1.5;
+}
+
+
+/* =========================================================
+   LOADING / ERROR STATES
+   ========================================================= */
+
+.admin-dashboard-page .loading-state,
+.admin-dashboard-page .error-state {
+    padding: 40px 24px;
+
+    text-align: center;
+}
+
+.admin-dashboard-page .loading-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    color: #666;
+
+    font-size: 10px;
+}
+
+.admin-dashboard-page .loading-spinner {
+    width: 16px;
+    height: 16px;
+
+    border: 2px solid #303030;
+    border-top-color: #53612f;
+    border-radius: 50%;
+
+    animation: admin-dashboard-spin 0.8s linear infinite;
+}
+
+.admin-dashboard-page .error-state h2 {
+    margin: 0;
+
+    color: #aaa;
+
+    font-size: 13px;
+}
+
+.admin-dashboard-page .error-state p {
+    margin: 7px 0 14px;
+
+    color: #666;
+
+    font-size: 10px;
+}
+
+.admin-dashboard-page .error-state button {
+    min-height: 32px;
+
+    padding: 0 11px;
+
+    border: 1px solid #303030;
+    border-radius: 5px;
+
+    background: #191919;
+    color: #999;
+
+    font: inherit;
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+.admin-dashboard-page .error-state button:hover {
+    border-color: #444;
+
+    background: #222;
+    color: #ddd;
+}
+
+@keyframes admin-dashboard-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+ALTERNATIVE EXERCISE SEARCH
+========================================================= */
+
+.admin-dashboard-alternative-results {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-height: 190px;
+
+    overflow-y: auto;
+
+    box-sizing: border-box;
+
+    border: 1px solid #303030;
+    border-radius: 5px;
+
+    background: #191919;
+}
+
+.admin-dashboard-alternative-result {
+    display: block;
+
+    width: 100%;
+    min-height: 36px;
+
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 9px 11px;
+
+    border: 0;
+    border-bottom: 1px solid #252525;
+
+    outline: none;
+
+    background: transparent;
+    color: #999;
+
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 400;
+
+    line-height: 1.4;
+    text-align: left;
+
+    white-space: normal;
+
+    cursor: pointer;
+
+    transition:
+            background-color 0.15s ease,
+            color 0.15s ease;
+}
+
+.admin-dashboard-alternative-result:last-child {
+    border-bottom: none;
+}
+
+.admin-dashboard-alternative-result:hover:not(:disabled) {
+    background: #222;
+    color: #ddd;
+}
+
+.admin-dashboard-alternative-result-selected {
+    background: #242a19;
+    color: #b5bf92;
+}
+
+.admin-dashboard-alternative-result:disabled {
+    cursor: default;
+    opacity: 0.45;
+}
+
+
+/* =========================================================
+       ALTERNATIVE SEARCH INPUT
+       ========================================================= */
+
+.admin-dashboard-metadata-form
+input[type='search'] {
+    width: 100%;
+    height: 36px;
+
+    box-sizing: border-box;
+
+    padding: 0 10px;
+
+    border: 1px solid #303030;
+    border-radius: 5px;
+
+    outline: none;
+
+    background: #191919;
+    color: #ddd;
+
+    font-family: inherit;
+    font-size: 10px;
+
+    transition:
+            border-color 0.15s ease,
+            background-color 0.15s ease;
+}
+
+.admin-dashboard-metadata-form
+input[type='search']:focus {
+    border-color: #53612f;
+
+    background: #1c1c1c;
+}
+
+.admin-dashboard-metadata-form
+input[type='search']::placeholder {
+    color: #555;
 }
 
 
@@ -746,7 +1002,7 @@ select:disabled {
         gap: 16px;
     }
 
-    .admin-dashboard-panel-header
+    .admin-dashboard-panel-header,
     .admin-dashboard-primary-button {
         width: 100%;
     }
@@ -788,4 +1044,14 @@ select:disabled {
         flex-direction: column;
         align-items: stretch;
     }
+
+    .admin-dashboard-metadata-item {
+        flex-direction: column;
+    }
+
+    .admin-dashboard-metadata-item,
+    .admin-dashboard-row-actions {
+        width: 100%;
+    }
+
 }

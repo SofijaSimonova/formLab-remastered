@@ -1,6 +1,6 @@
 import type {
     CreateExerciseRequest,
-    ExerciseAlternativeResponse,
+    ExerciseAlternativeResponse, ExerciseFocusVariationResponse,
     ExercisePageResponse,
     ExerciseResponse,
     ReferenceResponse, UpdateExerciseRequest,
@@ -88,10 +88,87 @@ export async function deleteExercise(
         `/api/exercises/${exerciseId}`,
     )
 }
+export async function getTags(): Promise<ReferenceResponse[]> {
+    const response = await apiClient.get<ReferenceResponse[]>(
+        '/api/tags',
+    )
+
+    return response.data
+}
+
 export async function getEquipment(): Promise<ReferenceResponse[]> {
     const response = await apiClient.get<ReferenceResponse[]>(
         '/api/equipment',
     )
 
     return response.data
+}
+export async function createExerciseAlternative(
+    exerciseId: string,
+    request: {
+        alternativeExerciseId: string
+        reason: string
+        reverseReason: string
+    },
+): Promise<ExerciseAlternativeResponse> {
+    const response =
+        await apiClient.post<ExerciseAlternativeResponse>(
+            `/api/exercises/${exerciseId}/alternatives`,
+            request,
+        )
+
+    return response.data
+}
+
+export async function deleteExerciseAlternative(
+    exerciseId: string,
+    alternativeId: string,
+): Promise<void> {
+    await apiClient.delete(
+        `/api/exercises/${exerciseId}/alternatives/${alternativeId}`,
+    )
+}
+
+export async function createExerciseFocusVariation(
+    exerciseId: string,
+    request: {
+        focusBodyPartId: string
+        name: string
+        description: string
+        animationReference: string
+    },
+): Promise<ExerciseFocusVariationResponse> {
+    const response =
+        await apiClient.post<ExerciseFocusVariationResponse>(
+            `/api/exercises/${exerciseId}/focus-variations`,
+            request,
+        )
+
+    return response.data
+}
+
+export async function updateExerciseFocusVariation(
+    exerciseId: string,
+    variationId: string,
+    request: {
+        name: string
+        description: string
+        animationReference: string
+    },
+): Promise<ExerciseFocusVariationResponse> {
+    const response =
+        await apiClient.put<ExerciseFocusVariationResponse>(
+            `/api/exercises/${exerciseId}/focus-variations/${variationId}`,
+            request,
+        )
+
+    return response.data
+}
+export async function deleteExerciseFocusVariation(
+    exerciseId: string,
+    variationId: string,
+): Promise<void> {
+    await apiClient.delete(
+        `/api/exercises/${exerciseId}/focus-variations/${variationId}`,
+    )
 }

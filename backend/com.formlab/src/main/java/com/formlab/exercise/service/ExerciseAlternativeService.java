@@ -51,6 +51,12 @@ public class ExerciseAlternativeService {
             UUID exerciseId,
             CreateExerciseAlternativeRequest request
     ) {
+        if (exerciseId.equals(request.alternativeExerciseId())) {
+            throw new BadRequestException(
+                    "An exercise cannot be an alternative to itself"
+            );
+        }
+
         Exercise exercise = exerciseRepository.findById(exerciseId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Exercise not found")
@@ -63,12 +69,6 @@ public class ExerciseAlternativeService {
                                 "Alternative exercise not found"
                         )
                 );
-
-        if (exerciseId.equals(request.alternativeExerciseId())) {
-            throw new BadRequestException(
-                    "An exercise cannot be an alternative to itself"
-            );
-        }
 
         boolean relationshipExists =
                 alternativeRepository

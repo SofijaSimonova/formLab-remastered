@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.UUID;
 
 public record UpdateExerciseRequest(
+
         @NotBlank
         @Size(max = 150)
         String name,
@@ -24,9 +25,13 @@ public record UpdateExerciseRequest(
         @NotNull
         ExerciseTrackingType trackingType,
 
+        @NotNull
         Set<UUID> bodyPartIds,
 
+        @NotNull
         Set<UUID> equipmentIds,
 
+        @NotNull
         Set<UUID> tagIds
-) {}
+) {
+}

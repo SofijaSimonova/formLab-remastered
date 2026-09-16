@@ -29,7 +29,21 @@ export const progressKeys = {
             range,
         ] as const,
 
+    questions: () =>
+        [...progressKeys.all, 'questions'] as const,
+
+    question: (
+        exerciseId: string,
+        range: string,
+        question: string,
+    ) =>
+        [
+            ...progressKeys.questions(),
+            exerciseId,
+            range,
+            question.trim().toLowerCase(),
+        ] as const,
+
     metrics: () =>
         [...progressKeys.all, 'metrics'] as const,
 }
-

@@ -18,27 +18,34 @@ public class ProgressAnalysisService {
     private final ProgressAnalysisCacheService cacheService;
     private final JwtUserIdentityService jwtUserIdentityService;
     private final ProgressPromptSuggestionBuilder promptSuggestionBuilder;
+    private final ProgressService progressService;
 
     public ProgressAnalysisService(
             AiModel aiModel,
             ProgressAnalysisCacheService cacheService,
             JwtUserIdentityService jwtUserIdentityService,
-            ProgressPromptSuggestionBuilder promptSuggestionBuilder
+            ProgressPromptSuggestionBuilder promptSuggestionBuilder,
+            ProgressService progressService
     ) {
         this.aiModel = aiModel;
         this.cacheService = cacheService;
-        this.jwtUserIdentityService = jwtUserIdentityService;
-        this.promptSuggestionBuilder = promptSuggestionBuilder;
+        this.jwtUserIdentityService =
+                jwtUserIdentityService;
+        this.promptSuggestionBuilder =
+                promptSuggestionBuilder;
+        this.progressService =
+                progressService;
     }
 
     public ProgressAnalysisResponse analyze(
             String accessToken,
             UUID exerciseId,
-            StrengthProgressRange range,
-            ProgressAiContext context
+            StrengthProgressRange range
     ) {
         UUID userId =
-                jwtUserIdentityService.extractUserId(accessToken);
+                jwtUserIdentityService.extractUserId(
+                        accessToken
+                );
 
         ProgressAnalysisResponse cached =
                 cacheService.get(
@@ -50,6 +57,13 @@ public class ProgressAnalysisService {
         if (cached != null) {
             return cached;
         }
+
+        ProgressAiContext context =
+                progressService.getProgressContext(
+                        accessToken,
+                        exerciseId,
+                        range
+                );
 
         GeminiProgressAnalysisResponse geminiAnalysis =
                 aiModel.analyze(context);

@@ -36,7 +36,6 @@ public class AuthController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    @Transactional
     public AppUserResponse register(
             @Valid @RequestBody RegisterRequest request
     ) {

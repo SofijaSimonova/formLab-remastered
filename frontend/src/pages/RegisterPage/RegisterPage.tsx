@@ -26,6 +26,7 @@ export function RegisterPage() {
         handleSubmit,
         formState: {
             errors,
+            isSubmitting,
         },
     } = useForm<RegisterFormValues>({
         resolver: zodResolver(registerSchema),
@@ -38,6 +39,13 @@ export function RegisterPage() {
     })
 
     async function onSubmit(data: RegisterFormValues) {
+        if (
+            isSubmitting ||
+            registerMutation.isPending
+        ) {
+            return
+        }
+
         setServerError('')
 
         try {
@@ -184,9 +192,13 @@ export function RegisterPage() {
                         <button
                             type="submit"
                             className="register-submit"
-                            disabled={registerMutation.isPending}
+                            disabled={
+                                isSubmitting ||
+                                registerMutation.isPending
+                            }
                         >
-                            {registerMutation.isPending
+                            {isSubmitting ||
+                            registerMutation.isPending
                                 ? 'Creating account...'
                                 : 'Create account'}
                         </button>

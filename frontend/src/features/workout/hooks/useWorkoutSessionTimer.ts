@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
+import {SESSION_TIMER_INTERVAL_MS} from "../../../constraints/app.constants";
+
+
 
 export function useWorkoutSessionTimer(
     startedAt: string | undefined,
 ) {
-    const [elapsedSeconds, setElapsedSeconds] = useState(0)
+    const [elapsedSeconds, setElapsedSeconds] =
+        useState(0)
 
     useEffect(() => {
         if (!startedAt) {
@@ -11,13 +15,20 @@ export function useWorkoutSessionTimer(
             return
         }
 
-        const startedAtMs = new Date(startedAt).getTime()
+        const startedAtMs =
+            new Date(startedAt).getTime()
+
+        if (Number.isNaN(startedAtMs)) {
+            setElapsedSeconds(0)
+            return
+        }
 
         const updateElapsed = () => {
             const elapsed = Math.max(
                 0,
                 Math.floor(
-                    (Date.now() - startedAtMs) / 1000,
+                    (Date.now() - startedAtMs) /
+                    1000,
                 ),
             )
 
@@ -28,7 +39,7 @@ export function useWorkoutSessionTimer(
 
         const intervalId = window.setInterval(
             updateElapsed,
-            1000,
+            SESSION_TIMER_INTERVAL_MS,
         )
 
         return () => {

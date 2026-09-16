@@ -66,6 +66,7 @@ public class AuthService {
         return new LoginResponse(token);
     }
 
+    @Transactional
     public AppUserResponse register(RegisterRequest request) {
 
         if (appUserRepository.existsByEmail(request.email())) {

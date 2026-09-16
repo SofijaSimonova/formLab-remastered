@@ -4,7 +4,9 @@ import {
 } from '@tanstack/react-query'
 
 import { completeWorkoutSession } from '../api/workout.api'
+
 import { progressKeys } from '../../progress/progress.keys'
+import {historyKeys} from "../../history/history.keys";
 
 export function useCompleteWorkoutSession() {
     const queryClient = useQueryClient()
@@ -30,13 +32,19 @@ export function useCompleteWorkoutSession() {
                 ],
             })
 
+            queryClient.removeQueries({
+                queryKey:
+                    progressKeys.questions(),
+            })
+
             await Promise.all([
                 queryClient.invalidateQueries({
                     queryKey: progressKeys.data(),
                 }),
 
                 queryClient.invalidateQueries({
-                    queryKey: progressKeys.personalRecords(),
+                    queryKey:
+                        progressKeys.personalRecords(),
                 }),
 
                 queryClient.invalidateQueries({
@@ -45,6 +53,15 @@ export function useCompleteWorkoutSession() {
                         'strength',
                     ],
                 }),
+
+                queryClient.invalidateQueries({
+                    queryKey:
+                        progressKeys.metrics(),
+                }),
+
+                queryClient.invalidateQueries({
+                    queryKey: historyKeys.list(),
+                })
             ])
         },
     })

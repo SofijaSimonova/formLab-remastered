@@ -32,11 +32,9 @@ public class WorkoutService {
     }
 
     public List<WorkoutResponse> getUserWorkouts(UUID userId) {
-        if (!appUserRepository.existsById(userId)) {
-            throw new ResourceNotFoundException("User not found");
-        }
 
-        return workoutRepository.findByUserId(userId)
+        return workoutRepository
+                .findByUserIdOrderByUpdatedAtDesc(userId)
                 .stream()
                 .map(workoutMapper::toResponse)
                 .toList();

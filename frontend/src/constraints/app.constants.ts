@@ -1,0 +1,17 @@
+export const SEARCH_DEBOUNCE_MS = 400
+
+export const ALTERNATIVE_SEARCH_DEBOUNCE_MS = 300
+
+export const EXERCISE_PAGE_SIZE = 6
+
+export const EXERCISE_SEARCH_PAGE_SIZE = 10
+
+export const HISTORY_PAGE_SIZE = 6
+
+export const DEFAULT_REST_SECONDS = 3 * 60
+
+export const REST_TIMER_ADJUSTMENT_SECONDS = 30
+
+export const SESSION_TIMER_INTERVAL_MS = 1000
+
+export const REST_TIMER_INTERVAL_MS = 250

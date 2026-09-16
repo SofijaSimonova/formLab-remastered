@@ -13,6 +13,8 @@ import {
     setToken,
 } from './authStorage'
 
+import { queryClient } from '../../lib/queryClient'
+
 interface AuthContextValue {
     token: string | null
     isAuthenticated: boolean
@@ -57,6 +59,7 @@ export function AuthProvider({
     }
 
     function logout(): void {
+        queryClient.clear()
         removeToken()
         setTokenState(null)
     }

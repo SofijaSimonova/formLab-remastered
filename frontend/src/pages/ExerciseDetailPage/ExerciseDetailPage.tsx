@@ -52,7 +52,7 @@ export function ExerciseDetailPage() {
     return (
         <div className="exercise-detail-page">
 
-            {/* TOP BAR */}
+
             <div className="exercise-detail-header">
                 <button
                     type="button"
@@ -63,20 +63,20 @@ export function ExerciseDetailPage() {
                 </button>
             </div>
 
-            {/* MAIN CONTENT */}
+
             <div className="exercise-detail-layout">
 
-                {/* LEFT / CENTER */}
+
                 <div className="exercise-detail-main">
 
-                    {/* PREVIEW */}
+
                     <section className="exercise-detail-preview">
                         <div className="exercise-detail-preview-placeholder">
                             <span>EXERCISE PREVIEW</span>
                         </div>
                     </section>
 
-                    {/* INSTRUCTIONS */}
+
                     <section className="exercise-detail-section">
                         <div className="exercise-detail-section-header">
                             <span>01</span>
@@ -105,7 +105,7 @@ export function ExerciseDetailPage() {
                         </div>
                     </section>
 
-                    {/* FOCUS VARIATIONS */}
+
                     {exercise.focusVariations.length > 0 && (
                         <section className="exercise-detail-section">
                             <div className="exercise-detail-section-header">
@@ -191,7 +191,7 @@ export function ExerciseDetailPage() {
                         </div>
                     </section>
 
-                    {/* ALTERNATIVES */}
+
                     <section className="exercise-detail-alternatives">
                         <div className="exercise-detail-alternatives-header">
                             <div>

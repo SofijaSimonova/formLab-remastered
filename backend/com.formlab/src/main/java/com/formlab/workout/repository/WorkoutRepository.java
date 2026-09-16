@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface WorkoutRepository extends JpaRepository<Workout, UUID> {
 
-    List<Workout> findByUserId(UUID userId);
+    List<Workout> findByUserIdOrderByUpdatedAtDesc(UUID userId);
 
     boolean existsByIdAndUserId(UUID workoutId, UUID userId);
 }

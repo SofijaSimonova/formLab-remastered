@@ -1,6 +1,10 @@
 package com.formlab.ai.kafka;
+
 import com.formlab.ai.kafka.dto.WorkoutSessionCompletedEvent;
 import com.formlab.ai.service.ProgressAnalysisCacheService;
+import com.formlab.ai.service.ProgressQuestionCacheService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
@@ -9,15 +13,25 @@ import tools.jackson.databind.json.JsonMapper;
 @Component
 public class WorkoutSessionCompletedConsumer {
 
+    private static final Logger log =
+            LoggerFactory.getLogger(
+                    WorkoutSessionCompletedConsumer.class
+            );
+
     private final JsonMapper jsonMapper;
-    private final ProgressAnalysisCacheService cacheService;
+    private final ProgressAnalysisCacheService analysisCacheService;
+    private final ProgressQuestionCacheService questionCacheService;
 
     public WorkoutSessionCompletedConsumer(
             JsonMapper jsonMapper,
-            ProgressAnalysisCacheService cacheService
+            ProgressAnalysisCacheService analysisCacheService,
+            ProgressQuestionCacheService questionCacheService
     ) {
         this.jsonMapper = jsonMapper;
-        this.cacheService = cacheService;
+        this.analysisCacheService =
+                analysisCacheService;
+        this.questionCacheService =
+                questionCacheService;
     }
 
     @KafkaListener(
@@ -35,16 +49,27 @@ public class WorkoutSessionCompletedConsumer {
                         WorkoutSessionCompletedEvent.class
                 );
 
-        System.out.println("========== KAFKA CACHE INVALIDATION ==========");
-        System.out.println("userId     = " + event.userId());
-        System.out.println("exerciseIds = " + event.exerciseIds());
-
-        cacheService.invalidate(
+        log.info(
+                "Invalidating AI progress caches for userId={} exerciseIds={}",
                 event.userId(),
                 event.exerciseIds()
         );
 
-        System.out.println("========== CACHE INVALIDATION FINISHED ==========");
+        analysisCacheService.invalidate(
+                event.userId(),
+                event.exerciseIds()
+        );
+
+        questionCacheService.invalidate(
+                event.userId(),
+                event.exerciseIds()
+        );
+
+        log.info(
+                "AI progress cache invalidation completed for userId={} exerciseIds={}",
+                event.userId(),
+                event.exerciseIds()
+        );
 
         acknowledgment.acknowledge();
     }

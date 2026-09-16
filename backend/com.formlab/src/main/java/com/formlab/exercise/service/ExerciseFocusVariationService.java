@@ -12,6 +12,7 @@ import com.formlab.exercise.repository.BodyPartRepository;
 import com.formlab.exercise.repository.ExerciseFocusVariationRepository;
 import com.formlab.exercise.repository.ExerciseRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -36,7 +37,10 @@ public class ExerciseFocusVariationService {
         this.variationMapper = variationMapper;
     }
 
-    public List<ExerciseFocusVariationResponse> getByExercise(UUID exerciseId) {
+    @Transactional(readOnly = true)
+    public List<ExerciseFocusVariationResponse> getByExercise(
+            UUID exerciseId
+    ) {
         if (!exerciseRepository.existsById(exerciseId)) {
             throw new ResourceNotFoundException("Exercise not found");
         }
@@ -47,6 +51,7 @@ public class ExerciseFocusVariationService {
                 .toList();
     }
 
+    @Transactional
     public ExerciseFocusVariationResponse create(
             UUID exerciseId,
             CreateExerciseFocusVariationRequest request
@@ -74,6 +79,7 @@ public class ExerciseFocusVariationService {
         return variationMapper.toResponse(savedVariation);
     }
 
+    @Transactional
     public ExerciseFocusVariationResponse update(
             UUID exerciseId,
             UUID variationId,
@@ -95,11 +101,10 @@ public class ExerciseFocusVariationService {
 
         variationMapper.updateEntity(request, variation);
 
-        return variationMapper.toResponse(
-                variationRepository.save(variation)
-        );
+        return variationMapper.toResponse(variation);
     }
 
+    @Transactional
     public void delete(
             UUID exerciseId,
             UUID variationId

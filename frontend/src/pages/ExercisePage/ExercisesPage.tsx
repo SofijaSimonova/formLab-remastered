@@ -98,7 +98,7 @@ export function ExercisesPage() {
                     onSelectBodyPart={setSelectedBodyPartId}
                 />
 
-                <main className="exercises-page-results">
+                <main className="exercises-page-results custom-scrollbar">
                     <ExerciseToolbar
                         selectedBodyPartName={selectedBodyPartName}
                         onClearBodyPart={() =>

@@ -1,5 +1,6 @@
 package com.formlab.ai.service;
 
+import com.formlab.ai.common.exception.AiModelException;
 import com.formlab.ai.dto.context.ProgressAiContext;
 import com.formlab.ai.dto.output.GeminiProgressAnalysisResponse;
 import com.formlab.ai.dto.output.ProgressAnalysisResponse;
@@ -59,20 +60,7 @@ public class GeminiAiModel implements AiModel {
                         .responseSchema(buildResponseSchema())
                         .build();
 
-        GenerateContentResponse response =
-                client.models.generateContent(
-                        model,
-                        prompt,
-                        config
-                );
-
-        String json = response.text();
-
-        if (json == null || json.isBlank()) {
-            throw new IllegalStateException(
-                    "Gemini returned an empty response"
-            );
-        }
+        String json = callGemini(model, prompt, config);
 
         try {
             return jsonMapper.readValue(
@@ -80,7 +68,7 @@ public class GeminiAiModel implements AiModel {
                     GeminiProgressAnalysisResponse.class
             );
         } catch (JacksonException e) {
-            throw new IllegalStateException(
+            throw new AiModelException(
                     "Failed to parse Gemini response",
                     e
             );
@@ -107,20 +95,7 @@ public class GeminiAiModel implements AiModel {
                         )
                         .build();
 
-        GenerateContentResponse response =
-                client.models.generateContent(
-                        model,
-                        prompt,
-                        config
-                );
-
-        String json = response.text();
-
-        if (json == null || json.isBlank()) {
-            throw new IllegalStateException(
-                    "Gemini returned an empty response"
-            );
-        }
+        String json = callGemini(model, prompt, config);
 
         try {
             return jsonMapper.readValue(
@@ -128,11 +103,42 @@ public class GeminiAiModel implements AiModel {
                     ProgressQuestionResponse.class
             );
         } catch (JacksonException e) {
-            throw new IllegalStateException(
+            throw new AiModelException(
                     "Failed to parse Gemini question response",
                     e
             );
         }
+    }
+
+    private String callGemini(
+            String model,
+            String prompt,
+            GenerateContentConfig config
+    ) {
+        GenerateContentResponse response;
+
+        try {
+            response = client.models.generateContent(
+                    model,
+                    prompt,
+                    config
+            );
+        } catch (RuntimeException e) {
+            throw new AiModelException(
+                    "Gemini request failed",
+                    e
+            );
+        }
+
+        String json = response.text();
+
+        if (json == null || json.isBlank()) {
+            throw new AiModelException(
+                    "Gemini returned an empty response"
+            );
+        }
+
+        return json;
     }
 
     private Schema buildResponseSchema() {

@@ -2,8 +2,10 @@ package com.formlab.exercise.dto;
 
 import com.formlab.exercise.entity.ExerciseTrackingType;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.util.Set;
 import java.util.UUID;
 
 public record CreateExerciseRequest(
@@ -20,6 +22,16 @@ public record CreateExerciseRequest(
 
         UUID movementPatternId,
 
-        ExerciseTrackingType trackingType
+        @NotNull
+        ExerciseTrackingType trackingType,
+
+        @NotNull
+        Set<UUID> bodyPartIds,
+
+        @NotNull
+        Set<UUID> equipmentIds,
+
+        @NotNull
+        Set<UUID> tagIds
 ) {
 }

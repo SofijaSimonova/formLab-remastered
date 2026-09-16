@@ -4,6 +4,8 @@ import com.formlab.common.exception.BadRequestException;
 import com.formlab.common.exception.ResourceNotFoundException;
 import com.formlab.outbox.service.OutboxEventService;
 import com.formlab.workout.dto.CreateWorkoutSessionResponse;
+import com.formlab.workout.dto.WorkoutSessionHistoryPageResponse;
+import com.formlab.workout.dto.WorkoutSessionHistoryResponse;
 import com.formlab.workout.dto.WorkoutSessionSummaryResponse;
 import com.formlab.workout.dto.WorkoutSessionExerciseSummaryResponse;
 import com.formlab.workout.entity.Workout;
@@ -16,7 +18,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.formlab.workout.dto.WorkoutSessionHistoryResponse;
 
 import java.time.ZoneOffset;
 import java.util.*;
@@ -49,6 +50,7 @@ public class WorkoutSessionService {
         this.outboxEventService = outboxEventService;
     }
 
+    @Transactional
     public CreateWorkoutSessionResponse startSession(UUID workoutId) {
 
         Workout workout = workoutRepository.findById(workoutId)
@@ -93,39 +95,53 @@ public class WorkoutSessionService {
     }
 
     @Transactional(readOnly = true)
-    public Page<WorkoutSessionHistoryResponse> getHistory(
+    public WorkoutSessionHistoryPageResponse getHistory(
             UUID userId,
             Pageable pageable
     ) {
-        return workoutSessionRepository
-                .findHistoryByUserId(userId, pageable)
-                .map(projection -> {
+        Page<WorkoutSessionHistoryResponse> historyPage =
+                workoutSessionRepository
+                        .findHistoryByUserId(userId, pageable)
+                        .map(projection -> {
 
-                    OffsetDateTime startedAt =
-                            projection.getStartedAt()
-                                    .atOffset(ZoneOffset.UTC);
+                            OffsetDateTime startedAt =
+                                    projection.getStartedAt()
+                                            .atOffset(ZoneOffset.UTC);
 
-                    OffsetDateTime completedAt =
-                            projection.getCompletedAt() != null
-                                    ? projection.getCompletedAt()
-                                    .atOffset(ZoneOffset.UTC)
-                                    : null;
+                            OffsetDateTime completedAt =
+                                    projection.getCompletedAt() != null
+                                            ? projection.getCompletedAt()
+                                            .atOffset(ZoneOffset.UTC)
+                                            : null;
 
-                    Long durationSeconds = completedAt != null
-                            ? Duration.between(startedAt, completedAt).getSeconds()
-                            : null;
+                            Long durationSeconds =
+                                    completedAt != null
+                                            ? Duration.between(
+                                            startedAt,
+                                            completedAt
+                                    ).getSeconds()
+                                            : null;
 
-                    return new WorkoutSessionHistoryResponse(
-                            projection.getSessionId(),
-                            projection.getWorkoutId(),
-                            projection.getWorkoutName(),
-                            projection.getStatus(),
-                            startedAt,
-                            completedAt,
-                            durationSeconds,
-                            projection.getResumeWorkoutExerciseId()
-                    );
-                });
+                            return new WorkoutSessionHistoryResponse(
+                                    projection.getSessionId(),
+                                    projection.getWorkoutId(),
+                                    projection.getWorkoutName(),
+                                    projection.getStatus(),
+                                    startedAt,
+                                    completedAt,
+                                    durationSeconds,
+                                    projection.getResumeWorkoutExerciseId()
+                            );
+                        });
+
+        return new WorkoutSessionHistoryPageResponse(
+                historyPage.getContent(),
+                historyPage.getNumber(),
+                historyPage.getSize(),
+                historyPage.getTotalElements(),
+                historyPage.getTotalPages(),
+                historyPage.isLast()
+        );
     }
 
     @Transactional
@@ -153,9 +169,10 @@ public class WorkoutSessionService {
         session.setStatus(WorkoutSessionStatus.COMPLETED);
         session.setCompletedAt(OffsetDateTime.now());
 
-        CreateWorkoutSessionResponse response = workoutSessionMapper.toResponse(
-                workoutSessionRepository.save(session)
-        );
+        CreateWorkoutSessionResponse response =
+                workoutSessionMapper.toResponse(
+                        workoutSessionRepository.save(session)
+                );
 
         outboxEventService.saveEvent(
                 "WORKOUT_SESSION_COMPLETED",
@@ -212,10 +229,14 @@ public class WorkoutSessionService {
         }
 
         List<WorkoutSessionExerciseAggregationProjection> aggregations =
-                workoutSetRepository.findSessionExerciseAggregations(sessionId);
+                workoutSetRepository.findSessionExerciseAggregations(
+                        sessionId
+                );
 
         List<WorkoutSessionBestSetProjection> bestSets =
-                workoutSetRepository.findBestSetsBySessionId(sessionId);
+                workoutSetRepository.findBestSetsBySessionId(
+                        sessionId
+                );
 
         Map<UUID, WorkoutSessionBestSetProjection> bestSetByExercise =
                 bestSets.stream()
@@ -251,7 +272,6 @@ public class WorkoutSessionService {
         WorkoutSessionTotalsProjection totals =
                 workoutSetRepository.findSessionTotals(sessionId);
 
-
         long durationSeconds =
                 Duration.between(
                         session.getStartedAt(),
@@ -271,5 +291,5 @@ public class WorkoutSessionService {
                 totals.getTotalVolume(),
                 exercises
         );
-    };
+    }
 }

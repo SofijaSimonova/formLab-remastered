@@ -20,7 +20,7 @@ const workoutKeys = {
         workoutSessionId: string,
         workoutExerciseId: string,
     ) => [
-        'workoutSets',
+        'sets',
         workoutSessionId,
         workoutExerciseId,
     ],

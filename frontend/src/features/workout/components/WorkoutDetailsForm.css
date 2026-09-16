@@ -1,0 +1,102 @@
+.workout-details-form-field {
+    margin-top: 20px;
+}
+
+.workout-details-form-field label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #858792;
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.workout-details-form-field input,
+.workout-details-form-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    color: #e5e2e3;
+    background: #111112;
+
+    border: 1px solid #3a3b40;
+    border-radius: 4px;
+
+    outline: none;
+
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+
+    transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+}
+
+.workout-details-form-field input {
+    height: 42px;
+    padding: 0 11px;
+}
+
+.workout-details-form-field textarea {
+    min-height: 105px;
+    padding: 10px 11px;
+
+    resize: vertical;
+}
+
+.workout-details-form-field input::placeholder,
+.workout-details-form-field textarea::placeholder {
+    color: #62646d;
+}
+
+.workout-details-form-field input:focus,
+.workout-details-form-field textarea:focus {
+    border-color: #adc6ff;
+    box-shadow:
+            0 0 0 2px
+            rgba(173, 198, 255, 0.08);
+}
+
+.workout-details-form-field input[aria-invalid='true'] {
+    border-color: #ffb4ab;
+}
+
+.workout-details-form-field-error {
+    display: block;
+    margin-top: 6px;
+
+    color: #ffb4ab;
+
+    font-size: 11px;
+    line-height: 16px;
+}
+
+.workout-details-form-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.create-workout-page-error {
+    margin-top: 18px;
+    padding: 10px 12px;
+
+    color: #ffb4ab;
+    background: #2a1112;
+
+    border: 1px solid #5f2527;
+    border-radius: 5px;
+
+    font-size: 12px;
+    line-height: 18px;
+}

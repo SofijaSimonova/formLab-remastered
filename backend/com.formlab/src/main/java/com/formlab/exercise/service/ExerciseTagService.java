@@ -68,8 +68,6 @@ public class ExerciseTagService {
 
         exercise.getTags().add(tag);
 
-        exerciseRepository.save(exercise);
-
         return new ExerciseTagResponse(
                 tag.getId(),
                 tag.getName()
@@ -98,7 +96,5 @@ public class ExerciseTagService {
         }
 
         exercise.getTags().remove(tag);
-
-        exerciseRepository.save(exercise);
     }
 }

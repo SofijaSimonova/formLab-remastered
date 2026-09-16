@@ -182,27 +182,6 @@
     text-transform: uppercase;
 }
 
-.create-workout-page-field input,
-.create-workout-page-field textarea {
-    width: 100%;
-    box-sizing: border-box;
-
-    color: #e5e2e3;
-    background: #111112;
-
-    border: 1px solid #3a3b40;
-    border-radius: 4px;
-
-    outline: none;
-
-    font-family: Inter, sans-serif;
-    font-size: 13px;
-
-    transition:
-            border-color 0.2s ease,
-            box-shadow 0.2s ease;
-}
-
 .create-workout-page-field input {
     height: 42px;
     padding: 0 11px;

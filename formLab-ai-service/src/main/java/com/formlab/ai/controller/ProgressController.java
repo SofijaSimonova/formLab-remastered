@@ -1,16 +1,16 @@
 package com.formlab.ai.controller;
 
 import com.formlab.ai.dto.context.ProgressAiContext;
+import com.formlab.ai.dto.input.ProgressQuestionRequest;
 import com.formlab.ai.dto.input.StrengthProgressRange;
 import com.formlab.ai.dto.output.ProgressAnalysisResponse;
+import com.formlab.ai.dto.output.ProgressQuestionResponse;
 import com.formlab.ai.service.ProgressAnalysisService;
+import com.formlab.ai.service.ProgressQuestionService;
 import com.formlab.ai.service.ProgressService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
-import com.formlab.ai.dto.input.ProgressQuestionRequest;
-import com.formlab.ai.dto.output.ProgressQuestionResponse;
-import com.formlab.ai.service.ProgressQuestionService;
-import jakarta.validation.Valid;
 
 import java.util.UUID;
 
@@ -27,14 +27,19 @@ public class ProgressController {
             ProgressQuestionService progressQuestionService
     ) {
         this.progressService = progressService;
-        this.progressAnalysisService = progressAnalysisService;
-        this.progressQuestionService = progressQuestionService;
+        this.progressAnalysisService =
+                progressAnalysisService;
+        this.progressQuestionService =
+                progressQuestionService;
     }
 
     @GetMapping("/api/ai/progress/{exerciseId}")
     public ProgressAnalysisResponse analyzeProgress(
-            @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization,
+            @RequestHeader(HttpHeaders.AUTHORIZATION)
+            String authorization,
+
             @PathVariable UUID exerciseId,
+
             @RequestParam(
                     required = false,
                     defaultValue = "THREE_MONTHS"
@@ -44,39 +49,35 @@ public class ProgressController {
         String accessToken =
                 authorization.substring("Bearer ".length());
 
-        ProgressAiContext context =
-                progressService.getProgressContext(
-                        accessToken,
-                        exerciseId,
-                        range
-                );
-
         return progressAnalysisService.analyze(
                 accessToken,
                 exerciseId,
-                range,
-                context
+                range
         );
     }
-        @GetMapping("/api/ai/progress/{exerciseId}/context")
-        public ProgressAiContext getProgressContext(
-                @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization,
-                @PathVariable UUID exerciseId,
-                @RequestParam(
-                        required = false,
-                        defaultValue = "THREE_MONTHS"
-                )
-                StrengthProgressRange range
-        ) {
-            String accessToken =
-                    authorization.substring("Bearer ".length());
 
-            return progressService.getProgressContext(
-                    accessToken,
-                    exerciseId,
-                    range
-            );
-        }
+    @GetMapping("/api/ai/progress/{exerciseId}/context")
+    public ProgressAiContext getProgressContext(
+            @RequestHeader(HttpHeaders.AUTHORIZATION)
+            String authorization,
+
+            @PathVariable UUID exerciseId,
+
+            @RequestParam(
+                    required = false,
+                    defaultValue = "THREE_MONTHS"
+            )
+            StrengthProgressRange range
+    ) {
+        String accessToken =
+                authorization.substring("Bearer ".length());
+
+        return progressService.getProgressContext(
+                accessToken,
+                exerciseId,
+                range
+        );
+    }
 
     @PostMapping("/api/ai/progress/{exerciseId}/questions")
     public ProgressQuestionResponse answerQuestion(
@@ -98,15 +99,10 @@ public class ProgressController {
         String accessToken =
                 authorization.substring("Bearer ".length());
 
-        ProgressAiContext context =
-                progressService.getProgressContext(
-                        accessToken,
-                        exerciseId,
-                        range
-                );
-
         return progressQuestionService.answer(
-                context,
+                accessToken,
+                exerciseId,
+                range,
                 request.question()
         );
     }

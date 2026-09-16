@@ -9,6 +9,7 @@ public record CreateWorkoutRequest(
         @Size(max = 150)
         String name,
 
+        @Size(max = 10000)
         String description
 ) {
 }

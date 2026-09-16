@@ -94,3 +94,42 @@
     background: #252c18;
     color: #d9f99d;
 }
+
+
+/* =========================================================
+   SHARED CUSTOM SCROLLBAR
+   ========================================================= */
+
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #3a3a3a transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border-radius: 10px;
+
+    border: 2px solid transparent;
+    background-clip: padding-box;
+
+    transition: background 0.2s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #d9f99d;
+
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.custom-scrollbar::-webkit-scrollbar-corner {
+    background: transparent;
+}

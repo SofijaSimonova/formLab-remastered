@@ -33,6 +33,7 @@ export interface ExerciseFocusVariationResponse {
     description: string
     animationReference: string
 }
+
 export interface ExercisePageResponse {
     content: ExerciseListResponse[]
     page: number
@@ -41,11 +42,12 @@ export interface ExercisePageResponse {
     totalPages: number
     last: boolean
 }
+
 export interface ExerciseAlternativeResponse {
-    id: string,
-    exerciseId: string,
-    alternativeExerciseId: string,
-    alternativeExerciseName: string,
+    id: string
+    exerciseId: string
+    alternativeExerciseId: string
+    alternativeExerciseName: string
     reason: string
 }
 
@@ -53,12 +55,26 @@ export type ExerciseTrackingType =
     | 'WEIGHT'
     | 'REPS'
 
+export interface ExerciseFormValues {
+    name: string
+    description: string
+    instructions: string
+    movementPatternId: string
+    trackingType: ExerciseTrackingType
+    bodyPartIds: string[]
+    equipmentIds: string[]
+    tagIds: string[]
+}
+
 export interface CreateExerciseRequest {
     name: string
     description: string
     instructions: string
     movementPatternId: string | null
     trackingType: ExerciseTrackingType
+    bodyPartIds: string[]
+    equipmentIds: string[]
+    tagIds: string[]
 }
 
 export interface UpdateExerciseRequest {
@@ -71,6 +87,7 @@ export interface UpdateExerciseRequest {
     equipmentIds: string[]
     tagIds: string[]
 }
+
 export interface EquipmentResponse {
     id: string
     name: string

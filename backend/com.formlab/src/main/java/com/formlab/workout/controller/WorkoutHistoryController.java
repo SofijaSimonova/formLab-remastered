@@ -1,9 +1,8 @@
 package com.formlab.workout.controller;
 
-import com.formlab.workout.dto.WorkoutSessionHistoryResponse;
-import com.formlab.workout.service.WorkoutSessionService;
 import com.formlab.security.AuthorizationService;
-import org.springframework.data.domain.Page;
+import com.formlab.workout.dto.WorkoutSessionHistoryPageResponse;
+import com.formlab.workout.service.WorkoutSessionService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -31,13 +30,17 @@ public class WorkoutHistoryController {
 
     @GetMapping
     @PreAuthorize("isAuthenticated()")
-    public Page<WorkoutSessionHistoryResponse> getHistory(
+    public WorkoutSessionHistoryPageResponse getHistory(
             Authentication authentication,
             @PageableDefault(size = 20, sort = "startedAt")
             Pageable pageable
     ) {
-        UUID userId = authorizationService.getCurrentUserId(authentication);
+        UUID userId =
+                authorizationService.getCurrentUserId(authentication);
 
-        return workoutSessionService.getHistory(userId, pageable);
+        return workoutSessionService.getHistory(
+                userId,
+                pageable
+        );
     }
 }
