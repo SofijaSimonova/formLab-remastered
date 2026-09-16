@@ -21,3 +21,73 @@ services:
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
 
       KAFKA_NUM_PARTITIONS: 3
+    networks:
+      - formlab-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: formlab-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - formlab-network
+
+  backend:
+    build:
+      context: ./backend/com.formlab
+    container_name: formlab-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SUPABASE_DB_URL: ${SUPABASE_DB_URL}
+      SUPABASE_DB_USERNAME: ${SUPABASE_DB_USERNAME}
+      SUPABASE_DB_PASSWORD: ${SUPABASE_DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-http://localhost:5173}
+    depends_on:
+      - kafka
+      - redis
+    networks:
+      - formlab-network
+
+  ai-service:
+    build:
+      context: ./formLab-ai-service
+    container_name: formlab-ai-service
+    ports:
+      - "8090:8090"
+    environment:
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      JWT_SECRET: ${JWT_SECRET}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      FORMLAB_BACKEND_URL: http://backend:8080
+    depends_on:
+      - kafka
+      - redis
+      - backend
+    networks:
+      - formlab-network
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8080}
+        VITE_AI_API_BASE_URL: ${VITE_AI_API_BASE_URL:-http://localhost:8090}
+    container_name: formlab-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+      - ai-service
+    networks:
+      - formlab-network
+
+networks:
+  formlab-network:
+    driver: bridge
