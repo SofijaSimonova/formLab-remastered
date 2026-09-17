@@ -1,0 +1,72 @@
+services:
+  - type: web
+    name: formlab-backend
+    env: docker
+    plan: free
+    dockerfilePath: ./backend/com.formlab/Dockerfile
+    dockerContext: ./backend/com.formlab
+    envVars:
+      - key: SUPABASE_DB_URL
+        sync: false
+      - key: SUPABASE_DB_USERNAME
+        sync: false
+      - key: SUPABASE_DB_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: REDIS_HOST
+        sync: false
+      - key: REDIS_PORT
+        sync: false
+      - key: REDIS_PASSWORD
+        sync: false
+      - key: REDIS_SSL_ENABLED
+        value: "false"
+      - key: KAFKA_BOOTSTRAP_SERVERS
+        sync: false
+      - key: KAFKA_SECURITY_PROTOCOL
+        value: SASL_SSL
+      - key: KAFKA_SASL_MECHANISM
+        sync: false
+      - key: KAFKA_SASL_JAAS_CONFIG
+        sync: false
+      - key: KAFKA_SSL_TRUSTSTORE_TYPE
+        value: PEM
+      - key: KAFKA_SSL_TRUSTSTORE_CERTIFICATES
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+
+  - type: web
+    name: formlab-ai-service
+    env: docker
+    plan: free
+    dockerfilePath: ./formLab-ai-service/Dockerfile
+    dockerContext: ./formLab-ai-service
+    envVars:
+      - key: FORMLAB_BACKEND_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: REDIS_HOST
+        sync: false
+      - key: REDIS_PORT
+        sync: false
+      - key: REDIS_PASSWORD
+        sync: false
+      - key: REDIS_SSL_ENABLED
+        value: "false"
+      - key: KAFKA_BOOTSTRAP_SERVERS
+        sync: false
+      - key: KAFKA_SECURITY_PROTOCOL
+        value: SASL_SSL
+      - key: KAFKA_SASL_MECHANISM
+        sync: false
+      - key: KAFKA_SASL_JAAS_CONFIG
+        sync: false
+      - key: KAFKA_SSL_TRUSTSTORE_TYPE
+        value: PEM
+      - key: KAFKA_SSL_TRUSTSTORE_CERTIFICATES
+        sync: false
