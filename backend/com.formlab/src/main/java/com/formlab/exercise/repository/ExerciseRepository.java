@@ -68,7 +68,6 @@ public interface ExerciseRepository extends JpaRepository<Exercise, UUID>, JpaSp
         e.name AS name,
         e.description AS description,
         e.instructions AS instructions,
-        e.movementPattern.id AS movementPatternId,
         e.trackingType AS trackingType
     FROM Exercise e
     WHERE e.id = :id

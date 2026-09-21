@@ -122,7 +122,7 @@ export function RegisterPage() {
                                 )}
                             </div>
 
-                            <div className="form-field">
+                            <div className="register-form-field">
                                 <label htmlFor="lastName">
                                     Last name
                                 </label>
@@ -143,7 +143,7 @@ export function RegisterPage() {
                             </div>
                         </div>
 
-                        <div className="form-field">
+                        <div className="register-form-field">
                             <label htmlFor="email">
                                 Email
                             </label>
@@ -163,7 +163,7 @@ export function RegisterPage() {
                             )}
                         </div>
 
-                        <div className="form-field">
+                        <div className="register-form-field">
                             <label htmlFor="password">
                                 Password
                             </label>

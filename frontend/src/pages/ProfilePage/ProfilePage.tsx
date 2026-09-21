@@ -11,8 +11,10 @@ import { useRemoveUserGoal } from '../../features/goals/hooks/useRemoveUserGoal'
 
 import { useChangePassword } from '../../features/auth/hooks/useChangePassword'
 import { useAuth } from '../../features/auth/AuthContext'
+import { LoadingState } from '../../components/LoadingState'
 
 import './ProfilePage.css'
+import '../../components/shared.css'
 
 export function ProfilePage() {
     const navigate = useNavigate()
@@ -171,9 +173,7 @@ export function ProfilePage() {
     if (isUserLoading) {
         return (
             <main className="profile-page">
-                <div className="profile-page-state">
-                    Loading profile...
-                </div>
+                <LoadingState message="Loading profile..." />
             </main>
         )
     }

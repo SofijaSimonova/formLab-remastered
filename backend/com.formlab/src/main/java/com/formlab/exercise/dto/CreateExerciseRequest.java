@@ -20,8 +20,6 @@ public record CreateExerciseRequest(
         @Size(max = 10000)
         String instructions,
 
-        UUID movementPatternId,
-
         @NotNull
         ExerciseTrackingType trackingType,
 

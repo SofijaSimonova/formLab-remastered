@@ -6,7 +6,9 @@ export const EXERCISE_PAGE_SIZE = 6
 
 export const EXERCISE_SEARCH_PAGE_SIZE = 10
 
-export const HISTORY_PAGE_SIZE = 6
+export const HISTORY_PAGE_SIZE = 20
+
+export const HISTORY_COMPLETED_DISPLAY_SIZE = 6
 
 export const DEFAULT_REST_SECONDS = 3 * 60
 

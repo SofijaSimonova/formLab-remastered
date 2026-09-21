@@ -133,11 +133,14 @@ export function useWorkoutSetPage() {
 
     const progress =
         workoutExercises.length > 0
-            ? Math.round(
-                ((currentExerciseIndex +
-                        1) /
-                    workoutExercises.length) *
-                100,
+            ? Math.min(
+                99,
+                Math.round(
+                    ((currentExerciseIndex +
+                            1) /
+                        workoutExercises.length) *
+                    100,
+                ),
             )
             : 0
 

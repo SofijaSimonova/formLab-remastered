@@ -3,8 +3,10 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useWorkout } from '../../features/workout/hooks/useWorkout'
 import { useWorkoutExercises } from '../../features/workout/hooks/useWorkoutExercises'
 import { useCreateWorkoutSession } from '../../features/workout/hooks/useCreateWorkoutSession'
+import { LoadingState } from '../../components/LoadingState'
 
 import './WorkoutDetailPage.css'
+import '../../components/shared.css'
 
 function formatUpdatedAt(value: string) {
     return new Intl.DateTimeFormat('en-US', {
@@ -54,11 +56,7 @@ export function WorkoutDetailPage() {
     if (isLoading) {
         return (
             <main className="workout-detail-page">
-                <div className="workout-detail-container">
-                    <div className="workout-detail-state">
-                        Loading workout...
-                    </div>
-                </div>
+                <LoadingState message="Loading workout..." />
             </main>
         )
     }

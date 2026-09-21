@@ -12,7 +12,5 @@ public interface ExerciseListProjection {
 
     String getDescription();
 
-    UUID getMovementPatternId();
-
     ExerciseTrackingType getTrackingType();
 }

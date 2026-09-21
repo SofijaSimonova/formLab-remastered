@@ -1,8 +1,10 @@
 
 import './AdminDashboardPage.css'
+import '../../components/shared.css'
 
 import { AdminExerciseTable } from '../../features/exercises/components/AdminExerciseTable'
 import { AdminExerciseForm } from '../../features/exercises/components/AdminExerciseForm'
+import { LoadingState } from '../../components/LoadingState'
 import {useAdminDashboard} from "../../features/exercises/hooks/useAdminDashboard";
 
 export function AdminDashboardPage() {
@@ -107,13 +109,7 @@ export function AdminDashboardPage() {
                 </div>
 
                 {exercisesQuery.isPending && (
-                    <div className="loading-state">
-                        <div className="loading-spinner" />
-
-                        <span>
-                            Loading exercises...
-                        </span>
-                    </div>
+                    <LoadingState message="Loading exercises..." />
                 )}
 
                 {exercisesQuery.isError && (
@@ -234,7 +230,7 @@ export function AdminDashboardPage() {
                 <div className="admin-dashboard-modal-backdrop">
                     <div className="admin-dashboard-modal custom-scrollbar">
                         {editingExerciseQuery.isPending && (
-                            <div className="loading-state">
+                            <div className="admin-dashboard-modal-loading">
                                 <div className="loading-spinner" />
 
                                 <span>

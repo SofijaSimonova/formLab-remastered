@@ -9,7 +9,6 @@ public record ExerciseListResponse(
         UUID id,
         String name,
         String description,
-        UUID movementPatternId,
         List<ReferenceResponse> bodyParts,
         List<ReferenceResponse> tags,
         ExerciseTrackingType trackingType

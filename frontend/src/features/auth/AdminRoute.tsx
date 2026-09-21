@@ -1,6 +1,9 @@
 import { Navigate, Outlet } from 'react-router-dom'
 
 import { useCurrentUser } from '../user/hooks/useCurrentUser'
+import { LoadingState } from '../../components/LoadingState'
+
+import '../../components/shared.css'
 
 export function AdminRoute() {
     const {
@@ -18,12 +21,7 @@ export function AdminRoute() {
     }
 
     if (!user) {
-        return (
-            <div className="loading-state">
-                <div className="loading-spinner" />
-                <span>Loading...</span>
-            </div>
-        )
+        return <LoadingState />
     }
 
     if (user.role !== 'ADMIN') {

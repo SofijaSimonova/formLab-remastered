@@ -1,12 +1,15 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useWorkoutHistory } from '../../features/history/hooks/useWorkoutHistory'
 import type {
     WorkoutSessionHistoryResponse,
 } from '../../features/history/types/history.types'
+import { HISTORY_COMPLETED_DISPLAY_SIZE } from '../../constraints/app.constants'
+import { LoadingState } from '../../components/LoadingState'
 
 import './history.css'
+import '../../components/shared.css'
 
 export function HistoryPage() {
     const navigate = useNavigate()
@@ -20,11 +23,17 @@ export function HistoryPage() {
         isFetchingNextPage,
     } = useWorkoutHistory()
 
+    const [visibleCompletedCount, setVisibleCompletedCount] = useState(
+        HISTORY_COMPLETED_DISPLAY_SIZE,
+    )
+
     const sessions = useMemo(
         () => data?.pages.flatMap((page) => page.content) ?? [],
         [data],
     )
 
+    // Always shown in full - a user only ever has a handful of active
+    // sessions at once, so this never needs its own pagination gate.
     const inProgressSessions = sessions.filter(
         (session) => session.status === 'IN_PROGRESS',
     )
@@ -33,12 +42,31 @@ export function HistoryPage() {
         (session) => session.status === 'COMPLETED',
     )
 
+    const visibleCompletedSessions = completedSessions.slice(
+        0,
+        visibleCompletedCount,
+    )
+
+    const canShowMoreCompleted =
+        visibleCompletedCount < completedSessions.length ||
+        hasNextPage
+
+    function handleLoadMoreCompleted() {
+        if (visibleCompletedCount < completedSessions.length) {
+            setVisibleCompletedCount(
+                (count) => count + HISTORY_COMPLETED_DISPLAY_SIZE,
+            )
+
+            return
+        }
+
+        fetchNextPage()
+    }
+
     if (isLoading) {
         return (
             <div className="history-page">
-                <div className="history-page-state">
-                    Loading history...
-                </div>
+                <LoadingState message="Loading history..." />
             </div>
         )
     }
@@ -75,7 +103,7 @@ export function HistoryPage() {
             {completedSessions.length > 0 && (
                 <HistorySection
                     title="Completed"
-                    sessions={completedSessions}
+                    sessions={visibleCompletedSessions}
                     onSessionClick={handleSessionClick}
                     actionLabel="View summary"
                 />
@@ -87,11 +115,11 @@ export function HistoryPage() {
                 </div>
             )}
 
-            {hasNextPage && (
+            {canShowMoreCompleted && (
                 <button
                     type="button"
-                    className="history-page-load-more"
-                    onClick={() => fetchNextPage()}
+                    className="load-more-button"
+                    onClick={handleLoadMoreCompleted}
                     disabled={isFetchingNextPage}
                 >
                     {isFetchingNextPage

@@ -2,7 +2,6 @@ export interface ExerciseListResponse {
     id: string
     name: string
     description: string
-    movementPatternId: string | null
     bodyParts: ReferenceResponse[]
     tags: ReferenceResponse[]
     trackingType: ExerciseTrackingType
@@ -13,7 +12,6 @@ export interface ExerciseResponse {
     name: string
     description: string
     instructions: string
-    movementPatternId: string | null
     bodyParts: ReferenceResponse[]
     equipment: ReferenceResponse[]
     trackingType: ExerciseTrackingType
@@ -59,7 +57,6 @@ export interface ExerciseFormValues {
     name: string
     description: string
     instructions: string
-    movementPatternId: string
     trackingType: ExerciseTrackingType
     bodyPartIds: string[]
     equipmentIds: string[]
@@ -70,7 +67,6 @@ export interface CreateExerciseRequest {
     name: string
     description: string
     instructions: string
-    movementPatternId: string | null
     trackingType: ExerciseTrackingType
     bodyPartIds: string[]
     equipmentIds: string[]
@@ -81,7 +77,6 @@ export interface UpdateExerciseRequest {
     name: string
     description: string
     instructions: string
-    movementPatternId: string | null
     trackingType: ExerciseTrackingType
     bodyPartIds: string[]
     equipmentIds: string[]

@@ -6,8 +6,8 @@
     display: grid;
     grid-template-columns: 180px minmax(0, 1fr);
 
-    background: #f7f7f7;
-    color: #171717;
+    background: #111111;
+    color: #e5e5e5;
 
     font-family:
             Inter,
@@ -17,6 +17,10 @@
             BlinkMacSystemFont,
             "Segoe UI",
             sans-serif;
+}
+
+.workout-set-page > .loading-state {
+    grid-column: 1 / -1;
 }
 
 /* =========================================================
@@ -259,7 +263,7 @@
 .workout-set-session-heading h1 {
     margin: 0;
 
-    color: #202125;
+    color: #f0f0f0;
 
     font-size: 24px;
     font-weight: 800;
@@ -297,11 +301,11 @@
 
     padding: 8px 11px;
 
-    border: 1px solid #d7d7da;
+    border: 1px solid #2a2a2a;
     border-radius: 5px;
 
-    background: #ffffff;
-    color: #3e4045;
+    background: #1b1b1b;
+    color: #d5d5d5;
 
     font-family: "JetBrains Mono", monospace;
     font-size: 15px;
@@ -366,12 +370,12 @@
 
     box-sizing: border-box;
 
-    border: 1px solid #dcdcdf;
+    border: 1px solid #2a2a2a;
     border-radius: 7px;
 
-    background: #ffffff;
+    background: #191919;
 
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
 }
 
 .workout-set-exercise-card-header {
@@ -393,7 +397,7 @@
 .workout-set-exercise-title-row h2 {
     margin: 0;
 
-    color: #222328;
+    color: #f0f0f0;
 
     font-size: 15px;
     font-weight: 800;
@@ -404,8 +408,8 @@
 
     border-radius: 3px;
 
-    background: #eef3fb;
-    color: #6e7f9d;
+    background: #1c2733;
+    color: #8bb6f7;
 
     font-size: 7px;
     font-weight: 700;
@@ -427,11 +431,11 @@
 
     padding: 5px 8px;
 
-    border: 1px solid #d5d6d9;
+    border: 1px solid #333333;
     border-radius: 4px;
 
-    background: #ffffff;
-    color: #676970;
+    background: #202020;
+    color: #aaaaaa;
 
     font-size: 7px;
     font-weight: 700;
@@ -444,8 +448,8 @@
 }
 
 .workout-set-technique-button:hover {
-    background: #f5f5f6;
-    border-color: #c5c6ca;
+    background: #292929;
+    border-color: #444444;
 }
 
 /* =========================================================
@@ -480,10 +484,10 @@
 
     padding: 0 7px;
 
-    border-top: 1px solid #eeeeef;
-    border-bottom: 1px solid #eeeeef;
+    border-top: 1px solid #2a2a2a;
+    border-bottom: 1px solid #2a2a2a;
 
-    color: #96979d;
+    color: #8a8a90;
 
     font-size: 7px;
     font-weight: 700;
@@ -500,22 +504,22 @@
 
     padding: 4px 7px;
 
-    border-bottom: 1px solid #eeeeef;
+    border-bottom: 1px solid #2a2a2a;
 
     transition: background 0.15s ease;
 }
 
 .workout-set-row:hover {
-    background: #fafafa;
+    background: #1e1e1e;
 }
 
 .workout-set-row-completed {
-    background: #f6fbf8;
+    background: #132a1d;
 }
 
 .workout-set-number,
 .workout-set-next-set-number {
-    color: #707278;
+    color: #9a9a9a;
 
     font-size: 9px;
     font-weight: 700;
@@ -531,14 +535,23 @@
 
     padding: 0 7px;
 
-    border: 1px solid #d8d9dc;
+    border: 1px solid #333333;
     border-radius: 4px;
 
-    background: #ffffff;
-    color: #33353a;
+    background: #151515;
+    color: #e0e0e0;
 
     font-family: inherit;
     font-size: 9px;
+
+    -moz-appearance: textfield;
+}
+
+.workout-set-input::-webkit-outer-spin-button,
+.workout-set-input::-webkit-inner-spin-button {
+    margin: 0;
+
+    -webkit-appearance: none;
 }
 
 .workout-set-input:focus {
@@ -549,8 +562,8 @@
 }
 
 .workout-set-input[readonly] {
-    background: #f8f8f9;
-    color: #55575d;
+    background: #1a1a1a;
+    color: #8a8a8a;
 }
 
 .workout-set-done-button {
@@ -565,11 +578,11 @@
 
     padding: 0;
 
-    border: 1px solid #d4d5d8;
+    border: 1px solid #333333;
     border-radius: 4px;
 
-    background: #ffffff;
-    color: #a3a5aa;
+    background: #202020;
+    color: #8a8a8a;
 
     font-size: 10px;
     font-weight: 800;
@@ -583,29 +596,29 @@
 }
 
 .workout-set-done-button:hover {
-    background: #f2f2f3;
-    border-color: #bfc0c4;
+    background: #292929;
+    border-color: #444444;
 }
 
 .workout-set-row-completed .workout-set-done-button {
-    border-color: #77c69e;
+    border-color: #2f6b4a;
 
-    background: #e9f8ef;
-    color: #35a46b;
+    background: #132a1d;
+    color: #5ee7a8;
 }
 
 .workout-set-sets-loading,
 .workout-set-sets-error {
     padding: 18px;
 
-    color: #96989e;
+    color: #8a8a90;
 
     font-size: 8px;
     text-align: center;
 }
 
 .workout-set-sets-error {
-    color: #c75c5c;
+    color: #e88888;
 }
 
 /* =========================================================
@@ -655,11 +668,11 @@
 
     margin-top: 3px;
 
-    border: 1px dashed #d0d1d4;
+    border: 1px dashed #3a3a3a;
     border-radius: 4px;
 
-    background: #fafafa;
-    color: #777980;
+    background: #191919;
+    color: #999999;
 
     font-size: 8px;
     font-weight: 700;
@@ -672,8 +685,8 @@
 }
 
 .workout-set-add-button:hover {
-    background: #f4f4f5;
-    border-color: #bfc0c4;
+    background: #232323;
+    border-color: #4a4a4a;
 }
 
 /* =========================================================
@@ -822,11 +835,11 @@
 
     padding: 0 12px;
 
-    border: 1px solid #cfd0d3;
+    border: 1px solid #333333;
     border-radius: 4px;
 
-    background: #ffffff;
-    color: #4f5055;
+    background: #1b1b1b;
+    color: #cccccc;
 
     font-size: 8px;
     font-weight: 600;
@@ -847,18 +860,18 @@
 }
 
 .workout-set-exercise-navigation button:hover:not(:disabled) {
-    background: #f0f0f2;
-    border-color: #b9bac0;
+    background: #252525;
+    border-color: #444444;
 }
 
 .workout-set-exercise-navigation button:disabled {
-    color: #bfc0c5;
-    background: #fafafa;
+    color: #555555;
+    background: #141414;
     cursor: not-allowed;
 }
 
 .workout-set-exercise-navigation span {
-    color: #999aa0;
+    color: #8a8a90;
 
     font-size: 8px;
     font-weight: 600;
@@ -873,11 +886,11 @@
 
     padding: 25px;
 
-    border: 1px solid #f0caca;
+    border: 1px solid #5a2f2f;
     border-radius: 8px;
 
-    background: #fff4f4;
-    color: #b34c4c;
+    background: #2a1414;
+    color: #e88888;
 
     font-size: 13px;
 }

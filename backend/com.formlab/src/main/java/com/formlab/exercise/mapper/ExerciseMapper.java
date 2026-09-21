@@ -18,18 +18,15 @@ import org.mapstruct.MappingTarget;
 )
 public interface ExerciseMapper {
 
-    @Mapping(target = "movementPattern", ignore = true)
     @Mapping(target = "bodyParts", ignore = true)
     @Mapping(target = "equipment", ignore = true)
     @Mapping(target = "tags", ignore = true)
     Exercise toEntity(CreateExerciseRequest request);
 
-    @Mapping(target = "movementPatternId", source = "movementPattern.id")
     ExerciseResponse toResponse(Exercise exercise);
 
     ExerciseListResponse toListResponse(Exercise exercise);
 
-    @Mapping(target = "movementPattern", ignore = true)
     @Mapping(target = "bodyParts", ignore = true)
     @Mapping(target = "equipment", ignore = true)
     @Mapping(target = "tags", ignore = true)

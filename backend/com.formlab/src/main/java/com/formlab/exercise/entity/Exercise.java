@@ -29,10 +29,6 @@ public class Exercise {
     @Column(columnDefinition = "TEXT")
     private String instructions;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "movement_pattern_id")
-    private MovementPattern movementPattern;
-
     @ManyToMany
     @JoinTable(
             name = "exercise_body_part",

@@ -1,5 +1,7 @@
 import type { ExerciseListResponse } from '../../../features/exercises/types/exercise.types'
 
+import '../../../components/shared.css'
+
 interface AdminExerciseTableProps {
     exercises: ExerciseListResponse[]
     search: string
@@ -121,7 +123,7 @@ export function AdminExerciseTable({
                 <div className="admin-dashboard-pagination">
                     <button
                         type="button"
-                        className="admin-dashboard-secondary-button"
+                        className="load-more-button"
                         onClick={onLoadMore}
                         disabled={
                             isFetchingNextPage

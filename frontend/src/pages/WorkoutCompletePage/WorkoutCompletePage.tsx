@@ -1,8 +1,10 @@
 import { Link, useParams } from 'react-router-dom'
 
 import { useWorkoutSessionSummary } from '../../features/workout/hooks/useWorkoutSessionSummary'
+import { LoadingState } from '../../components/LoadingState'
 
 import './WorkoutCompletePage.css'
+import '../../components/shared.css'
 
 function formatDuration(seconds: number) {
     const minutes = Math.floor(seconds / 60)
@@ -42,9 +44,7 @@ export function WorkoutCompletePage() {
     if (isLoading) {
         return (
             <main className="workout-complete-page">
-                <div className="workout-complete-loading">
-                    Loading workout summary...
-                </div>
+                <LoadingState message="Loading workout summary..." />
             </main>
         )
     }

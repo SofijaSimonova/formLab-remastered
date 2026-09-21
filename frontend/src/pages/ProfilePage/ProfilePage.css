@@ -339,8 +339,6 @@
 }
 
 .profile-password-form {
-    max-width: 620px;
-
     display: flex;
     flex-direction: column;
 

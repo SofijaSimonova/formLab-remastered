@@ -132,7 +132,7 @@ export function ExercisesPage() {
                             {hasNextPage && (
                                 <button
                                     type="button"
-                                    className="exercises-page-load-more"
+                                    className="load-more-button"
                                     onClick={() => fetchNextPage()}
                                     disabled={isFetchingNextPage}
                                 >

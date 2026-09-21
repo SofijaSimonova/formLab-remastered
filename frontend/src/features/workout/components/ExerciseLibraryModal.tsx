@@ -4,6 +4,7 @@ import type { ExerciseListResponse } from '../../exercises/types/exercise.types'
 import type { WorkoutExerciseResponse } from '../types/workout.types'
 
 import './ExerciseLibraryModal.css'
+import '../../../components/shared.css'
 
 interface ExerciseLibraryModalProps {
     exercises: ExerciseListResponse[]
@@ -292,7 +293,7 @@ export function ExerciseLibraryModal({
                     {hasNextPage && (
                         <button
                             type="button"
-                            className="exercise-library-load-more"
+                            className="load-more-button"
                             onClick={onLoadMore}
                             disabled={isFetchingNextPage}
                         >

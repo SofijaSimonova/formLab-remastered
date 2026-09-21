@@ -486,6 +486,20 @@ button.exercises-body-explorer-view-active {
 
     position: relative;
     z-index: 1;
+
+    cursor: pointer;
+
+    transition:
+            background 0.15s ease,
+            border-color 0.15s ease,
+            transform 0.15s ease;
+}
+
+.exercises-card:hover {
+    background: #19191c;
+    border-color: #424754;
+
+    transform: translateY(-2px);
 }
 
 
@@ -642,47 +656,6 @@ button.exercises-body-explorer-view-active {
     font-size: 11px;
     font-weight: 500;
     line-height: 1;
-}
-
-
-/* =========================================================
-   LOAD MORE
-   ========================================================= */
-
-.exercises-page-load-more {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 6px;
-
-    margin: 18px auto 0;
-
-    padding: 0;
-
-    border: 0;
-
-    background: transparent;
-    color: #888;
-
-    font-size: 13px;
-    font-weight: 600;
-
-    cursor: pointer;
-}
-
-.exercises-page-load-more:hover {
-    color: #d9f99d;
-}
-
-.exercises-page-load-more:disabled {
-    opacity: 0.6;
-
-    cursor: default;
-}
-
-.exercises-page-load-more span {
-    font-size: 15px;
 }
 
 

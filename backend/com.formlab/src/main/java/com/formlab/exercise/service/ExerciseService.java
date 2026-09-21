@@ -6,7 +6,6 @@ import com.formlab.exercise.dto.*;
 import com.formlab.exercise.entity.BodyPart;
 import com.formlab.exercise.entity.Equipment;
 import com.formlab.exercise.entity.Exercise;
-import com.formlab.exercise.entity.MovementPattern;
 import com.formlab.exercise.entity.Tag;
 import com.formlab.exercise.mapper.ExerciseMapper;
 import com.formlab.exercise.projection.ExerciseDetailProjection;
@@ -15,7 +14,6 @@ import com.formlab.exercise.repository.BodyPartRepository;
 import com.formlab.exercise.repository.EquipmentRepository;
 import com.formlab.exercise.repository.ExerciseFocusVariationRepository;
 import com.formlab.exercise.repository.ExerciseRepository;
-import com.formlab.exercise.repository.MovementPatternRepository;
 import com.formlab.exercise.repository.TagRepository;
 import com.formlab.exercise.specification.ExerciseSpecification;
 import com.formlab.workout.repository.WorkoutExerciseRepository;
@@ -37,7 +35,6 @@ public class ExerciseService {
 
     private final ExerciseRepository exerciseRepository;
     private final ExerciseMapper exerciseMapper;
-    private final MovementPatternRepository movementPatternRepository;
     private final BodyPartRepository bodyPartRepository;
     private final EquipmentRepository equipmentRepository;
     private final TagRepository tagRepository;
@@ -47,7 +44,6 @@ public class ExerciseService {
     public ExerciseService(
             ExerciseRepository exerciseRepository,
             ExerciseMapper exerciseMapper,
-            MovementPatternRepository movementPatternRepository,
             BodyPartRepository bodyPartRepository,
             EquipmentRepository equipmentRepository,
             TagRepository tagRepository,
@@ -56,7 +52,6 @@ public class ExerciseService {
     ) {
         this.exerciseRepository = exerciseRepository;
         this.exerciseMapper = exerciseMapper;
-        this.movementPatternRepository = movementPatternRepository;
         this.bodyPartRepository = bodyPartRepository;
         this.equipmentRepository = equipmentRepository;
         this.tagRepository = tagRepository;
@@ -138,9 +133,6 @@ public class ExerciseService {
                                 exercise.getId(),
                                 exercise.getName(),
                                 exercise.getDescription(),
-                                exercise.getMovementPattern() == null
-                                        ? null
-                                        : exercise.getMovementPattern().getId(),
                                 bodyPartsByExercise.getOrDefault(
                                         exercise.getId(),
                                         List.of()
@@ -216,7 +208,6 @@ public class ExerciseService {
                 exercise.getName(),
                 exercise.getDescription(),
                 exercise.getInstructions(),
-                exercise.getMovementPatternId(),
                 bodyParts,
                 equipment,
                 exercise.getTrackingType(),
@@ -227,11 +218,6 @@ public class ExerciseService {
     @Transactional
     public ExerciseResponse createExercise(CreateExerciseRequest request) {
         Exercise exercise = exerciseMapper.toEntity(request);
-
-        setMovementPattern(
-                exercise,
-                request.movementPatternId()
-        );
 
         exercise.setBodyParts(
                 new HashSet<>(resolveBodyParts(request.bodyPartIds()))
@@ -263,11 +249,6 @@ public class ExerciseService {
                 );
 
         exerciseMapper.updateEntity(request, exercise);
-
-        setMovementPattern(
-                exercise,
-                request.movementPatternId()
-        );
 
         replaceBodyParts(
                 exercise,
@@ -303,26 +284,6 @@ public class ExerciseService {
         }
 
         exerciseRepository.delete(exercise);
-    }
-
-    private void setMovementPattern(
-            Exercise exercise,
-            UUID movementPatternId
-    ) {
-        if (movementPatternId == null) {
-            exercise.setMovementPattern(null);
-            return;
-        }
-
-        MovementPattern movementPattern =
-                movementPatternRepository.findById(movementPatternId)
-                        .orElseThrow(() ->
-                                new ResourceNotFoundException(
-                                        "Movement pattern not found"
-                                )
-                        );
-
-        exercise.setMovementPattern(movementPattern);
     }
 
     private Set<BodyPart> resolveBodyParts(Set<UUID> bodyPartIds) {

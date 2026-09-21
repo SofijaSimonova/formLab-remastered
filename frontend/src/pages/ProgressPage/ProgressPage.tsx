@@ -5,8 +5,10 @@ import { PersonalRecordsCard } from '../../features/progress/components/Personal
 import { ProgressMetrics } from '../../features/progress/components/ProgressMetrics'
 import { StrengthProgressCard } from '../../features/progress/components/StrengthProgressCard'
 import { WeeklyVolumeCard } from '../../features/progress/components/WeeklyVolumeCard'
+import { LoadingState } from '../../components/LoadingState'
 
 import './ProgressPage.css'
+import '../../components/shared.css'
 
 export default function ProgressPage() {
     const {
@@ -47,9 +49,7 @@ export default function ProgressPage() {
     if (progressQuery.isLoading) {
         return (
             <main className="progress-page">
-                <div className="progress-loading">
-                    Loading your progress...
-                </div>
+                <LoadingState message="Loading your progress..." />
             </main>
         )
     }

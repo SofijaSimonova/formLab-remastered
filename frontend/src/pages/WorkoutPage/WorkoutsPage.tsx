@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 
 import { useWorkouts } from '../../features/workout/hooks/useWorkouts'
+import { LoadingState } from '../../components/LoadingState'
 
 import './WorkoutsPage.css'
+import '../../components/shared.css'
 
 export function WorkoutsPage() {
     const {
@@ -15,23 +17,7 @@ export function WorkoutsPage() {
     if (isLoading) {
         return (
             <main className="workouts-page">
-                <div className="workouts-container">
-                    <div className="workouts-heading">
-                        <span className="workouts-eyebrow">
-                            FORMLAB / TRAINING
-                        </span>
-
-                        <h1>Your workouts.</h1>
-
-                        <p>
-                            Build and organize your training sessions.
-                        </p>
-                    </div>
-
-                    <div className="workouts-state">
-                        Loading workouts...
-                    </div>
-                </div>
+                <LoadingState message="Loading workouts..." />
             </main>
         )
     }

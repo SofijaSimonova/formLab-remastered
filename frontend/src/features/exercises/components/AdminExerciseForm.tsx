@@ -86,8 +86,6 @@ export function AdminExerciseForm({
             name: exercise?.name ?? '',
             description: exercise?.description ?? '',
             instructions: exercise?.instructions ?? '',
-            movementPatternId:
-                exercise?.movementPatternId ?? '',
             trackingType:
                 exercise?.trackingType ?? 'WEIGHT',
             bodyPartIds:
@@ -200,8 +198,6 @@ export function AdminExerciseForm({
             name: values.name.trim(),
             description: values.description.trim(),
             instructions: values.instructions.trim(),
-            movementPatternId:
-                values.movementPatternId.trim() || null,
             trackingType: values.trackingType,
             bodyPartIds: values.bodyPartIds,
             equipmentIds: values.equipmentIds,
@@ -365,21 +361,6 @@ export function AdminExerciseForm({
                     </select>
                 </div>
 
-                <div className="admin-dashboard-form-field">
-                    <label htmlFor="admin-dashboard-movement-pattern">
-                        Movement Pattern ID
-                    </label>
-
-                    <input
-                        id="admin-dashboard-movement-pattern"
-                        type="text"
-                        placeholder="Optional"
-                        disabled={isSaving}
-                        {...register(
-                            'movementPatternId',
-                        )}
-                    />
-                </div>
             </div>
 
             <div className="admin-dashboard-reference-section">

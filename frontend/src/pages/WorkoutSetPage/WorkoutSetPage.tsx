@@ -1,7 +1,9 @@
 import { WorkoutSetForm } from '../../features/workout/components/WorkoutSetForm'
 import { useWorkoutSetPage } from '../../features/workout/hooks/useWorkoutSetPage'
+import { LoadingState } from '../../components/LoadingState'
 
 import './WorkoutSetPage.css'
+import '../../components/shared.css'
 
 function formatStartedAt(
     value: string,
@@ -152,9 +154,7 @@ export function WorkoutSetPage() {
     ) {
         return (
             <main className="workout-set-page">
-                <div className="workout-set-error">
-                    Loading workout session...
-                </div>
+                <LoadingState message="Loading workout session..." />
             </main>
         )
     }

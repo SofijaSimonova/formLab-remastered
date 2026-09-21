@@ -291,37 +291,6 @@
     opacity: 0.65;
 }
 
-.exercise-library-load-more {
-    display: block;
-
-    width: calc(100% - 64px);
-
-    margin: 20px 32px;
-    padding: 12px;
-
-    border: 1px solid #333;
-    background: transparent;
-
-    color: #aaa;
-
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-
-    cursor: pointer;
-}
-
-.exercise-library-load-more:hover:not(:disabled) {
-    border-color: #555;
-    color: #fff;
-}
-
-.exercise-library-load-more:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
 .exercise-library-footer {
     display: flex;
     justify-content: flex-end;
@@ -387,7 +356,7 @@
         width: 100%;
     }
 
-    .exercise-library-load-more {
+    .load-more-button {
         width: calc(100% - 40px);
         margin-left: 20px;
         margin-right: 20px;

@@ -219,51 +219,6 @@
 
 
 /* =========================================================
-   LOAD MORE
-   ========================================================= */
-
-.history-page-load-more {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 7px;
-
-    width: 100%;
-    max-width: 220px;
-
-    margin: 8px auto 0;
-    padding: 10px 16px;
-
-    border: 1px solid var(--border);
-    border-radius: 7px;
-
-    background: var(--bg-surface);
-    color: var(--text-secondary);
-
-    font-size: 12px;
-    font-weight: 500;
-
-    cursor: pointer;
-
-    transition:
-            background 0.15s ease,
-            color 0.15s ease,
-            border-color 0.15s ease;
-}
-
-.history-page-load-more:hover:not(:disabled) {
-    background: var(--bg-surface-hover);
-    color: var(--text-primary);
-}
-
-.history-page-load-more:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-
-/* =========================================================
    STATES
    ========================================================= */
 

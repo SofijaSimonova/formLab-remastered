@@ -3,7 +3,8 @@
    ========================================================= */
 
 .loading-state {
-    min-height: 400px;
+    width: 100%;
+    min-height: calc(100vh - 64px);
 
     display: flex;
     flex-direction: column;
@@ -93,6 +94,54 @@
 
     background: #252c18;
     color: #d9f99d;
+}
+
+
+/* =========================================================
+   SHARED LOAD MORE BUTTON
+   ========================================================= */
+
+.load-more-button {
+    width: fit-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    margin: 24px auto 0;
+    padding: 10px 20px;
+
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+
+    background: #151515;
+    color: #ccc;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+            background 0.15s ease,
+            border-color 0.15s ease,
+            color 0.15s ease;
+}
+
+.load-more-button:hover:not(:disabled) {
+    background: #1c1c1c;
+    border-color: #424754;
+    color: #fff;
+}
+
+.load-more-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.load-more-button span {
+    font-size: 11px;
 }
 
 
